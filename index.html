@@ -835,13 +835,15 @@
     <img src="logo.png" alt="로고">
 </div>
 
-        <h1 class="team-name">
+        <h1 id="mainText">
             팀이름
         </h1>
 
-        <p class="team-subtitle">
-            팀이름 Volleyball Team
-        </p>
+        <p
+    id="teamName"
+    class="team-subtitle">
+    제목
+</p>
 
     </header>
 
@@ -1054,6 +1056,7 @@ const API_URL =
 
 let guestData = {};
 let scheduleData = {};
+let siteData = {};
 
 let currentYear = 2026;
 let currentMonth = 7; // 0 = 1월, 7 = 8월
@@ -1576,7 +1579,194 @@ function submitGuestForm() {
     }, 2500);
 }
 
+/* =====================================================
+   GOOGLE SHEETS에서 사이트 정보 가져오기
+===================================================== */
 
+function loadSiteData() {
+
+    const script =
+        document.createElement("script");
+
+    const callbackName =
+        "siteCallback_" + Date.now();
+
+    window[callbackName] =
+        function(data) {
+
+            siteData =
+                data || {};
+
+            applySiteData();
+
+            delete window[callbackName];
+            script.remove();
+        };
+
+
+    script.onerror =
+        function() {
+
+            console.error(
+                "사이트 관리 데이터를 불러오지 못했습니다."
+            );
+
+            siteData = {};
+
+            script.remove();
+        };
+
+
+    script.src =
+        API_URL +
+        "?action=site" +
+        "&callback=" +
+        callbackName;
+
+
+    document.body.appendChild(script);
+}
+    /* =====================================================
+   Google Sheets 사이트 정보 → 홈페이지 반영
+===================================================== */
+
+function applySiteData() {
+
+    /*
+    팀 이름
+    */
+
+    const teamName =
+        document.getElementById("teamName");
+
+    if (teamName && siteData.teamName) {
+
+        teamName.innerText =
+            siteData.teamName;
+
+    }
+
+
+    /*
+    메인 문구
+    */
+
+    const mainText =
+        document.getElementById("mainText");
+
+    if (mainText && siteData.mainText) {
+
+        mainText.innerText =
+            siteData.mainText;
+
+    }
+
+
+    /*
+    이벤트 영역
+    */
+
+    const eventTitle =
+        document.getElementById("eventTitle");
+
+    const eventContent =
+        document.getElementById("eventContent");
+
+    const eventDate =
+        document.getElementById("eventDate");
+
+    const eventLink =
+        document.getElementById("eventLink");
+
+    const eventSection =
+        document.getElementById("eventSection");
+
+
+    if (
+        siteData.noticeVisible === "ON"
+    ) {
+
+        if (
+            eventSection
+        ) {
+
+            eventSection.style.display =
+                "";
+
+        }
+
+
+        if (
+            eventTitle &&
+            siteData.eventTitle
+        ) {
+
+            eventTitle.innerText =
+                siteData.eventTitle;
+
+        }
+
+
+        if (
+            eventContent &&
+            siteData.eventContent
+        ) {
+
+            eventContent.innerText =
+                siteData.eventContent;
+
+        }
+
+
+        if (
+            eventDate &&
+            siteData.eventDate
+        ) {
+
+            eventDate.innerText =
+                siteData.eventDate;
+
+        }
+
+
+        if (
+            eventLink
+        ) {
+
+            if (
+                siteData.eventLink
+            ) {
+
+                eventLink.href =
+                    siteData.eventLink;
+
+                eventLink.style.display =
+                    "";
+
+            } else {
+
+                eventLink.style.display =
+                    "none";
+
+            }
+
+        }
+
+    } else {
+
+        if (
+            eventSection
+        ) {
+
+            eventSection.style.display =
+                "none";
+
+        }
+
+    }
+
+}
+    
 /* =====================================================
    페이지 시작
 ===================================================== */
