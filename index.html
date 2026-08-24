@@ -7,6 +7,7 @@
     <title>게스트 모집 | Volleyball Team</title>
 
     <style>
+        
         * {
             box-sizing: border-box;
         }
@@ -693,6 +694,35 @@
     font-weight: 700;
 
 }
+        .guest-status {
+
+    margin: -5px 0 18px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+
+    color: #555555;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+}
+
+.guest-status strong {
+
+    color: #650035;
+
+    font-weight: 800;
+
+}
     </style>
 </head>
 
@@ -951,7 +981,51 @@ Google Sheets에서
 게스트 현황 가져오기
 ========================================
 */
+/* =========================
+   V-HOLIC 운영 일정
+   =========================
 
+   여기에서 운영 날짜를 관리합니다.
+
+   true = 운영
+   false = 운영하지 않음
+
+   시간도 여기서 정할 수 있습니다.
+========================= */
+
+const scheduleData = {
+
+    "2026-08-24": {
+        day: "수",
+        time: "19:00 - 22:00"
+    },
+
+    "2026-08-30": {
+        day: "일",
+        time: "16:00 - 20:00"
+    },
+
+    "2026-09-04": {
+        day: "금",
+        time: "19:00 - 22:00"
+    },
+
+    "2026-09-06": {
+        day: "일",
+        time: "16:00 - 20:00"
+    },
+
+    "2026-09-11": {
+        day: "금",
+        time: "19:00 - 22:00"
+    },
+
+    "2026-09-13": {
+        day: "일",
+        time: "16:00 - 20:00"
+    }
+
+};
 function loadGuestData() {
 
     const script =
@@ -1098,45 +1172,71 @@ function loadGuestData() {
                 guestData[dateKey];
 
 
-            if (data) {
-
-                const info =
-                    document.createElement("div");
-
-                info.className =
-                    "day-info";
+            if (data) {const data =
+    guestData[dateKey] || {
+        male: 0,
+        female: 0
+    };
 
 
-                info.innerHTML =
-                    `<span class="m">
-                        ${data.male}/3
-                    </span>
-                    <br>
-                    <span class="f">
-                        ${data.female}/3
-                    </span>`;
+const schedule =
+    scheduleData[dateKey];
 
 
-                day.appendChild(info);
+/*
+    V-HOLIC 운영일이면
+    신청자가 0명이더라도 표시
+*/
+
+if (schedule) {
+
+    const info =
+        document.createElement("div");
+
+    info.className =
+        "day-info";
 
 
-                /*
-                    모두 3명 이상이면
-                    마감 표시
-                */
+    info.innerHTML = `
+        <span class="m">
+            ${data.male}/3
+        </span>
+        <br>
+        <span class="f">
+            ${data.female}/3
+        </span>
+    `;
 
-                if (
-                    data.male >= 3 &&
-                    data.female >= 3
-                ) {
 
-                    info.innerHTML =
-                        `<span class="c">
-                            마감
-                        </span>`;
-                }
+    day.appendChild(info);
 
-            }
+
+    /*
+        남녀 모두 모집 완료
+    */
+
+    if (
+        data.male >= 3 &&
+        data.female >= 3
+    ) {
+
+        info.innerHTML = `
+            <span class="m">
+                ${data.male}/3
+            </span>
+            <br>
+            <span class="f">
+                ${data.female}/3
+            </span>
+            <br>
+            <span class="c">
+                마감
+            </span>
+        `;
+
+    }
+
+}
 
 
             /*
@@ -1285,8 +1385,145 @@ function loadGuestData() {
 /* =========================
    GUEST FORM
 ========================= */
+/* =========================
+   신청 가능한 날짜 만들기
+========================= */
 
+function loadScheduleOptions() {
+
+    const select =
+        document.getElementById(
+            "guestDate"
+        );
+
+
+    if (!select) {
+        return;
+    }
+/* =========================
+   날짜 선택 시 모집 현황 표시
+========================= */
+
+function updateGuestStatus() {
+
+    const select =
+        document.getElementById(
+            "guestDate"
+        );
+
+    const status =
+        document.getElementById(
+            "guestStatus"
+        );
+
+    if (!select || !status) {
+        return;
+    }
+
+    const dateKey =
+        select.value;
+
+    if (!dateKey) {
+
+        status.innerHTML =
+            "날짜를 선택해주세요.";
+
+        return;
+    }
+
+    const data =
+        guestData[dateKey] || {
+            male: 0,
+            female: 0
+        };
+
+    const schedule =
+        scheduleData[dateKey];
+
+    status.innerHTML = `
+
+        <strong>
+            ${schedule.day}요일
+            ${schedule.time}
+        </strong>
+
+        <br>
+
+        🔵 남자
+        <strong>
+            ${data.male}/3명
+        </strong>
+
+        &nbsp;&nbsp;
+
+        🔴 여자
+        <strong>
+            ${data.female}/3명
+        </strong>
+
+    `;
+}
+
+    /*
+        기존 선택지 삭제
+    */
+
+    select.innerHTML = `
+        <option value="">
+            신청할 날짜를 선택해주세요
+        </option>
+    `;
+
+
+    /*
+        운영 날짜를 하나씩 추가
+    */
+
+    Object.keys(scheduleData)
+        .sort()
+        .forEach(function(dateKey) {
+
+            const schedule =
+                scheduleData[dateKey];
+
+
+            const date =
+                new Date(
+                    dateKey + "T00:00:00"
+                );
+
+
+            const month =
+                date.getMonth() + 1;
+
+            const day =
+                date.getDate();
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                dateKey;
+
+
+            option.textContent =
+                `${month}월 ${day}일 (${schedule.day}) · ${schedule.time}`;
+
+
+            select.appendChild(option);
+
+        });
+select.onchange =
+    updateGuestStatus;
+}
 function openGuestForm() {
+
+    loadScheduleOptions();
+
 
     document
         .getElementById("guestModal")
@@ -1412,16 +1649,28 @@ loadGuestData();
 
             <!-- 날짜 -->
 
-            <label>
-                날짜
-            </label>
+<label>
+    날짜
+</label>
 
-            <input
-                type="date"
-                name="date"
-                id="guestDate"
-                required>
+<select
+    name="date"
+    id="guestDate"
+    required>
 
+    <option value="">
+        신청할 날짜를 선택해주세요
+    </option>
+
+</select>
+            
+<div
+    id="guestStatus"
+    class="guest-status">
+
+    날짜를 선택해주세요.
+
+</div>
 
             <!-- 성별 -->
 
