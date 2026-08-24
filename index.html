@@ -1060,27 +1060,87 @@ let guestData = {};
 
 
 /* =====================================================
-   V-HOLIC 운영 일정
+   V-HOLIC 운영 일정(Google Sheets에서 V-HOLIC 운영 일정 가져오기)
 ===================================================== */
 
-const scheduleData = {
 
-    "2026-08-26": {
-        day: "수",
-        time: "19:00 - 22:00"
-    },
+let scheduleData = {};
 
-    "2026-09-02": {
-        day: "수",
-        time: "19:00 - 22:00"
-    },
 
-    "2026-09-09": {
-        day: "수",
-        time: "19:00 - 22:00"
-    }
+function loadScheduleData() {
 
-};
+    const script =
+        document.createElement("script");
+
+
+    const callbackName =
+        "scheduleCallback_" +
+        Date.now();
+
+
+    window[callbackName] =
+        function(data) {
+
+            scheduleData =
+                data || {};
+
+
+            /*
+            일정 데이터를 받은 후
+            달력을 다시 그립니다.
+            */
+
+            renderCalendar();
+
+
+            /*
+            신청 날짜도 다시 만듭니다.
+            */
+
+            if (
+                typeof populateDateOptions ===
+                "function"
+            ) {
+
+                populateDateOptions();
+
+            }
+
+
+            delete window[callbackName];
+
+            script.remove();
+
+        };
+
+
+    script.onerror =
+        function() {
+
+            console.error(
+                "운영 일정 데이터를 불러오지 못했습니다."
+            );
+
+
+            scheduleData = {};
+
+            renderCalendar();
+
+            script.remove();
+
+        };
+
+
+    script.src =
+        API_URL +
+        "?action=schedule" +
+        "&callback=" +
+        callbackName;
+
+
+    document.body.appendChild(script);
+
+}
 
 
 /* =====================================================
@@ -1773,6 +1833,7 @@ function submitGuestForm() {
 ===================================================== */
 
 loadGuestData();
+loadScheduleData();
 
 </script>
 <!-- =========================
