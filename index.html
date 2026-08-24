@@ -821,13 +821,24 @@
     }
 
 }
+        .apply-text,
+.notice-text {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+#joinText2 {
+    line-height: 1.7;
+}
     </style>
 </head>
 
 <body>
 
 <div class="page">
-
     <!-- =========================
          HEADER
     ========================== -->
@@ -835,67 +846,86 @@
     <header class="header">
 
         <div class="logo">
-    <img src="logo.png" alt="로고">
-</div>
+            <img src="logo.png" alt="로고">
+        </div>
 
-        <h1
-    id="teamName"
-    class="team-name">
-    팀 이름
-</h1>
+        <h1 id="mainTitle" class="team-name">
+            SEOLBONG VOLLEYBALL CLUB
+        </h1>
 
-<p
-    id="mainText"
-    class="team-subtitle">
-    서브타이틀
-</p>
+        <p id="mainMid" class="team-subtitle">
+            이천 설봉 배구팀
+        </p>
 
     </header>
 
 
     <!-- =========================
-         EVENT
+         APPLY
+    ========================== -->
+
+    <section class="card apply-card">
+
+        <h2 id="applyTitle" class="card-title">
+            2026 게스트 모집 안내
+        </h2>
+
+        <p id="applyMid" class="event-price">
+            성인 15,000원 / 학생 10,000원
+        </p>
+
+        <div id="applyText" class="apply-text">
+            수요일 19:00-21:00<br>
+            하루 게스트 정원 3명<br>
+            폼 제출 후 입금 필수
+        </div>
+
+        <button
+            class="main-button"
+            type="button"
+            onclick="openGuestForm()">
+
+            게스트 신청하기
+
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         NOTICE
     ========================== -->
 
     <section
-    id="eventSection"
-    class="card">
+        id="noticeSection"
+        class="card">
 
-    <h2
-        id="eventTitle"
-        class="card-title">
-        공지
-    </h2>
+        <h2 id="noticeTitle" class="card-title">
+            2026 게스트 모집 안내
+        </h2>
 
+        <p id="noticeMid" class="event-price">
+            성인 15,000원 / 학생 10,000원
+        </p>
 
-    <p
-        id="eventMiddle"
-        class="event-price">
-        소제목
-    </p>
+        <div id="noticeText" class="notice-text">
+            수요일 19:00-21:00<br>
+            하루 게스트 정원 3명<br>
+            폼 제출 후 입금 필수
+        </div>
 
+        <a
+            id="noticeLink"
+            class="main-button"
+            href="#"
+            target="_blank"
+            style="display:none;">
 
-    <div
-        id="eventContent"
-        class="event-list">
+            자세히 보기
 
-        내용
+        </a>
 
-    </div>
-
-
-    <a
-        id="eventLink"
-        class="main-button"
-        href="#"
-        target="_blank"
-        style="display:none;">
-
-        자세히 보기
-
-    </a>
-
-</section>
+    </section>
 
 
     <!-- =========================
@@ -927,7 +957,6 @@
 
         </div>
 
-
         <div class="calendar-header">
 
             <button
@@ -949,7 +978,6 @@
 
         </div>
 
-
         <div class="weekdays">
 
             <div class="weekday">일</div>
@@ -962,14 +990,10 @@
 
         </div>
 
-
         <div
             id="calendar"
             class="calendar">
         </div>
-
-
-        <!-- 날짜 상세 정보 -->
 
         <div
             id="dateDetail"
@@ -990,104 +1014,126 @@
 
 
     <!-- =========================
-         V-HOLIC 정보
+         TEAM INFO
     ========================== -->
 
-    <section
-    id="teamInfoSection"
-    class="card info-card">
+    <section class="card info-card">
 
-    <h2
-        id="teamInfo"
-        class="card-title">
-        브이홀릭 정보
-    </h2>
+        <h2
+            id="teamInfo"
+            class="card-title">
+            이천 설봉 배구팀 소개
+        </h2>
 
 
-    <!-- LOCATION -->
+        <div class="info-item">
 
-    <div class="info-item">
+            <span
+                id="teamSub1"
+                class="info-label">
+                📍 위치
+            </span>
 
-        <span
-            id="locationLabel"
-            class="info-label">
-            📍 LOCATION
-        </span>
+            <span id="teamText1">
+                이천남초등학교
+            </span>
 
-        <span id="locationText">
-            장소
-        </span>
-
-    </div>
+        </div>
 
 
-    <!-- TIME -->
+        <div class="info-item">
 
-    <div class="info-item">
+            <span
+                id="teamSub2"
+                class="info-label">
+                🕐 시간
+            </span>
 
-        <span
-            id="timeLabel"
-            class="info-label">
-            🕐 TIME
-        </span>
+            <span id="teamText2">
+                수요일 19:00~21:00
+            </span>
 
-        <span id="timeText">
-            시간
-        </span>
-
-    </div>
+        </div>
 
 
-    <!-- PLAY -->
+        <div class="info-item">
 
-    <div class="info-item">
+            <span
+                id="teamSub3"
+                class="info-label">
+                📸 INSTAGRAM
+            </span>
 
-        <span
-            id="playLabel"
-            class="info-label">
-            🏐 PLAY
-        </span>
+            <span id="teamText3">
+                @sb__vc
+            </span>
 
-        <span id="playText">
-            배구
-        </span>
+        </div>
 
-    </div>
-
-
-    <!-- INSTAGRAM -->
-
-    <div class="info-item">
-
-        <span
-            id="instagramLabel"
-            class="info-label">
-            📸 INSTAGRAM
-        </span>
-
-        <span id="instagramText">
-            @vholic
-        </span>
-
-    </div>
+    </section>
 
 
-    <!-- 신청 버튼 -->
+    <!-- =========================
+         JOIN INFO
+    ========================== -->
 
-    <button
-        class="main-button"
-        type="button"
-        onclick="openGuestForm()">
+    <section class="card info-card">
 
-        게스트 신청하기
-
-    </button>
-
-</section>
+        <h2
+            id="joinInfo"
+            class="card-title">
+            입단 안내
+        </h2>
 
 
-    <footer>
-        © 2026 이름 · Volleyball Team
+        <div class="info-item">
+
+            <span
+                id="joinSub1"
+                class="info-label">
+                🏐 멤버
+            </span>
+
+            <span id="joinText1">
+                13/16
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span
+                id="joinSub2"
+                class="info-label">
+                📩 입단 조건
+            </span>
+
+            <span id="joinText2">
+                성인 여성<br>
+                배구 경력자
+            </span>
+
+        </div>
+
+
+        <div
+            id="joinText3"
+            class="info-item">
+
+            입단 문의는 DM으로 연락주세요!
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer id="bottomTitle">
+        © 2026 설봉(@sb__vc) · Volleyball Team
     </footer>
 
 </div>
@@ -1683,40 +1729,84 @@ function applySiteData() {
 
     /*
     ========================================
-    TEAM NAME
+    MAIN
     ========================================
     */
 
-    const teamName =
-        document.getElementById("teamName");
+    const mainTitle =
+        document.getElementById("mainTitle");
+
+    const mainMid =
+        document.getElementById("mainMid");
+
 
     if (
-        teamName &&
-        siteData.teamName
+        mainTitle &&
+        siteData.MAIN_TITLE
     ) {
 
-        teamName.innerText =
-            siteData.teamName;
+        mainTitle.innerText =
+            siteData.MAIN_TITLE;
+
+    }
+
+
+    if (
+        mainMid &&
+        siteData.MAIN_MID
+    ) {
+
+        mainMid.innerText =
+            siteData.MAIN_MID;
 
     }
 
 
     /*
     ========================================
-    MAIN TEXT
+    APPLY
     ========================================
     */
 
-    const mainText =
-        document.getElementById("mainText");
+    const applyTitle =
+        document.getElementById("applyTitle");
+
+    const applyMid =
+        document.getElementById("applyMid");
+
+    const applyText =
+        document.getElementById("applyText");
+
 
     if (
-        mainText &&
-        siteData.mainText
+        applyTitle &&
+        siteData.APPLY_TITLE
     ) {
 
-        mainText.innerText =
-            siteData.mainText;
+        applyTitle.innerText =
+            siteData.APPLY_TITLE;
+
+    }
+
+
+    if (
+        applyMid &&
+        siteData.APPLY_MID
+    ) {
+
+        applyMid.innerText =
+            siteData.APPLY_MID;
+
+    }
+
+
+    if (
+        applyText &&
+        siteData.APPLY_TEXT
+    ) {
+
+        applyText.innerHTML =
+            siteData.APPLY_TEXT;
 
     }
 
@@ -1727,108 +1817,113 @@ function applySiteData() {
     ========================================
     */
 
-    const eventSection =
-        document.getElementById("eventSection");
+    const noticeSection =
+        document.getElementById(
+            "noticeSection"
+        );
 
-    const eventTitle =
-        document.getElementById("eventTitle");
+    const noticeTitle =
+        document.getElementById(
+            "noticeTitle"
+        );
 
-    const eventMiddle =
-        document.getElementById("eventMiddle");
+    const noticeMid =
+        document.getElementById(
+            "noticeMid"
+        );
 
-    const eventContent =
-        document.getElementById("eventContent");
+    const noticeText =
+        document.getElementById(
+            "noticeText"
+        );
 
-    const eventLink =
-        document.getElementById("eventLink");
+    const noticeLink =
+        document.getElementById(
+            "noticeLink"
+        );
 
 
     /*
-    공지 ON
+    ON / OFF
     */
 
     if (
-        siteData.noticeDisplay === "ON"
+        String(
+            siteData.NOTICE_DISPLAY || ""
+        ).toUpperCase() === "ON"
     ) {
 
-        if (eventSection) {
+        if (noticeSection) {
 
-            eventSection.style.display =
+            noticeSection.style.display =
                 "";
 
         }
 
 
         if (
-            eventTitle &&
-            siteData.noticeTitle
+            noticeTitle &&
+            siteData.NOTICE_TITLE
         ) {
 
-            eventTitle.innerText =
-                siteData.noticeTitle;
+            noticeTitle.innerText =
+                siteData.NOTICE_TITLE;
 
         }
 
 
         if (
-            eventMiddle &&
-            siteData.noticeMiddle
+            noticeMid &&
+            siteData.NOTICE_MID
         ) {
 
-            eventMiddle.innerText =
-                siteData.noticeMiddle;
+            noticeMid.innerText =
+                siteData.NOTICE_MID;
 
         }
 
 
         if (
-            eventContent &&
-            siteData.noticeText
+            noticeText &&
+            siteData.NOTICE_TEXT
         ) {
 
-            eventContent.innerText =
-                siteData.noticeText;
+            noticeText.innerHTML =
+                siteData.NOTICE_TEXT;
 
         }
 
 
         /*
-        공지 링크
+        링크 표시 여부
         */
 
-        if (eventLink) {
+        if (
+            noticeLink &&
+            String(
+                siteData.NOTICE_LINK_DISPLAY || ""
+            ).toUpperCase() === "ON" &&
+            siteData.NOTICE_LINK
+        ) {
 
-            if (
-                siteData.noticeLink
-            ) {
+            noticeLink.href =
+                siteData.NOTICE_LINK;
 
-                eventLink.href =
-                    siteData.noticeLink;
+            noticeLink.style.display =
+                "";
 
-                eventLink.style.display =
-                    "";
+        } else if (noticeLink) {
 
-            } else {
-
-                eventLink.style.display =
-                    "none";
-
-            }
+            noticeLink.style.display =
+                "none";
 
         }
 
-    }
+    } else {
 
+        if (noticeSection) {
 
-    /*
-    공지 OFF
-    */
-
-    else {
-
-        if (eventSection) {
-
-            eventSection.style.display =
+            noticeSection.style.display =
                 "none";
 
         }
@@ -1843,155 +1938,278 @@ function applySiteData() {
     */
 
     const teamInfo =
-        document.getElementById("teamInfo");
+        document.getElementById(
+            "teamInfo"
+        );
 
     if (
         teamInfo &&
-        siteData.teamInfo
+        siteData.TEAM_INFO
     ) {
 
         teamInfo.innerText =
-            siteData.teamInfo;
+            siteData.TEAM_INFO;
 
     }
 
 
     /*
     ========================================
+    TEAM SUB 1
     LOCATION
     ========================================
     */
 
-    const locationLabel =
-        document.getElementById("locationLabel");
+    const teamSub1 =
+        document.getElementById(
+            "teamSub1"
+        );
 
-    const locationText =
-        document.getElementById("locationText");
+    const teamText1 =
+        document.getElementById(
+            "teamText1"
+        );
 
 
     if (
-        locationLabel &&
-        siteData.locationLabel
+        teamSub1 &&
+        siteData.TEAM_SUB_1
     ) {
 
-        locationLabel.innerText =
-            siteData.locationLabel;
+        teamSub1.innerText =
+            siteData.TEAM_SUB_1;
 
     }
 
 
     if (
-        locationText &&
-        siteData.location
+        teamText1 &&
+        siteData.TEAM_TEXT_1
     ) {
 
-        locationText.innerText =
-            siteData.location;
+        teamText1.innerHTML =
+            siteData.TEAM_TEXT_1;
 
     }
 
 
     /*
     ========================================
+    TEAM SUB 2
     TIME
     ========================================
     */
 
-    const timeLabel =
-        document.getElementById("timeLabel");
+    const teamSub2 =
+        document.getElementById(
+            "teamSub2"
+        );
 
-    const timeText =
-        document.getElementById("timeText");
+    const teamText2 =
+        document.getElementById(
+            "teamText2"
+        );
 
 
     if (
-        timeLabel &&
-        siteData.timeLabel
+        teamSub2 &&
+        siteData.TEAM_SUB_2
     ) {
 
-        timeLabel.innerText =
-            siteData.timeLabel;
+        teamSub2.innerText =
+            siteData.TEAM_SUB_2;
 
     }
 
 
     if (
-        timeText &&
-        siteData.time
+        teamText2 &&
+        siteData.TEAM_TEXT_2
     ) {
 
-        timeText.innerText =
-            siteData.time;
-
-    }
-
-
-    /*
-    ========================================
-    PLAY
-    ========================================
-    */
-
-    const playLabel =
-        document.getElementById("playLabel");
-
-    const playText =
-        document.getElementById("playText");
-
-
-    if (
-        playLabel &&
-        siteData.playLabel
-    ) {
-
-        playLabel.innerText =
-            siteData.playLabel;
-
-    }
-
-
-    if (
-        playText &&
-        siteData.play
-    ) {
-
-        playText.innerText =
-            siteData.play;
+        teamText2.innerHTML =
+            siteData.TEAM_TEXT_2;
 
     }
 
 
     /*
     ========================================
+    TEAM SUB 3
     INSTAGRAM
     ========================================
     */
 
-    const instagramLabel =
-        document.getElementById("instagramLabel");
+    const teamSub3 =
+        document.getElementById(
+            "teamSub3"
+        );
 
-    const instagramText =
-        document.getElementById("instagramText");
+    const teamText3 =
+        document.getElementById(
+            "teamText3"
+        );
 
 
     if (
-        instagramLabel &&
-        siteData.instagramLabel
+        teamSub3 &&
+        siteData.TEAM_SUB_3
     ) {
 
-        instagramLabel.innerText =
-            siteData.instagramLabel;
+        teamSub3.innerText =
+            siteData.TEAM_SUB_3;
 
     }
 
 
     if (
-        instagramText &&
-        siteData.instagram
+        teamText3 &&
+        siteData.TEAM_TEXT_3
     ) {
 
-        instagramText.innerText =
-            siteData.instagram;
+        teamText3.innerText =
+            siteData.TEAM_TEXT_3;
+
+    }
+
+
+    /*
+    ========================================
+    JOIN INFO
+    ========================================
+    */
+
+    const joinInfo =
+        document.getElementById(
+            "joinInfo"
+        );
+
+
+    if (
+        joinInfo &&
+        siteData.JOIN_INFO
+    ) {
+
+        joinInfo.innerText =
+            siteData.JOIN_INFO;
+
+    }
+
+
+    /*
+    멤버
+    */
+
+    const joinSub1 =
+        document.getElementById(
+            "joinSub1"
+        );
+
+    const joinText1 =
+        document.getElementById(
+            "joinText1"
+        );
+
+
+    if (
+        joinSub1 &&
+        siteData.JOIN_SUB_1
+    ) {
+
+        joinSub1.innerText =
+            siteData.JOIN_SUB_1;
+
+    }
+
+
+    if (
+        joinText1 &&
+        siteData.JOIN_TEXT_1
+    ) {
+
+        joinText1.innerHTML =
+            siteData.JOIN_TEXT_1;
+
+    }
+
+
+    /*
+    입단 조건
+    */
+
+    const joinSub2 =
+        document.getElementById(
+            "joinSub2"
+        );
+
+    const joinText2 =
+        document.getElementById(
+            "joinText2"
+        );
+
+
+    if (
+        joinSub2 &&
+        siteData.JOIN_SUB_2
+    ) {
+
+        joinSub2.innerText =
+            siteData.JOIN_SUB_2;
+
+    }
+
+
+    if (
+        joinText2 &&
+        siteData.JOIN_TEXT_2
+    ) {
+
+        joinText2.innerHTML =
+            siteData.JOIN_TEXT_2;
+
+    }
+
+
+    /*
+    문의
+    */
+
+    const joinText3 =
+        document.getElementById(
+            "joinText3"
+        );
+
+
+    if (
+        joinText3 &&
+        siteData.JOIN_TEXT_3
+    ) {
+
+        joinText3.innerHTML =
+            siteData.JOIN_TEXT_3;
+
+    }
+
+
+    /*
+    ========================================
+    FOOTER
+    ========================================
+    */
+
+    const bottomTitle =
+        document.getElementById(
+            "bottomTitle"
+        );
+
+
+    if (
+        bottomTitle &&
+        siteData.BOTTOM_TITLE
+    ) {
+
+        bottomTitle.innerText =
+            siteData.BOTTOM_TITLE;
 
     }
 
