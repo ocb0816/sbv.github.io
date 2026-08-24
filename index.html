@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>게스트 모집 | Volleyball Team</title>
 
+
     <style>
+
         #timeText {
-    white-space: pre-line;
-}
+            white-space: pre-line;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -22,6 +30,7 @@
             margin: 0;
             background: #ffffff;
             color: #202020;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -31,214 +40,310 @@
                 sans-serif;
         }
 
-        /* 전체 페이지 */
+
+        /* =========================
+           전체 페이지
+        ========================= */
 
         .page {
             width: 100%;
             max-width: 760px;
+
             margin: 0 auto;
-            padding: 35px 20px 70px;
+
+            padding:
+                35px 20px 70px;
         }
 
-        /* -------------------------
+
+        /* =========================
            HEADER
-        ------------------------- */
+        ========================= */
 
         .header {
             text-align: center;
+
             margin-bottom: 35px;
         }
 
+
         .logo {
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 8px;
+            width: 110px;
+            height: 110px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            margin:
+                0 auto 8px;
 
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
 
         .team-name {
             margin: 0;
 
             font-size: 38px;
             font-weight: 900;
+
             letter-spacing: -2px;
         }
 
+
         .team-subtitle {
-            margin: 6px 0 0;
+            margin:
+                6px 0 0;
 
             color: #777;
+
             font-size: 17px;
             font-weight: 500;
         }
 
-        /* -------------------------
+
+        /* =========================
            공통 카드
-        ------------------------- */
+        ========================= */
 
         .card {
             margin-bottom: 22px;
-            padding: 27px 28px;
 
-            border: 1.5px solid #7d174f;
+            padding:
+                27px 28px;
+
+            border:
+                1.5px solid #7d174f;
+
             border-radius: 20px;
 
             background: #fffafd;
         }
 
+
         .card-title {
-            margin: 0 0 18px;
+            margin:
+                0 0 18px;
 
             font-size: 23px;
             font-weight: 800;
+
             letter-spacing: -0.7px;
         }
 
-        /* -------------------------
+
+        /* =========================
            EVENT
-        ------------------------- */
+        ========================= */
 
         .event-price {
-            margin: 0 0 18px;
+            margin:
+                0 0 18px;
 
             color: #a31360;
+
             font-size: 23px;
             font-weight: 800;
         }
 
+
         .event-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    white-space: pre-line;
-}
+            margin: 0;
+            padding: 0;
+
+            list-style: none;
+
+            white-space: pre-line;
+        }
+
 
         .event-list li {
-            margin: 13px 0;
+            margin:
+                13px 0;
 
             font-size: 17px;
             line-height: 1.55;
+
             font-weight: 500;
         }
 
-        /* -------------------------
+
+        /* =========================
+           APPLY / NOTICE TEXT
+        ========================= */
+
+        .apply-text,
+        .notice-text {
+
+            margin: 0;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
            GUEST CALENDAR
-        ------------------------- */
+        ========================= */
 
         .legend {
             display: flex;
+
             gap: 14px;
+
             margin-bottom: 20px;
 
             font-size: 15px;
+
             font-weight: 700;
         }
 
+
         .legend-item {
             display: flex;
+
             align-items: center;
+
             gap: 5px;
         }
+
 
         .dot {
             width: 12px;
             height: 12px;
+
             border-radius: 50%;
+
             display: inline-block;
         }
+
 
         .male {
             background: #2864c7;
         }
 
+
         .female {
             background: #d32d36;
         }
+
 
         .closed {
             background: #999;
         }
 
-        /* 달력 헤더 */
+
+        /* =========================
+           달력 헤더
+        ========================= */
 
         .calendar-header {
             display: flex;
+
             align-items: center;
             justify-content: space-between;
 
             margin-bottom: 13px;
         }
 
+
         .month-title {
             font-size: 23px;
             font-weight: 700;
         }
+
 
         .month-button {
             width: 42px;
             height: 42px;
 
             border: none;
+
             border-radius: 9px;
 
             background: #650034;
+
             color: white;
 
             font-size: 22px;
+
             font-weight: bold;
 
             cursor: pointer;
         }
 
+
         .month-button:hover {
             background: #850044;
         }
 
-        /* 요일 */
+
+        /* =========================
+           요일
+        ========================= */
 
         .weekdays,
         .calendar {
+
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
             gap: 7px;
         }
 
+
         .weekday {
-            padding: 8px 0;
+            padding:
+                8px 0;
 
             text-align: center;
+
             font-size: 14px;
+
             font-weight: 700;
 
             color: #555;
         }
 
+
         .weekday:first-child {
             color: #c62b38;
         }
+
 
         .weekday:last-child {
             color: #2864c7;
         }
 
-        /* 날짜 */
+
+        /* =========================
+           날짜
+        ========================= */
 
         .day {
             min-height: 76px;
 
-            padding: 8px 5px;
+            padding:
+                8px 5px;
 
-            border: 1px solid #eeeeee;
+            border:
+                1px solid #eeeeee;
+
             border-radius: 12px;
 
             background: #ffffff;
@@ -251,57 +356,83 @@
                 box-shadow 0.15s;
         }
 
-        .day:hover {
-            transform: translateY(-2px);
 
-            border-color: #7d174f;
+        .day:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                #7d174f;
 
             box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.07);
+                0 4px 12px
+                rgba(0, 0, 0, 0.07);
         }
+
 
         .day.empty {
+
             border: none;
-            background: transparent;
-            cursor: default;
+
+            background:
+                transparent;
+
+            cursor:
+                default;
         }
 
+
         .day-number {
+
             display: block;
 
             font-size: 16px;
+
             font-weight: 700;
         }
 
+
         .day-info {
+
             margin-top: 8px;
 
             font-size: 12px;
+
             line-height: 1.35;
+
             font-weight: 700;
         }
+
 
         .day-info .m {
             color: #2864c7;
         }
 
+
         .day-info .f {
             color: #d32d36;
         }
+
 
         .day-info .c {
             color: #999;
         }
 
+
         .selected {
-            border: 2px solid #650034 !important;
+
+            border:
+                2px solid #650034 !important;
         }
 
-        /* -------------------------
+
+        /* =========================
            날짜 상세 정보
-        ------------------------- */
+        ========================= */
 
         .date-detail {
+
             margin-top: 22px;
 
             padding: 20px;
@@ -310,53 +441,81 @@
 
             background: #ffffff;
 
-            border: 1px solid #eeeeee;
+            border:
+                1px solid #eeeeee;
         }
 
+
         .date-detail h3 {
-            margin: 0 0 15px;
+
+            margin:
+                0 0 15px;
 
             font-size: 19px;
         }
 
+
         .detail-row {
+
             display: flex;
-            justify-content: space-between;
 
-            padding: 10px 0;
+            justify-content:
+                space-between;
 
-            border-bottom: 1px solid #eeeeee;
+            padding:
+                10px 0;
+
+            border-bottom:
+                1px solid #eeeeee;
 
             font-size: 15px;
         }
 
+
         .detail-row:last-child {
-            border-bottom: none;
+
+            border-bottom:
+                none;
         }
 
-        /* -------------------------
+
+        /* =========================
            INFORMATION
-        ------------------------- */
+        ========================= */
 
         .info-card {
-            border: 1px solid #eeeeee;
-            background: white;
+
+            border:
+                1px solid #eeeeee;
+
+            background:
+                white;
         }
 
-        .info-item {
-            padding: 15px 0;
 
-            border-bottom: 1px solid #eeeeee;
+        .info-item {
+
+            padding:
+                15px 0;
+
+            border-bottom:
+                1px solid #eeeeee;
 
             font-size: 16px;
+
             line-height: 1.5;
         }
 
+
         .info-item:last-child {
-            border-bottom: none;
+
+            border-bottom:
+                none;
         }
 
+
         .info-label {
+
             display: block;
 
             margin-bottom: 4px;
@@ -364,45 +523,63 @@
             color: #777;
 
             font-size: 13px;
+
             font-weight: 700;
         }
 
-        /* -------------------------
+
+        #joinText2 {
+            line-height: 1.7;
+        }
+
+
+        /* =========================
            BUTTON
-        ------------------------- */
+        ========================= */
 
         .main-button {
+
             display: block;
 
             width: 100%;
 
             margin-top: 20px;
+
             padding: 16px;
 
             border: none;
+
             border-radius: 12px;
 
             background: #650034;
+
             color: white;
 
             text-align: center;
+
             text-decoration: none;
 
             font-size: 17px;
+
             font-weight: 700;
 
             cursor: pointer;
         }
 
+
         .main-button:hover {
-            background: #850044;
+
+            background:
+                #850044;
         }
 
-        /* -------------------------
+
+        /* =========================
            FOOTER
-        ------------------------- */
+        ========================= */
 
         footer {
+
             margin-top: 45px;
 
             text-align: center;
@@ -412,450 +589,501 @@
             font-size: 13px;
         }
 
-        /* -------------------------
+
+        /* =========================
            MOBILE
-        ------------------------- */
+        ========================= */
 
         @media (max-width: 600px) {
 
             .page {
+
                 padding:
                     25px 14px 55px;
             }
 
+
             .team-name {
+
                 font-size: 31px;
             }
 
+
             .team-subtitle {
+
                 font-size: 15px;
             }
 
+
             .card {
-                padding: 21px 18px;
+
+                padding:
+                    21px 18px;
+
                 border-radius: 17px;
             }
 
+
             .card-title {
+
                 font-size: 20px;
             }
+
 
             .event-price {
+
                 font-size: 20px;
             }
 
+
             .event-list li {
+
                 font-size: 15px;
             }
 
+
             .day {
+
                 min-height: 64px;
-                padding: 7px 3px;
+
+                padding:
+                    7px 3px;
             }
 
+
             .day-number {
+
                 font-size: 14px;
             }
 
+
             .day-info {
+
                 font-size: 10px;
             }
 
+
             .weekdays,
             .calendar {
+
                 gap: 4px;
             }
 
+
             .month-button {
+
                 width: 38px;
                 height: 38px;
             }
+
         }
+
+
         /* =========================
-   GUEST MODAL
-========================= */
+           GUEST MODAL
+        ========================= */
 
-.modal {
+        .modal {
 
-    display: none;
+            display: none;
 
-    position: fixed;
+            position: fixed;
 
-    inset: 0;
+            inset: 0;
 
-    z-index: 999;
+            z-index: 999;
 
-    padding: 20px;
+            padding: 20px;
 
-    background:
-        rgba(0, 0, 0, 0.45);
+            background:
+                rgba(0, 0, 0, 0.45);
 
-    align-items: center;
-    justify-content: center;
-}
+            align-items: center;
 
+            justify-content: center;
+        }
 
-.modal.show {
 
-    display: flex;
+        .modal.show {
 
-}
+            display: flex;
+        }
 
 
-.modal-box {
+        .modal-box {
 
-    position: relative;
+            position: relative;
 
-    width: 100%;
-    max-width: 420px;
+            width: 100%;
 
-    padding: 27px 23px;
+            max-width: 420px;
 
-    border-radius: 20px;
+            padding:
+                27px 23px;
 
-    background: #fff9fc;
+            border-radius: 20px;
 
-    box-shadow:
-        0 15px 45px rgba(0,0,0,0.18);
+            background:
+                #fff9fc;
 
-}
+            box-shadow:
+                0 15px 45px
+                rgba(0, 0, 0, 0.18);
+        }
 
 
-.modal-box h2 {
+        .modal-box h2 {
 
-    margin: 0 0 7px;
+            margin:
+                0 0 7px;
 
-    font-size: 23px;
+            font-size: 23px;
 
-    font-weight: 800;
+            font-weight: 800;
+        }
 
-}
 
+        .modal-description {
 
-.modal-description {
+            margin:
+                0 0 23px;
 
-    margin: 0 0 23px;
+            color: #777;
 
-    color: #777;
+            font-size: 14px;
+        }
 
-    font-size: 14px;
 
-}
+        .modal-close {
 
+            position: absolute;
 
-.modal-close {
+            top: 13px;
+            right: 15px;
 
-    position: absolute;
+            width: 35px;
+            height: 35px;
 
-    top: 13px;
-    right: 15px;
+            border: 0;
 
-    width: 35px;
-    height: 35px;
+            background:
+                transparent;
 
-    border: 0;
+            font-size: 28px;
 
-    background: transparent;
+            color: #555;
 
-    font-size: 28px;
+            cursor: pointer;
+        }
 
-    color: #555;
 
-    cursor: pointer;
+        .modal-box form {
 
-}
+            display: flex;
 
+            flex-direction: column;
+        }
 
-.modal-box form {
 
-    display: flex;
+        .modal-box label {
 
-    flex-direction: column;
+            margin-bottom: 7px;
 
-}
+            font-size: 14px;
 
+            font-weight: 700;
+        }
 
-.modal-box label {
 
-    margin-bottom: 7px;
+        .modal-box input[type="text"],
+        .modal-box input[type="date"] {
 
-    font-size: 14px;
+            width: 100%;
 
-    font-weight: 700;
+            margin-bottom: 18px;
 
-}
+            padding: 13px;
 
+            border:
+                1px solid #dddddd;
 
-.modal-box input[type="text"],
-.modal-box input[type="date"] {
+            border-radius: 10px;
 
-    width: 100%;
+            background:
+                white;
 
-    margin-bottom: 18px;
+            font-size: 15px;
 
-    padding: 13px;
+            font-family:
+                inherit;
+        }
 
-    border: 1px solid #dddddd;
 
-    border-radius: 10px;
+        .gender-buttons {
 
-    background: white;
+            display: grid;
 
-    font-size: 15px;
+            grid-template-columns:
+                1fr 1fr;
 
-    font-family: inherit;
+            gap: 10px;
 
-}
+            margin-bottom: 20px;
+        }
 
 
-.gender-buttons {
+        .gender-option {
 
-    display: grid;
+            margin:
+                0 !important;
+        }
 
-    grid-template-columns: 1fr 1fr;
 
-    gap: 10px;
+        .gender-option input {
 
-    margin-bottom: 20px;
+            display: none;
+        }
 
-}
 
+        .gender-option span {
 
-.gender-option {
+            display: block;
 
-    margin: 0 !important;
+            padding: 13px;
 
-}
+            border:
+                1px solid #dddddd;
 
+            border-radius: 10px;
 
-.gender-option input {
+            background:
+                white;
 
-    display: none;
+            text-align: center;
 
-}
+            cursor: pointer;
+        }
 
 
-.gender-option span {
+        .gender-option input:checked + span {
 
-    display: block;
+            border:
+                2px solid #650035;
 
-    padding: 13px;
+            background:
+                #fff1f8;
+        }
 
-    border: 1px solid #dddddd;
 
-    border-radius: 10px;
+        .submit-button {
 
-    background: white;
+            width: 100%;
 
-    text-align: center;
+            padding: 14px;
 
-    cursor: pointer;
+            border: 0;
 
-}
+            border-radius: 10px;
 
+            background:
+                #650035;
 
-.gender-option input:checked + span {
+            color: white;
 
-    border: 2px solid #650035;
+            font-size: 16px;
 
-    background: #fff1f8;
+            font-weight: 700;
 
-}
+            cursor: pointer;
+        }
 
 
-.submit-button {
+        .submit-message {
 
-    width: 100%;
+            margin-top: 15px;
 
-    padding: 14px;
+            text-align: center;
 
-    border: 0;
+            font-size: 14px;
 
-    border-radius: 10px;
+            font-weight: 700;
+        }
 
-    background: #650035;
 
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-}
-
-
-.submit-message {
-
-    margin-top: 15px;
-
-    text-align: center;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-}
         /* =========================
-   선택 날짜 모집 현황
-========================= */
+           선택 날짜 모집 현황
+        ========================= */
 
-.guest-status {
+        .guest-status {
 
-    width: 100%;
+            width: 100%;
 
-    margin-top: 10px;
-    margin-bottom: 18px;
+            margin-top: 10px;
 
-    padding: 13px 15px;
+            margin-bottom: 18px;
 
-    box-sizing: border-box;
+            padding:
+                13px 15px;
 
-    border-radius: 12px;
+            border-radius: 12px;
 
-    background: #faf7f9;
+            background:
+                #faf7f9;
 
-    border: 1px solid #eee5e9;
+            border:
+                1px solid #eee5e9;
 
-    color: #777777;
+            color: #777777;
 
-    font-size: 13px;
+            font-size: 13px;
 
-    line-height: 1.7;
+            line-height: 1.7;
 
-    text-align: center;
+            text-align: center;
+        }
 
-}
+
+        .guest-status strong {
+
+            color: #650035;
+
+            font-weight: 700;
+        }
 
 
-/* 날짜 선택 후 숫자 */
-
-.guest-status strong {
-
-    color: #650035;
-
-    font-weight: 700;
-
-}
         /* =========================
-   게스트 신청 날짜 선택
-========================= */
+           게스트 신청 날짜 선택
+        ========================= */
 
-#guestDate {
-    width: 100%;
-    height: 52px;
+        #guestDate {
 
-    padding: 0 44px 0 16px;
+            width: 100%;
 
-    border: 1px solid #e5dfe3;
-    border-radius: 14px;
+            height: 52px;
 
-    background-color: #ffffff;
+            padding:
+                0 44px 0 16px;
 
-    color: #333333;
+            border:
+                1px solid #e5dfe3;
 
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
+            border-radius: 14px;
 
-    outline: none;
+            background-color:
+                #ffffff;
 
-    cursor: pointer;
+            color:
+                #333333;
 
-    appearance: none;
-    -webkit-appearance: none;
+            font-family:
+                inherit;
 
-    box-sizing: border-box;
+            font-size: 14px;
 
-    /* 화살표 */
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23650035' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            font-weight: 600;
 
-    background-repeat: no-repeat;
+            outline: none;
 
-    background-position:
-        right 16px center;
+            cursor: pointer;
 
-    background-size: 16px;
-}
+            appearance: none;
 
+            -webkit-appearance: none;
 
-/* 선택했을 때 */
+            box-sizing: border-box;
 
-#guestDate:focus {
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23650035' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-    border-color: #650035;
+            background-repeat:
+                no-repeat;
 
-    box-shadow:
-        0 0 0 3px rgba(101, 0, 53, 0.08);
+            background-position:
+                right 16px center;
 
-}
-
-
-/* 기본 안내 문구 */
-
-#guestDate option {
-
-    padding: 12px;
-
-    font-size: 14px;
-
-}
+            background-size:
+                16px;
+        }
 
 
-/* 모바일 */
+        #guestDate:focus {
 
-@media (max-width: 600px) {
+            border-color:
+                #650035;
 
-    #guestDate {
+            box-shadow:
+                0 0 0 3px
+                rgba(101, 0, 53, 0.08);
+        }
 
-        height: 50px;
 
-        font-size: 13px;
+        #guestDate option {
 
-        padding-left: 14px;
+            padding: 12px;
 
-        padding-right: 42px;
+            font-size: 14px;
+        }
 
-    }
 
-}
-        .apply-text,
-.notice-text {
-    margin: 0;
+        @media (max-width: 600px) {
 
-    font-size: 16px;
-    line-height: 1.8;
-    font-weight: 500;
-}
+            #guestDate {
 
-#joinText2 {
-    line-height: 1.7;
-}
+                height: 50px;
+
+                font-size: 13px;
+
+                padding-left: 14px;
+
+                padding-right: 42px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="page">
+
+
     <!-- =========================
          HEADER
     ========================== -->
 
     <header class="header">
 
+
         <div class="logo">
-            <img src="logo.png" alt="로고">
+
+            <img
+                src="logo.png"
+                alt="로고">
+
         </div>
 
-        <h1 id="mainTitle" class="team-name">
+
+        <h1
+            id="mainTitle"
+            class="team-name">
+
             SEOLBONG VOLLEYBALL CLUB
+
         </h1>
 
-        <p id="mainMid" class="team-subtitle">
+
+        <p
+            id="mainMid"
+            class="team-subtitle">
+
             이천 설봉 배구팀
+
         </p>
+
 
     </header>
 
@@ -866,19 +1094,35 @@
 
     <section class="card apply-card">
 
-        <h2 id="applyTitle" class="card-title">
+
+        <h2
+            id="applyTitle"
+            class="card-title">
+
             2026 게스트 모집 안내
+
         </h2>
 
-        <p id="applyMid" class="event-price">
+
+        <p
+            id="applyMid"
+            class="event-price">
+
             성인 15,000원 / 학생 10,000원
+
         </p>
 
-        <div id="applyText" class="apply-text">
+
+        <div
+            id="applyText"
+            class="apply-text">
+
             수요일 19:00-21:00<br>
             하루 게스트 정원 3명<br>
             폼 제출 후 입금 필수
+
         </div>
+
 
         <button
             class="main-button"
@@ -889,121 +1133,61 @@
 
         </button>
 
+
     </section>
 
 
-   /*
-========================================
-NOTICE
-========================================
-*/
+    <!-- =========================
+         NOTICE
+    ========================== -->
 
-const noticeSection =
-    document.getElementById("noticeSection");
-
-const noticeTitle =
-    document.getElementById("noticeTitle");
-
-const noticeMid =
-    document.getElementById("noticeMid");
-
-const noticeText =
-    document.getElementById("noticeText");
-
-const noticeLink =
-    document.getElementById("noticeLink");
+    <section
+        id="noticeSection"
+        class="card">
 
 
-/*
-NOTICE 표시 여부
-*/
+        <h2
+            id="noticeTitle"
+            class="card-title">
 
-const noticeDisplay =
-    String(siteData.NOTICE_DISPLAY || "")
-        .trim()
-        .toUpperCase();
+            2026 게스트 모집 안내
 
-
-console.log("NOTICE_DISPLAY =", noticeDisplay);
-console.log("NOTICE_TITLE =", siteData.NOTICE_TITLE);
-console.log("NOTICE_MID =", siteData.NOTICE_MID);
-console.log("NOTICE_TEXT =", siteData.NOTICE_TEXT);
+        </h2>
 
 
-if (noticeDisplay === "ON") {
+        <p
+            id="noticeMid"
+            class="event-price">
 
-    /* NOTICE 카드 표시 */
+            성인 15,000원 / 학생 10,000원
 
-    if (noticeSection) {
-        noticeSection.style.display = "block";
-    }
-
-
-    /* 제목 */
-
-    if (noticeTitle) {
-
-        noticeTitle.innerText =
-            siteData.NOTICE_TITLE || "";
-
-    }
+        </p>
 
 
-    /* 금액 */
+        <div
+            id="noticeText"
+            class="notice-text">
 
-    if (noticeMid) {
+            수요일 19:00-21:00<br>
+            하루 게스트 정원 3명<br>
+            폼 제출 후 입금 필수
 
-        noticeMid.innerHTML =
-            siteData.NOTICE_MID || "";
-
-    }
-
-
-    /* 내용 */
-
-    if (noticeText) {
-
-        noticeText.innerHTML =
-            siteData.NOTICE_TEXT || "";
-
-    }
+        </div>
 
 
-    /* 자세히 보기 버튼 */
+        <a
+            id="noticeLink"
+            class="main-button"
+            href="#"
+            target="_blank"
+            style="display:none;">
 
-    if (
-        noticeLink &&
-        String(
-            siteData.NOTICE_LINK_DISPLAY || ""
-        ).trim().toUpperCase() === "ON" &&
-        siteData.NOTICE_LINK
-    ) {
+            자세히 보기
 
-        noticeLink.href =
-            siteData.NOTICE_LINK;
+        </a>
 
-        noticeLink.style.display =
-            "block";
 
-    } else if (noticeLink) {
-
-        noticeLink.style.display =
-            "none";
-
-    }
-
-} else {
-
-    /* OFF이면 NOTICE 카드 숨김 */
-
-    if (noticeSection) {
-
-        noticeSection.style.display =
-            "none";
-
-    }
-
-}
+    </section>
 
 
     <!-- =========================
@@ -1012,49 +1196,77 @@ if (noticeDisplay === "ON") {
 
     <section class="card">
 
+
         <h2 class="card-title">
+
             게스트 현황 및 일정
+
         </h2>
+
 
         <div class="legend">
 
+
             <div class="legend-item">
+
                 <span class="dot male"></span>
+
                 남
+
             </div>
 
+
             <div class="legend-item">
+
                 <span class="dot female"></span>
+
                 여
+
             </div>
 
+
             <div class="legend-item">
+
                 <span class="dot closed"></span>
+
                 마감
+
             </div>
+
 
         </div>
 
+
         <div class="calendar-header">
+
 
             <button
                 class="month-button"
                 onclick="previousMonth()">
+
                 ◀
+
             </button>
+
 
             <div
                 id="monthTitle"
                 class="month-title">
+
             </div>
+
 
             <button
                 class="month-button"
                 onclick="nextMonth()">
+
                 ▶
+
             </button>
 
+
         </div>
+
 
         <div class="weekdays">
 
@@ -1068,25 +1280,36 @@ if (noticeDisplay === "ON") {
 
         </div>
 
+
         <div
             id="calendar"
             class="calendar">
+
         </div>
+
 
         <div
             id="dateDetail"
             class="date-detail">
 
+
             <h3>
+
                 날짜를 선택해주세요
+
             </h3>
 
+
             <p>
+
                 달력에서 날짜를 클릭하면
                 게스트 현황을 확인할 수 있습니다.
+
             </p>
 
+
         </div>
+
 
     </section>
 
@@ -1095,58 +1318,84 @@ if (noticeDisplay === "ON") {
          TEAM INFO
     ========================== -->
 
-    <section class="card info-card">
+    <section
+        class="card info-card">
+
 
         <h2
             id="teamInfo"
             class="card-title">
+
             이천 설봉 배구팀 소개
+
         </h2>
 
 
         <div class="info-item">
 
+
             <span
                 id="teamSub1"
                 class="info-label">
+
                 📍 위치
+
             </span>
 
+
             <span id="teamText1">
+
                 이천남초등학교
+
             </span>
+
 
         </div>
 
 
         <div class="info-item">
+
 
             <span
                 id="teamSub2"
                 class="info-label">
+
                 🕐 시간
+
             </span>
 
+
             <span id="teamText2">
+
                 수요일 19:00~21:00
+
             </span>
+
 
         </div>
 
 
         <div class="info-item">
 
+
             <span
                 id="teamSub3"
                 class="info-label">
+
                 📸 INSTAGRAM
+
             </span>
+
 
             <span id="teamText3">
+
                 @sb__vc
+
             </span>
 
+
         </div>
+
 
     </section>
 
@@ -1155,42 +1404,60 @@ if (noticeDisplay === "ON") {
          JOIN INFO
     ========================== -->
 
-    <section class="card info-card">
+    <section
+        class="card info-card">
+
 
         <h2
             id="joinInfo"
             class="card-title">
+
             입단 안내
+
         </h2>
 
 
         <div class="info-item">
 
+
             <span
                 id="joinSub1"
                 class="info-label">
+
                 🏐 멤버
+
             </span>
 
+
             <span id="joinText1">
+
                 13/16
+
             </span>
+
 
         </div>
 
 
         <div class="info-item">
 
+
             <span
                 id="joinSub2"
                 class="info-label">
-                📩 입단 조건
+
+                📋 입단 조건
+
             </span>
 
+
             <span id="joinText2">
+
                 성인 여성<br>
                 배구 경력자
+
             </span>
+
 
         </div>
 
@@ -1203,6 +1470,7 @@ if (noticeDisplay === "ON") {
 
         </div>
 
+
     </section>
 
 
@@ -1210,50 +1478,262 @@ if (noticeDisplay === "ON") {
          FOOTER
     ========================== -->
 
-    <footer id="bottomTitle">
+    <footer
+        id="bottomTitle">
+
         © 2026 설봉(@sb__vc) · Volleyball Team
+
     </footer>
+
 
 </div>
 
 
+<!-- =====================================================
+     GUEST APPLICATION MODAL
+===================================================== -->
+
+<div
+    id="guestModal"
+    class="modal">
+
+
+    <div class="modal-box">
+
+
+        <button
+            class="modal-close"
+            onclick="closeGuestForm()">
+
+            ×
+
+        </button>
+
+
+        <h2>
+
+            게스트 신청
+
+        </h2>
+
+
+        <p class="modal-description">
+
+            원하는 날짜와 성별을 선택해주세요.
+
+        </p>
+
+
+        <form
+            id="guestForm"
+            action="https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec"
+            method="POST"
+            target="submitFrame"
+            onsubmit="submitGuestForm()">
+
+
+            <label>
+
+                이름
+
+            </label>
+
+
+            <input
+                type="text"
+                name="name"
+                placeholder="이름을 입력해주세요"
+                required>
+
+
+            <label>
+
+                날짜
+
+            </label>
+
+
+            <select
+                name="date"
+                id="guestDate"
+                required>
+
+
+                <option value="">
+
+                    신청할 날짜를 선택해주세요
+
+                </option>
+
+
+            </select>
+
+
+            <div
+                id="guestStatus"
+                class="guest-status">
+
+                날짜를 선택해주세요.
+
+            </div>
+
+
+            <label>
+
+                성별
+
+            </label>
+
+
+            <div class="gender-buttons">
+
+
+                <label class="gender-option">
+
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="남"
+                        required>
+
+
+                    <span>
+
+                        🔵 남
+
+                    </span>
+
+
+                </label>
+
+
+                <label class="gender-option">
+
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="여">
+
+
+                    <span>
+
+                        🔴 여
+
+                    </span>
+
+
+                </label>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-button">
+
+                신청하기
+
+            </button>
+
+
+        </form>
+
+
+        <div
+            id="submitMessage"
+            class="submit-message">
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<iframe
+    name="submitFrame"
+    id="submitFrame"
+    style="display:none;">
+
+</iframe>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
+
+
 /* =====================================================
    V-HOLIC / GOOGLE APPS SCRIPT
-   - Google Sheets 신청자 데이터 → 게스트 수
-   - Google Sheets 일정 관리 → 운영일 / 시간 / 신청 날짜
 ===================================================== */
 
 const API_URL =
-    "https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec";
+    "https://script.google.com/macros/s/AKfycbwFJ_l1WRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec";
+
 
 let guestData = {};
+
 let scheduleData = {};
+
 let siteData = {};
 
+
 let currentYear = 2026;
-let currentMonth = 7; // 0 = 1월, 7 = 8월
+
+let currentMonth = 7;
 
 
 /* =====================================================
-   공통: YYYY-MM-DD → 요일
+   날짜 → 요일
 ===================================================== */
 
 function getDayOfWeek(dateKey) {
 
-    const parts = dateKey.split("-");
 
-    const year = Number(parts[0]);
-    const month = Number(parts[1]);
-    const date = Number(parts[2]);
+    const parts =
+        dateKey.split("-");
+
+
+    const year =
+        Number(parts[0]);
+
+
+    const month =
+        Number(parts[1]);
+
+
+    const date =
+        Number(parts[2]);
+
 
     const dayNames = [
-        "일", "월", "화", "수", "목", "금", "토"
+
+        "일",
+        "월",
+        "화",
+        "수",
+        "목",
+        "금",
+        "토"
+
     ];
 
+
     return dayNames[
-        new Date(year, month - 1, date).getDay()
+        new Date(
+            year,
+            month - 1,
+            date
+        ).getDay()
     ];
+
 }
 
 
@@ -1263,43 +1743,67 @@ function getDayOfWeek(dateKey) {
 
 function loadGuestData() {
 
-    const script = document.createElement("script");
+
+    const script =
+        document.createElement("script");
+
 
     const callbackName =
         "guestCallback_" + Date.now();
 
-    window[callbackName] = function(data) {
 
-        guestData = data || {};
+    window[callbackName] =
+        function(data) {
 
-        renderCalendar();
 
-        /* 신청창이 열려 있다면 현황도 갱신 */
-        updateGuestStatus();
+            guestData =
+                data || {};
 
-        delete window[callbackName];
-        script.remove();
-    };
 
-    script.onerror = function() {
+            renderCalendar();
 
-        console.error(
-            "Google Sheets 게스트 데이터를 불러오지 못했습니다."
-        );
 
-        guestData = {};
-        renderCalendar();
+            updateGuestStatus();
 
-        delete window[callbackName];
-        script.remove();
-    };
+
+            delete window[callbackName];
+
+            script.remove();
+
+        };
+
+
+    script.onerror =
+        function() {
+
+
+            console.error(
+                "Google Sheets 게스트 데이터를 불러오지 못했습니다."
+            );
+
+
+            guestData = {};
+
+
+            renderCalendar();
+
+
+            delete window[callbackName];
+
+            script.remove();
+
+        };
+
 
     script.src =
         API_URL +
         "?action=counts" +
-        "&callback=" + callbackName;
+        "&callback=" +
+        callbackName;
+
 
     document.body.appendChild(script);
+
 }
 
 
@@ -1309,66 +1813,105 @@ function loadGuestData() {
 
 function loadScheduleData() {
 
-    const script = document.createElement("script");
+
+    const script =
+        document.createElement("script");
+
 
     const callbackName =
         "scheduleCallback_" + Date.now();
 
-    window[callbackName] = function(data) {
 
-        scheduleData = data || {};
+    window[callbackName] =
+        function(data) {
 
-        renderCalendar();
-        loadScheduleOptions();
 
-        delete window[callbackName];
-        script.remove();
-    };
+            scheduleData =
+                data || {};
 
-    script.onerror = function() {
 
-        console.error(
-            "Google Sheets 일정 데이터를 불러오지 못했습니다."
-        );
+            renderCalendar();
 
-        scheduleData = {};
-        renderCalendar();
-        loadScheduleOptions();
 
-        delete window[callbackName];
-        script.remove();
-    };
+            loadScheduleOptions();
+
+
+            delete window[callbackName];
+
+            script.remove();
+
+        };
+
+
+    script.onerror =
+        function() {
+
+
+            console.error(
+                "Google Sheets 일정 데이터를 불러오지 못했습니다."
+            );
+
+
+            scheduleData = {};
+
+
+            renderCalendar();
+
+
+            loadScheduleOptions();
+
+
+            delete window[callbackName];
+
+            script.remove();
+
+        };
+
 
     script.src =
         API_URL +
         "?action=schedule" +
-        "&callback=" + callbackName;
+        "&callback=" +
+        callbackName;
+
 
     document.body.appendChild(script);
+
 }
 
 
 /* =====================================================
-   달력 생성
+   달력
 ===================================================== */
 
 function renderCalendar() {
 
+
     const calendar =
         document.getElementById("calendar");
+
 
     const monthTitle =
         document.getElementById("monthTitle");
 
+
     if (!calendar || !monthTitle) {
+
         return;
+
     }
+
 
     calendar.innerHTML = "";
 
+
     monthTitle.innerText =
-        currentYear + "." +
-        String(currentMonth + 1).padStart(2, "0");
+        currentYear +
+        "." +
+        String(
+            currentMonth + 1
+        ).padStart(2, "0");
+
 
     const firstDay =
         new Date(
@@ -1377,6 +1920,7 @@ function renderCalendar() {
             1
         ).getDay();
 
+
     const lastDate =
         new Date(
             currentYear,
@@ -1384,80 +1928,162 @@ function renderCalendar() {
             0
         ).getDate();
 
-    /* 빈 칸 */
-    for (let i = 0; i < firstDay; i++) {
 
-        const empty = document.createElement("div");
-        empty.className = "day empty";
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+
+        const empty =
+            document.createElement("div");
+
+
+        empty.className =
+            "day empty";
+
+
         calendar.appendChild(empty);
+
     }
 
-    /* 날짜 */
-    for (let date = 1; date <= lastDate; date++) {
 
-        const day = document.createElement("div");
-        day.className = "day";
+    for (
+        let date = 1;
+        date <= lastDate;
+        date++
+    ) {
 
-        const number = document.createElement("span");
-        number.className = "day-number";
-        number.innerText = date;
+
+        const day =
+            document.createElement("div");
+
+
+        day.className =
+            "day";
+
+
+        const number =
+            document.createElement("span");
+
+
+        number.className =
+            "day-number";
+
+
+        number.innerText =
+            date;
+
+
         day.appendChild(number);
 
+
         const dateKey =
-            currentYear + "-" +
-            String(currentMonth + 1).padStart(2, "0") + "-" +
+            currentYear +
+            "-" +
+            String(
+                currentMonth + 1
+            ).padStart(2, "0") +
+            "-" +
             String(date).padStart(2, "0");
+
 
         const data =
             guestData[dateKey] || {
+
                 male: 0,
                 female: 0
+
             };
+
 
         const schedule =
             scheduleData[dateKey];
 
-        /* 운영일이면 신청자가 0명이어도 표시 */
+
         if (schedule) {
 
-            const info = document.createElement("div");
-            info.className = "day-info";
+
+            const info =
+                document.createElement("div");
+
+
+            info.className =
+                "day-info";
+
 
             info.innerHTML = `
-                <span class="m">${data.male}/3</span><br>
-                <span class="f">${data.female}/3</span>
+
+                <span class="m">
+                    ${data.male}/3
+                </span>
+
+                <br>
+
+                <span class="f">
+                    ${data.female}/3
+                </span>
+
             `;
 
-            /* 남/여 모두 3명이면 마감 */
-            if (data.male >= 3 && data.female >= 3) {
+
+            if (
+                data.male >= 3 &&
+                data.female >= 3
+            ) {
+
 
                 info.innerHTML = `
-                    <span class="m">${data.male}/3</span><br>
-                    <span class="f">${data.female}/3</span><br>
-                    <span class="c">마감</span>
+
+                    <span class="m">
+                        ${data.male}/3
+                    </span>
+
+                    <br>
+
+                    <span class="f">
+                        ${data.female}/3
+                    </span>
+
+                    <br>
+
+                    <span class="c">
+                        마감
+                    </span>
+
                 `;
+
             }
 
+
             day.appendChild(info);
+
         }
 
-        day.onclick = function() {
 
-            showDateDetail(
-                dateKey,
-                date,
-                data,
-                schedule
-            );
-        };
+        day.onclick =
+            function() {
+
+                showDateDetail(
+                    dateKey,
+                    date,
+                    data,
+                    schedule
+                );
+
+            };
+
 
         calendar.appendChild(day);
+
     }
+
 }
 
 
 /* =====================================================
-   날짜 상세 정보
+   날짜 상세
 ===================================================== */
 
 function showDateDetail(
@@ -1467,326 +2093,569 @@ function showDateDetail(
     schedule
 ) {
 
+
     const detail =
-        document.getElementById("dateDetail");
+        document.getElementById(
+            "dateDetail"
+        );
+
 
     if (!detail) {
+
         return;
+
     }
 
-    const male = data ? data.male : 0;
-    const female = data ? data.female : 0;
+
+    const male =
+        data ? data.male : 0;
+
+
+    const female =
+        data ? data.female : 0;
+
 
     const dayOfWeek =
         getDayOfWeek(dateKey);
 
+
     if (!schedule) {
 
+
         detail.innerHTML = `
+
             <h3>
+
                 ${currentYear}년
                 ${currentMonth + 1}월
-                ${date}일 (${dayOfWeek})
+                ${date}일
+                (${dayOfWeek})
+
             </h3>
+
             <p>
+
                 이 날짜에는 게스트 일정이 없습니다.
+
             </p>
+
         `;
 
+
         return;
+
     }
 
+
     detail.innerHTML = `
+
         <h3>
+
             ${currentYear}년
             ${currentMonth + 1}월
-            ${date}일 (${dayOfWeek})
+            ${date}일
+            (${dayOfWeek})
+
         </h3>
 
-        <div class="detail-row">
-            <span>🔵 남자 게스트</span>
-            <strong>${male} / 3명</strong>
-        </div>
 
         <div class="detail-row">
-            <span>🔴 여자 게스트</span>
-            <strong>${female} / 3명</strong>
+
+            <span>
+                🔵 남자 게스트
+            </span>
+
+            <strong>
+                ${male} / 3명
+            </strong>
+
         </div>
 
+
         <div class="detail-row">
-            <span>🕐 시간</span>
-            <strong>${schedule.time || ""}</strong>
+
+            <span>
+                🔴 여자 게스트
+            </span>
+
+            <strong>
+                ${female} / 3명
+            </strong>
+
         </div>
 
-        ${schedule.description ? `
+
         <div class="detail-row">
-            <span>📌 안내</span>
-            <strong>${schedule.description}</strong>
+
+            <span>
+                🕐 시간
+            </span>
+
+            <strong>
+                ${schedule.time || ""}
+            </strong>
+
         </div>
-        ` : ""}
+
+
+        ${
+            schedule.description
+                ? `
+
+                <div class="detail-row">
+
+                    <span>
+                        📌 안내
+                    </span>
+
+                    <strong>
+                        ${schedule.description}
+                    </strong>
+
+                </div>
+
+                `
+                : ""
+        }
+
     `;
+
 }
 
 
 /* =====================================================
-   이전 / 다음 달
+   이전 달
 ===================================================== */
 
 function previousMonth() {
 
+
     currentMonth--;
 
+
     if (currentMonth < 0) {
+
         currentMonth = 11;
+
         currentYear--;
+
     }
 
-    renderCalendar();
-}
-
-
-function nextMonth() {
-
-    currentMonth++;
-
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-    }
 
     renderCalendar();
+
 }
 
 
 /* =====================================================
-   신청 가능한 날짜 드롭다운
-   Google Sheets에서 status = "모집"인 날짜만 들어옴
+   다음 달
+===================================================== */
+
+function nextMonth() {
+
+
+    currentMonth++;
+
+
+    if (currentMonth > 11) {
+
+        currentMonth = 0;
+
+        currentYear++;
+
+    }
+
+
+    renderCalendar();
+
+}
+
+
+/* =====================================================
+   신청 가능한 날짜
 ===================================================== */
 
 function loadScheduleOptions() {
 
+
     const select =
-        document.getElementById("guestDate");
+        document.getElementById(
+            "guestDate"
+        );
+
 
     if (!select) {
+
         return;
+
     }
 
+
     select.innerHTML = `
+
         <option value="">
+
             신청할 날짜를 선택해주세요
+
         </option>
+
     `;
 
+
     const dates =
-        Object.keys(scheduleData || {}).sort();
+        Object.keys(
+            scheduleData || {}
+        ).sort();
 
-    dates.forEach(function(dateKey) {
 
-        const schedule =
-            scheduleData[dateKey] || {};
+    dates.forEach(
+        function(dateKey) {
 
-        const parts = dateKey.split("-");
 
-        const month = Number(parts[1]);
-        const date = Number(parts[2]);
+            const schedule =
+                scheduleData[dateKey] || {};
 
-        const dayOfWeek =
-            getDayOfWeek(dateKey);
 
-        const option =
-            document.createElement("option");
+            const parts =
+                dateKey.split("-");
 
-        option.value = dateKey;
 
-        option.textContent =
-            String(month).padStart(2, "0") +
-            "월 " +
-            String(date).padStart(2, "0") +
-            "일 (" +
-            dayOfWeek +
-            ")" +
-            (schedule.time
-                ? " · " + schedule.time
-                : "");
+            const month =
+                Number(parts[1]);
 
-        select.appendChild(option);
-    });
 
-    select.onchange = updateGuestStatus;
+            const date =
+                Number(parts[2]);
+
+
+            const dayOfWeek =
+                getDayOfWeek(dateKey);
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                dateKey;
+
+
+            option.textContent =
+
+                String(month)
+                    .padStart(2, "0") +
+
+                "월 " +
+
+                String(date)
+                    .padStart(2, "0") +
+
+                "일 (" +
+
+                dayOfWeek +
+
+                ")" +
+
+                (
+                    schedule.time
+                        ? " · " +
+                          schedule.time
+                        : ""
+                );
+
+
+            select.appendChild(option);
+
+        }
+    );
+
+
+    select.onchange =
+        updateGuestStatus;
+
 }
 
 
 /* =====================================================
-   선택한 날짜의 모집 현황
+   신청 현황
 ===================================================== */
 
 function updateGuestStatus() {
 
+
     const select =
-        document.getElementById("guestDate");
+        document.getElementById(
+            "guestDate"
+        );
+
 
     const status =
-        document.getElementById("guestStatus");
+        document.getElementById(
+            "guestStatus"
+        );
+
 
     if (!select || !status) {
+
         return;
+
     }
 
-    const dateKey = select.value;
+
+    const dateKey =
+        select.value;
+
 
     if (!dateKey) {
+
 
         status.innerHTML =
             "날짜를 선택해주세요.";
 
+
         return;
+
     }
+
 
     const data =
         guestData[dateKey] || {
+
             male: 0,
             female: 0
+
         };
+
 
     const schedule =
         scheduleData[dateKey];
 
+
     if (!schedule) {
+
 
         status.innerHTML =
             "선택한 날짜의 일정을 찾을 수 없습니다.";
 
+
         return;
+
     }
+
 
     const dayOfWeek =
         getDayOfWeek(dateKey);
 
+
     status.innerHTML = `
+
         <strong>
-            ${dayOfWeek}요일 · ${schedule.time || ""}
+
+            ${dayOfWeek}요일 ·
+            ${schedule.time || ""}
+
         </strong>
+
         <br>
+
         🔵 남자
-        <strong>${data.male}/3명</strong>
+
+        <strong>
+            ${data.male}/3명
+        </strong>
+
         &nbsp;&nbsp;
+
         🔴 여자
-        <strong>${data.female}/3명</strong>
+
+        <strong>
+            ${data.female}/3명
+        </strong>
+
     `;
+
 }
 
 
 /* =====================================================
-   신청창 열기 / 닫기
+   신청창 열기
 ===================================================== */
 
 function openGuestForm() {
 
+
     const modal =
-        document.getElementById("guestModal");
+        document.getElementById(
+            "guestModal"
+        );
+
 
     if (!modal) {
-        console.error("guestModal을 찾을 수 없습니다.");
+
+        console.error(
+            "guestModal을 찾을 수 없습니다."
+        );
+
         return;
+
     }
+
 
     modal.classList.add("show");
 
+
     loadScheduleOptions();
+
+
     updateGuestStatus();
-}
 
-
-function closeGuestForm() {
-
-    const modal =
-        document.getElementById("guestModal");
-
-    if (!modal) {
-        return;
-    }
-
-    modal.classList.remove("show");
 }
 
 
 /* =====================================================
-   게스트 신청 제출
+   신청창 닫기
+===================================================== */
+
+function closeGuestForm() {
+
+
+    const modal =
+        document.getElementById(
+            "guestModal"
+        );
+
+
+    if (!modal) {
+
+        return;
+
+    }
+
+
+    modal.classList.remove("show");
+
+}
+
+
+/* =====================================================
+   게스트 신청
 ===================================================== */
 
 function submitGuestForm() {
 
+
     const message =
-        document.getElementById("submitMessage");
+        document.getElementById(
+            "submitMessage"
+        );
+
 
     if (message) {
+
+
         message.innerHTML =
             "신청 정보를 저장하고 있습니다...";
+
     }
 
-    /*
-       실제 POST는 form이 Google Apps Script로 보냅니다.
-       target="submitFrame"이라 현재 페이지는 이동하지 않습니다.
-    */
 
-    setTimeout(function() {
+    setTimeout(
+        function() {
 
-        loadGuestData();
 
-        if (message) {
-            message.innerHTML =
-                "✅ 게스트 신청이 완료되었습니다.";
-        }
+            loadGuestData();
 
-        const form =
-            document.getElementById("guestForm");
 
-        if (form) {
-            form.reset();
-        }
+            if (message) {
 
-        loadScheduleOptions();
-        updateGuestStatus();
 
-    }, 2500);
+                message.innerHTML =
+                    "✅ 게스트 신청이 완료되었습니다.";
+
+            }
+
+
+            const form =
+                document.getElementById(
+                    "guestForm"
+                );
+
+
+            if (form) {
+
+                form.reset();
+
+            }
+
+
+            loadScheduleOptions();
+
+
+            updateGuestStatus();
+
+
+        },
+        2500
+    );
+
 }
 
+
 /* =====================================================
-   GOOGLE SHEETS에서 사이트 정보 가져오기
+   Google Sheets → 사이트 정보
 ===================================================== */
 
 function loadSiteData() {
 
+
     const script =
         document.createElement("script");
+
 
     const callbackName =
         "siteCallback_" + Date.now();
 
+
     window[callbackName] =
         function(data) {
+
 
             siteData =
                 data || {};
 
+
+            console.log(
+                "사이트 데이터:",
+                siteData
+            );
+
+
             applySiteData();
 
+
             delete window[callbackName];
+
             script.remove();
+
         };
 
 
     script.onerror =
         function() {
 
+
             console.error(
                 "사이트 관리 데이터를 불러오지 못했습니다."
             );
 
+
             siteData = {};
 
+
             script.remove();
+
         };
 
 
@@ -1798,24 +2667,32 @@ function loadSiteData() {
 
 
     document.body.appendChild(script);
+
 }
-    /* =====================================================
-   Google Sheets 사이트 정보 → 홈페이지 반영
+
+
+/* =====================================================
+   Google Sheets 사이트 정보 → 홈페이지
 ===================================================== */
 
 function applySiteData() {
 
-    /*
-    ========================================
-    MAIN
-    ========================================
-    */
+
+    /* ========================================
+       MAIN
+    ======================================== */
+
 
     const mainTitle =
-        document.getElementById("mainTitle");
+        document.getElementById(
+            "mainTitle"
+        );
+
 
     const mainMid =
-        document.getElementById("mainMid");
+        document.getElementById(
+            "mainMid"
+        );
 
 
     if (
@@ -1840,20 +2717,27 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    APPLY
-    ========================================
-    */
+    /* ========================================
+       APPLY
+    ======================================== */
+
 
     const applyTitle =
-        document.getElementById("applyTitle");
+        document.getElementById(
+            "applyTitle"
+        );
+
 
     const applyMid =
-        document.getElementById("applyMid");
+        document.getElementById(
+            "applyMid"
+        );
+
 
     const applyText =
-        document.getElementById("applyText");
+        document.getElementById(
+            "applyText"
+        );
 
 
     if (
@@ -1889,31 +2773,34 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    NOTICE
-    ========================================
-    */
+    /* ========================================
+       NOTICE
+    ======================================== */
+
 
     const noticeSection =
         document.getElementById(
             "noticeSection"
         );
 
+
     const noticeTitle =
         document.getElementById(
             "noticeTitle"
         );
+
 
     const noticeMid =
         document.getElementById(
             "noticeMid"
         );
 
+
     const noticeText =
         document.getElementById(
             "noticeText"
         );
+
 
     const noticeLink =
         document.getElementById(
@@ -1922,82 +2809,158 @@ function applySiteData() {
 
 
     /*
-    ON / OFF
+       NOTICE_DISPLAY 확인
+
+       trim()
+       → 앞뒤 공백 제거
+
+       toUpperCase()
+       → on / On / ON 모두 ON으로 처리
     */
 
-    if (
+
+    const noticeDisplay =
         String(
             siteData.NOTICE_DISPLAY || ""
-        ).toUpperCase() === "ON"
+        )
+        .trim()
+        .toUpperCase();
+
+
+    console.log(
+        "NOTICE_DISPLAY =",
+        noticeDisplay
+    );
+
+
+    console.log(
+        "NOTICE_TITLE =",
+        siteData.NOTICE_TITLE
+    );
+
+
+    console.log(
+        "NOTICE_MID =",
+        siteData.NOTICE_MID
+    );
+
+
+    console.log(
+        "NOTICE_TEXT =",
+        siteData.NOTICE_TEXT
+    );
+
+
+    /*
+       ON이면 표시
+    */
+
+
+    if (
+        noticeDisplay === "ON"
     ) {
+
 
         if (noticeSection) {
 
             noticeSection.style.display =
-                "";
-
-        }
-
-
-        if (
-            noticeTitle &&
-            siteData.NOTICE_TITLE
-        ) {
-
-            noticeTitle.innerText =
-                siteData.NOTICE_TITLE;
-
-        }
-
-
-        if (
-            noticeMid &&
-            siteData.NOTICE_MID
-        ) {
-
-            noticeMid.innerHTML =
-                siteData.NOTICE_MID;
-
-        }
-
-
-        if (
-            noticeText &&
-            siteData.NOTICE_TEXT
-        ) {
-
-            noticeText.innerHTML =
-                siteData.NOTICE_TEXT;
+                "block";
 
         }
 
 
         /*
-        링크 표시 여부
+           제목
         */
+
+
+        if (noticeTitle) {
+
+            noticeTitle.innerHTML =
+                siteData.NOTICE_TITLE || "";
+
+        }
+
+
+        /*
+           금액
+
+           innerHTML을 사용하기 때문에
+
+           <s>기존 가격</s>
+           새로운 가격
+
+           형태로 구글 시트에서 작성 가능
+        */
+
+
+        if (noticeMid) {
+
+            noticeMid.innerHTML =
+                siteData.NOTICE_MID || "";
+
+        }
+
+
+        /*
+           공지 내용
+
+           <br> 사용 가능
+        */
+
+
+        if (noticeText) {
+
+            noticeText.innerHTML =
+                siteData.NOTICE_TEXT || "";
+
+        }
+
+
+        /*
+           자세히 보기 버튼
+        */
+
+
+        const linkDisplay =
+            String(
+                siteData.NOTICE_LINK_DISPLAY || ""
+            )
+            .trim()
+            .toUpperCase();
+
 
         if (
             noticeLink &&
-            String(
-                siteData.NOTICE_LINK_DISPLAY || ""
-            ).toUpperCase() === "ON" &&
+            linkDisplay === "ON" &&
             siteData.NOTICE_LINK
         ) {
+
 
             noticeLink.href =
                 siteData.NOTICE_LINK;
 
+
             noticeLink.style.display =
-                "";
+                "block";
+
 
         } else if (noticeLink) {
+
 
             noticeLink.style.display =
                 "none";
 
         }
 
+
     } else {
+
+
+        /*
+           OFF이면 NOTICE 전체 숨김
+        */
+
 
         if (noticeSection) {
 
@@ -2009,16 +2972,16 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    TEAM INFO
-    ========================================
-    */
+    /* ========================================
+       TEAM INFO
+    ======================================== */
+
 
     const teamInfo =
         document.getElementById(
             "teamInfo"
         );
+
 
     if (
         teamInfo &&
@@ -2031,17 +2994,16 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    TEAM SUB 1
-    LOCATION
-    ========================================
-    */
+    /* ========================================
+       TEAM SUB 1
+    ======================================== */
+
 
     const teamSub1 =
         document.getElementById(
             "teamSub1"
         );
+
 
     const teamText1 =
         document.getElementById(
@@ -2071,17 +3033,16 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    TEAM SUB 2
-    TIME
-    ========================================
-    */
+    /* ========================================
+       TEAM SUB 2
+    ======================================== */
+
 
     const teamSub2 =
         document.getElementById(
             "teamSub2"
         );
+
 
     const teamText2 =
         document.getElementById(
@@ -2111,17 +3072,16 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    TEAM SUB 3
-    INSTAGRAM
-    ========================================
-    */
+    /* ========================================
+       TEAM SUB 3
+    ======================================== */
+
 
     const teamSub3 =
         document.getElementById(
             "teamSub3"
         );
+
 
     const teamText3 =
         document.getElementById(
@@ -2151,11 +3111,10 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    JOIN INFO
-    ========================================
-    */
+    /* ========================================
+       JOIN INFO
+    ======================================== */
+
 
     const joinInfo =
         document.getElementById(
@@ -2174,14 +3133,16 @@ function applySiteData() {
     }
 
 
-    /*
-    멤버
-    */
+    /* ========================================
+       JOIN SUB 1
+    ======================================== */
+
 
     const joinSub1 =
         document.getElementById(
             "joinSub1"
         );
+
 
     const joinText1 =
         document.getElementById(
@@ -2211,14 +3172,16 @@ function applySiteData() {
     }
 
 
-    /*
-    입단 조건
-    */
+    /* ========================================
+       JOIN SUB 2
+    ======================================== */
+
 
     const joinSub2 =
         document.getElementById(
             "joinSub2"
         );
+
 
     const joinText2 =
         document.getElementById(
@@ -2248,9 +3211,10 @@ function applySiteData() {
     }
 
 
-    /*
-    문의
-    */
+    /* ========================================
+       JOIN TEXT 3
+    ======================================== */
+
 
     const joinText3 =
         document.getElementById(
@@ -2269,11 +3233,10 @@ function applySiteData() {
     }
 
 
-    /*
-    ========================================
-    FOOTER
-    ========================================
-    */
+    /* ========================================
+       FOOTER
+    ======================================== */
+
 
     const bottomTitle =
         document.getElementById(
@@ -2292,158 +3255,28 @@ function applySiteData() {
     }
 
 }
-    
+
+
 /* =====================================================
    페이지 시작
 ===================================================== */
 
+
 renderCalendar();
+
+
 loadGuestData();
+
+
 loadScheduleData();
+
+
 loadSiteData();
 
+
 </script>
-<!-- =========================
-     GUEST APPLICATION
-========================= -->
-
-<div
-    id="guestModal"
-    class="modal">
-
-    <div class="modal-box">
-
-        <button
-            class="modal-close"
-            onclick="closeGuestForm()">
-
-            ×
-
-        </button>
 
 
-        <h2>
-            게스트 신청
-        </h2>
-
-
-        <p class="modal-description">
-            원하는 날짜와 성별을 선택해주세요.
-        </p>
-
-
-        <form
-            id="guestForm"
-            action="https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec"
-            method="POST"
-            target="submitFrame"
-            onsubmit="submitGuestForm()">
-
-
-            <!-- 이름 -->
-
-            <label>
-                이름
-            </label>
-
-            <input
-                type="text"
-                name="name"
-                placeholder="이름을 입력해주세요"
-                required>
-
-
-            <!-- 날짜 -->
-
-<label>
-    날짜
-</label>
-
-<select
-    name="date"
-    id="guestDate"
-    required>
-
-    <option value="">
-        신청할 날짜를 선택해주세요
-    </option>
-
-</select>
-            
-<div
-    id="guestStatus"
-    class="guest-status">
-
-    날짜를 선택해주세요.
-
-</div>
-
-            <!-- 성별 -->
-
-            <label>
-                성별
-            </label>
-
-            <div class="gender-buttons">
-
-                <label class="gender-option">
-
-                    <input
-                        type="radio"
-                        name="gender"
-                        value="남"
-                        required>
-
-                    <span>
-                        🔵 남
-                    </span>
-
-                </label>
-
-
-                <label class="gender-option">
-
-                    <input
-                        type="radio"
-                        name="gender"
-                        value="여">
-
-                    <span>
-                        🔴 여
-                    </span>
-
-                </label>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="submit-button">
-
-                신청하기
-
-            </button>
-
-        </form>
-
-
-        <div
-            id="submitMessage"
-            class="submit-message">
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<iframe
-    name="submitFrame"
-    id="submitFrame"
-    style="display:none;">
-
-</iframe>
 </body>
+
 </html>
