@@ -14,6 +14,10 @@
 
     <style>
 
+        /* =========================
+           기본
+        ========================= */
+
         #timeText {
             white-space: pre-line;
         }
@@ -28,7 +32,9 @@
 
         body {
             margin: 0;
+
             background: #ffffff;
+
             color: #202020;
 
             font-family:
@@ -47,6 +53,7 @@
 
         .page {
             width: 100%;
+
             max-width: 760px;
 
             margin: 0 auto;
@@ -95,6 +102,7 @@
             margin: 0;
 
             font-size: 38px;
+
             font-weight: 900;
 
             letter-spacing: -2px;
@@ -108,6 +116,7 @@
             color: #777;
 
             font-size: 17px;
+
             font-weight: 500;
         }
 
@@ -136,6 +145,7 @@
                 0 0 18px;
 
             font-size: 23px;
+
             font-weight: 800;
 
             letter-spacing: -0.7px;
@@ -153,12 +163,14 @@
             color: #105c96;
 
             font-size: 23px;
+
             font-weight: 800;
         }
 
 
         .event-list {
             margin: 0;
+
             padding: 0;
 
             list-style: none;
@@ -172,6 +184,7 @@
                 13px 0;
 
             font-size: 17px;
+
             line-height: 1.55;
 
             font-weight: 500;
@@ -192,6 +205,33 @@
             line-height: 1.8;
 
             font-weight: 500;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           NOTICE
+        ========================= */
+
+        #noticeSection {
+            display: none;
+        }
+
+
+        #noticeMid {
+            color: #105c96;
+        }
+
+
+        #noticeMid s {
+            color: #888;
+
+            text-decoration:
+                line-through;
+
+            text-decoration-thickness:
+                1.5px;
         }
 
 
@@ -254,6 +294,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
 
             margin-bottom: 13px;
@@ -262,6 +303,7 @@
 
         .month-title {
             font-size: 23px;
+
             font-weight: 700;
         }
 
@@ -287,7 +329,7 @@
 
 
         .month-button:hover {
-            background: #f2f9ff;
+            background: #0d4d7e;
         }
 
 
@@ -363,7 +405,7 @@
                 translateY(-2px);
 
             border-color:
-                #7d174f;
+                #105c96;
 
             box-shadow:
                 0 4px 12px
@@ -570,7 +612,7 @@
         .main-button:hover {
 
             background:
-                #105c96;
+                #0d4d7e;
         }
 
 
@@ -673,6 +715,7 @@
             .month-button {
 
                 width: 38px;
+
                 height: 38px;
             }
 
@@ -886,7 +929,7 @@
             border-radius: 10px;
 
             background:
-                #f2f9ff;
+                #105c96;
 
             color: white;
 
@@ -895,6 +938,13 @@
             font-weight: 700;
 
             cursor: pointer;
+        }
+
+
+        .submit-button:hover {
+
+            background:
+                #0d4d7e;
         }
 
 
@@ -993,7 +1043,7 @@
             box-sizing: border-box;
 
             background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23650035' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23105c96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
             background-repeat:
                 no-repeat;
@@ -1013,7 +1063,7 @@
 
             box-shadow:
                 0 0 0 3px
-                rgba(101, 0, 53, 0.08);
+                rgba(16, 92, 150, 0.08);
         }
 
 
@@ -1180,6 +1230,7 @@
             class="main-button"
             href="#"
             target="_blank"
+            rel="noopener noreferrer"
             style="display:none;">
 
             자세히 보기
@@ -1503,6 +1554,7 @@
 
         <button
             class="modal-close"
+            type="button"
             onclick="closeGuestForm()">
 
             ×
@@ -1526,7 +1578,7 @@
 
         <form
             id="guestForm"
-            action="https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec"
+            action="https://script.google.com/macros/s/AKfycbwFJ_l1WRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec"
             method="POST"
             target="submitFrame"
             onsubmit="submitGuestForm()">
@@ -1671,7 +1723,7 @@
 
 
 /* =====================================================
-   V-HOLIC / GOOGLE APPS SCRIPT
+   GOOGLE APPS SCRIPT
 ===================================================== */
 
 const API_URL =
@@ -1685,6 +1737,10 @@ let scheduleData = {};
 let siteData = {};
 
 
+/*
+   현재 표시할 달
+*/
+
 let currentYear = 2026;
 
 let currentMonth = 7;
@@ -1695,7 +1751,6 @@ let currentMonth = 7;
 ===================================================== */
 
 function getDayOfWeek(dateKey) {
-
 
     const parts =
         dateKey.split("-");
@@ -1743,7 +1798,6 @@ function getDayOfWeek(dateKey) {
 
 function loadGuestData() {
 
-
     const script =
         document.createElement("script");
 
@@ -1755,13 +1809,11 @@ function loadGuestData() {
     window[callbackName] =
         function(data) {
 
-
             guestData =
                 data || {};
 
 
             renderCalendar();
-
 
             updateGuestStatus();
 
@@ -1776,7 +1828,6 @@ function loadGuestData() {
     script.onerror =
         function() {
 
-
             console.error(
                 "Google Sheets 게스트 데이터를 불러오지 못했습니다."
             );
@@ -1786,6 +1837,9 @@ function loadGuestData() {
 
 
             renderCalendar();
+
+
+            updateGuestStatus();
 
 
             delete window[callbackName];
@@ -1813,7 +1867,6 @@ function loadGuestData() {
 
 function loadScheduleData() {
 
-
     const script =
         document.createElement("script");
 
@@ -1825,13 +1878,11 @@ function loadScheduleData() {
     window[callbackName] =
         function(data) {
 
-
             scheduleData =
                 data || {};
 
 
             renderCalendar();
-
 
             loadScheduleOptions();
 
@@ -1846,7 +1897,6 @@ function loadScheduleData() {
     script.onerror =
         function() {
 
-
             console.error(
                 "Google Sheets 일정 데이터를 불러오지 못했습니다."
             );
@@ -1856,7 +1906,6 @@ function loadScheduleData() {
 
 
             renderCalendar();
-
 
             loadScheduleOptions();
 
@@ -1885,7 +1934,6 @@ function loadScheduleData() {
 ===================================================== */
 
 function renderCalendar() {
-
 
     const calendar =
         document.getElementById("calendar");
@@ -1935,7 +1983,6 @@ function renderCalendar() {
         i++
     ) {
 
-
         const empty =
             document.createElement("div");
 
@@ -1954,7 +2001,6 @@ function renderCalendar() {
         date <= lastDate;
         date++
     ) {
-
 
         const day =
             document.createElement("div");
@@ -2004,7 +2050,6 @@ function renderCalendar() {
 
         if (schedule) {
 
-
             const info =
                 document.createElement("div");
 
@@ -2032,7 +2077,6 @@ function renderCalendar() {
                 data.male >= 3 &&
                 data.female >= 3
             ) {
-
 
                 info.innerHTML = `
 
@@ -2093,7 +2137,6 @@ function showDateDetail(
     schedule
 ) {
 
-
     const detail =
         document.getElementById(
             "dateDetail"
@@ -2120,7 +2163,6 @@ function showDateDetail(
 
 
     if (!schedule) {
-
 
         detail.innerHTML = `
 
@@ -2229,7 +2271,6 @@ function showDateDetail(
 
 function previousMonth() {
 
-
     currentMonth--;
 
 
@@ -2253,7 +2294,6 @@ function previousMonth() {
 
 function nextMonth() {
 
-
     currentMonth++;
 
 
@@ -2276,7 +2316,6 @@ function nextMonth() {
 ===================================================== */
 
 function loadScheduleOptions() {
-
 
     const select =
         document.getElementById(
@@ -2310,7 +2349,6 @@ function loadScheduleOptions() {
 
     dates.forEach(
         function(dateKey) {
-
 
             const schedule =
                 scheduleData[dateKey] || {};
@@ -2384,7 +2422,6 @@ function loadScheduleOptions() {
 
 function updateGuestStatus() {
 
-
     const select =
         document.getElementById(
             "guestDate"
@@ -2410,10 +2447,8 @@ function updateGuestStatus() {
 
     if (!dateKey) {
 
-
         status.innerHTML =
             "날짜를 선택해주세요.";
-
 
         return;
 
@@ -2435,10 +2470,8 @@ function updateGuestStatus() {
 
     if (!schedule) {
 
-
         status.innerHTML =
             "선택한 날짜의 일정을 찾을 수 없습니다.";
-
 
         return;
 
@@ -2485,7 +2518,6 @@ function updateGuestStatus() {
 
 function openGuestForm() {
 
-
     const modal =
         document.getElementById(
             "guestModal"
@@ -2508,7 +2540,6 @@ function openGuestForm() {
 
     loadScheduleOptions();
 
-
     updateGuestStatus();
 
 }
@@ -2519,7 +2550,6 @@ function openGuestForm() {
 ===================================================== */
 
 function closeGuestForm() {
-
 
     const modal =
         document.getElementById(
@@ -2545,7 +2575,6 @@ function closeGuestForm() {
 
 function submitGuestForm() {
 
-
     const message =
         document.getElementById(
             "submitMessage"
@@ -2553,7 +2582,6 @@ function submitGuestForm() {
 
 
     if (message) {
-
 
         message.innerHTML =
             "신청 정보를 저장하고 있습니다...";
@@ -2564,12 +2592,10 @@ function submitGuestForm() {
     setTimeout(
         function() {
 
-
             loadGuestData();
 
 
             if (message) {
-
 
                 message.innerHTML =
                     "✅ 게스트 신청이 완료되었습니다.";
@@ -2592,9 +2618,7 @@ function submitGuestForm() {
 
             loadScheduleOptions();
 
-
             updateGuestStatus();
-
 
         },
         2500
@@ -2609,7 +2633,6 @@ function submitGuestForm() {
 
 function loadSiteData() {
 
-
     const script =
         document.createElement("script");
 
@@ -2620,7 +2643,6 @@ function loadSiteData() {
 
     window[callbackName] =
         function(data) {
-
 
             siteData =
                 data || {};
@@ -2645,7 +2667,6 @@ function loadSiteData() {
     script.onerror =
         function() {
 
-
             console.error(
                 "사이트 관리 데이터를 불러오지 못했습니다."
             );
@@ -2653,6 +2674,8 @@ function loadSiteData() {
 
             siteData = {};
 
+
+            delete window[callbackName];
 
             script.remove();
 
@@ -2677,7 +2700,10 @@ function loadSiteData() {
 
 function applySiteData() {
 
-    console.log("===== SITE DATA =====");
+    console.log(
+        "===== SITE DATA ====="
+    );
+
     console.log(siteData);
 
 
@@ -2686,19 +2712,30 @@ function applySiteData() {
     ======================================== */
 
     const mainTitle =
-        document.getElementById("mainTitle");
+        document.getElementById(
+            "mainTitle"
+        );
+
 
     const mainMid =
-        document.getElementById("mainMid");
+        document.getElementById(
+            "mainMid"
+        );
+
 
     if (mainTitle) {
+
         mainTitle.innerText =
             siteData.MAIN_TITLE || "";
+
     }
 
+
     if (mainMid) {
+
         mainMid.innerText =
             siteData.MAIN_MID || "";
+
     }
 
 
@@ -2707,27 +2744,44 @@ function applySiteData() {
     ======================================== */
 
     const applyTitle =
-        document.getElementById("applyTitle");
+        document.getElementById(
+            "applyTitle"
+        );
+
 
     const applyMid =
-        document.getElementById("applyMid");
+        document.getElementById(
+            "applyMid"
+        );
+
 
     const applyText =
-        document.getElementById("applyText");
+        document.getElementById(
+            "applyText"
+        );
+
 
     if (applyTitle) {
+
         applyTitle.innerText =
             siteData.APPLY_TITLE || "";
+
     }
+
 
     if (applyMid) {
+
         applyMid.innerText =
             siteData.APPLY_MID || "";
+
     }
 
+
     if (applyText) {
+
         applyText.innerHTML =
             siteData.APPLY_TEXT || "";
+
     }
 
 
@@ -2736,24 +2790,56 @@ function applySiteData() {
     ======================================== */
 
     const noticeSection =
-        document.getElementById("noticeSection");
+        document.getElementById(
+            "noticeSection"
+        );
+
 
     const noticeTitle =
-        document.getElementById("noticeTitle");
+        document.getElementById(
+            "noticeTitle"
+        );
+
 
     const noticeMid =
-        document.getElementById("noticeMid");
+        document.getElementById(
+            "noticeMid"
+        );
+
 
     const noticeText =
-        document.getElementById("noticeText");
+        document.getElementById(
+            "noticeText"
+        );
+
 
     const noticeLink =
-        document.getElementById("noticeLink");
+        document.getElementById(
+            "noticeLink"
+        );
 
 
     console.log(
         "NOTICE_DISPLAY:",
         siteData.NOTICE_DISPLAY
+    );
+
+
+    console.log(
+        "NOTICE_TITLE:",
+        siteData.NOTICE_TITLE
+    );
+
+
+    console.log(
+        "NOTICE_MID:",
+        siteData.NOTICE_MID
+    );
+
+
+    console.log(
+        "NOTICE_TEXT:",
+        siteData.NOTICE_TEXT
     );
 
 
@@ -2769,9 +2855,13 @@ function applySiteData() {
         .toUpperCase();
 
 
-    if (noticeDisplay === "ON") {
+    if (
+        noticeDisplay === "ON"
+    ) {
 
-        console.log("NOTICE → ON");
+        console.log(
+            "NOTICE → ON"
+        );
 
 
         /*
@@ -2801,8 +2891,10 @@ function applySiteData() {
         /*
            금액
 
-           innerHTML을 사용해야
-           <s>취소선</s>이 적용됩니다.
+           Google Sheets의
+           <s>내용</s>을
+           실제 취소선으로 표시하기 위해
+           innerHTML 사용
         */
 
         if (noticeMid) {
@@ -2846,16 +2938,22 @@ function applySiteData() {
             let link =
                 String(
                     siteData.NOTICE_LINK
-                ).trim();
+                )
+                .trim();
 
 
             /*
-               https://가 없으면 자동 추가
+               https://가 없으면
+               자동으로 추가
             */
 
             if (
-                !link.startsWith("http://") &&
-                !link.startsWith("https://")
+                !link.startsWith(
+                    "http://"
+                ) &&
+                !link.startsWith(
+                    "https://"
+                )
             ) {
 
                 link =
@@ -2866,6 +2964,7 @@ function applySiteData() {
 
             noticeLink.href =
                 link;
+
 
             noticeLink.style.display =
                 "block";
@@ -2881,7 +2980,9 @@ function applySiteData() {
     }
     else {
 
-        console.log("NOTICE → OFF");
+        console.log(
+            "NOTICE → OFF"
+        );
 
 
         if (noticeSection) {
@@ -2899,7 +3000,10 @@ function applySiteData() {
     ======================================== */
 
     const teamInfo =
-        document.getElementById("teamInfo");
+        document.getElementById(
+            "teamInfo"
+        );
+
 
     if (teamInfo) {
 
@@ -2914,10 +3018,16 @@ function applySiteData() {
     ======================================== */
 
     const teamSub1 =
-        document.getElementById("teamSub1");
+        document.getElementById(
+            "teamSub1"
+        );
+
 
     const teamText1 =
-        document.getElementById("teamText1");
+        document.getElementById(
+            "teamText1"
+        );
+
 
     if (teamSub1) {
 
@@ -2925,6 +3035,7 @@ function applySiteData() {
             siteData.TEAM_SUB_1 || "";
 
     }
+
 
     if (teamText1) {
 
@@ -2939,10 +3050,16 @@ function applySiteData() {
     ======================================== */
 
     const teamSub2 =
-        document.getElementById("teamSub2");
+        document.getElementById(
+            "teamSub2"
+        );
+
 
     const teamText2 =
-        document.getElementById("teamText2");
+        document.getElementById(
+            "teamText2"
+        );
+
 
     if (teamSub2) {
 
@@ -2950,6 +3067,7 @@ function applySiteData() {
             siteData.TEAM_SUB_2 || "";
 
     }
+
 
     if (teamText2) {
 
@@ -2964,10 +3082,16 @@ function applySiteData() {
     ======================================== */
 
     const teamSub3 =
-        document.getElementById("teamSub3");
+        document.getElementById(
+            "teamSub3"
+        );
+
 
     const teamText3 =
-        document.getElementById("teamText3");
+        document.getElementById(
+            "teamText3"
+        );
+
 
     if (teamSub3) {
 
@@ -2975,6 +3099,7 @@ function applySiteData() {
             siteData.TEAM_SUB_3 || "";
 
     }
+
 
     if (teamText3) {
 
@@ -2989,7 +3114,10 @@ function applySiteData() {
     ======================================== */
 
     const joinInfo =
-        document.getElementById("joinInfo");
+        document.getElementById(
+            "joinInfo"
+        );
+
 
     if (joinInfo) {
 
@@ -3004,10 +3132,16 @@ function applySiteData() {
     ======================================== */
 
     const joinSub1 =
-        document.getElementById("joinSub1");
+        document.getElementById(
+            "joinSub1"
+        );
+
 
     const joinText1 =
-        document.getElementById("joinText1");
+        document.getElementById(
+            "joinText1"
+        );
+
 
     if (joinSub1) {
 
@@ -3015,6 +3149,7 @@ function applySiteData() {
             siteData.JOIN_SUB_1 || "";
 
     }
+
 
     if (joinText1) {
 
@@ -3029,10 +3164,16 @@ function applySiteData() {
     ======================================== */
 
     const joinSub2 =
-        document.getElementById("joinSub2");
+        document.getElementById(
+            "joinSub2"
+        );
+
 
     const joinText2 =
-        document.getElementById("joinText2");
+        document.getElementById(
+            "joinText2"
+        );
+
 
     if (joinSub2) {
 
@@ -3040,6 +3181,7 @@ function applySiteData() {
             siteData.JOIN_SUB_2 || "";
 
     }
+
 
     if (joinText2) {
 
@@ -3054,7 +3196,10 @@ function applySiteData() {
     ======================================== */
 
     const joinText3 =
-        document.getElementById("joinText3");
+        document.getElementById(
+            "joinText3"
+        );
+
 
     if (joinText3) {
 
@@ -3069,7 +3214,10 @@ function applySiteData() {
     ======================================== */
 
     const bottomTitle =
-        document.getElementById("bottomTitle");
+        document.getElementById(
+            "bottomTitle"
+        );
+
 
     if (bottomTitle) {
 
@@ -3079,7 +3227,9 @@ function applySiteData() {
     }
 
 
-    console.log("===== SITE DATA 적용 완료 =====");
+    console.log(
+        "===== SITE DATA 적용 완료 ====="
+    );
 
 }
 
@@ -3088,15 +3238,11 @@ function applySiteData() {
    페이지 시작
 ===================================================== */
 
-
 renderCalendar();
-
 
 loadGuestData();
 
-
 loadScheduleData();
-
 
 loadSiteData();
 
