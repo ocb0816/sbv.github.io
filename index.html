@@ -467,6 +467,232 @@
                 height: 38px;
             }
         }
+        /* =========================
+   GUEST MODAL
+========================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal.show {
+
+    display: flex;
+
+}
+
+
+.modal-box {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 27px 23px;
+
+    border-radius: 20px;
+
+    background: #fff9fc;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.18);
+
+}
+
+
+.modal-box h2 {
+
+    margin: 0 0 7px;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+}
+
+
+.modal-description {
+
+    margin: 0 0 23px;
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+
+.modal-close {
+
+    position: absolute;
+
+    top: 13px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: 0;
+
+    background: transparent;
+
+    font-size: 28px;
+
+    color: #555;
+
+    cursor: pointer;
+
+}
+
+
+.modal-box form {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.modal-box label {
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+
+.modal-box input[type="text"],
+.modal-box input[type="date"] {
+
+    width: 100%;
+
+    margin-bottom: 18px;
+
+    padding: 13px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+}
+
+
+.gender-buttons {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.gender-option {
+
+    margin: 0 !important;
+
+}
+
+
+.gender-option input {
+
+    display: none;
+
+}
+
+
+.gender-option span {
+
+    display: block;
+
+    padding: 13px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    text-align: center;
+
+    cursor: pointer;
+
+}
+
+
+.gender-option input:checked + span {
+
+    border: 2px solid #650035;
+
+    background: #fff1f8;
+
+}
+
+
+.submit-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #650035;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.submit-message {
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
     </style>
 </head>
 
@@ -672,18 +898,20 @@
             @vholic
         </div>
 
-        <a
-            class="main-button"
-            href="#"
-            onclick="alert('예약 페이지는 추후 연결할 수 있습니다.'); return false;">
-            게스트 신청하기
-        </a>
+       <button
+    class="main-button"
+    type="button"
+    onclick="openGuestForm()">
+
+    게스트 신청하기
+
+</button>
 
     </section>
 
 
     <footer>
-        © 2026 V-HOLIC · Bundang Volleyball Team
+        © 2026 이름 · Volleyball Team
     </footer>
 
 </div>
@@ -698,38 +926,67 @@
        입력할 수 있습니다.
     ========================== */
 
-    const guestData = {
+/*
+========================================
+Google Apps Script 주소
+========================================
+*/
 
-        /*
-        형식:
+const API_URL =
+    "https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec";
 
-        "YYYY-MM-DD": {
-            male: 남자 인원,
-            female: 여자 인원
-        }
-        */
 
-        "2026-08-23": {
-            male: 0,
-            female: 2
-        },
+/*
+========================================
+게스트 데이터
+========================================
+*/
 
-        "2026-08-25": {
-            male: 2,
-            female: 1
-        },
+let guestData = {};
 
-        "2026-08-28": {
-            male: 3,
-            female: 3
-        },
 
-        "2026-08-30": {
-            male: 1,
-            female: 1
-        }
+/*
+========================================
+Google Sheets에서
+게스트 현황 가져오기
+========================================
+*/
 
-    };
+function loadGuestData() {
+
+    const script =
+        document.createElement("script");
+
+
+    const callbackName =
+        "guestCallback_" +
+        Date.now();
+
+
+    window[callbackName] =
+        function(data) {
+
+            guestData = data || {};
+
+            renderCalendar();
+
+            delete window[callbackName];
+
+            script.remove();
+
+        };
+
+
+    script.src =
+        API_URL +
+        "?action=counts" +
+        "&callback=" +
+        callbackName;
+
+
+    document.body.appendChild(script);
+
+}
 
 
     /* 현재 달 */
@@ -1024,9 +1281,214 @@
 
     /* 처음 실행 */
 
-    renderCalendar();
+    loadGuestData();
+/* =========================
+   GUEST FORM
+========================= */
 
+function openGuestForm() {
+
+    document
+        .getElementById("guestModal")
+        .classList.add("show");
+
+}
+
+
+function closeGuestForm() {
+
+    document
+        .getElementById("guestModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================
+   신청하기
+========================= */
+
+function submitGuestForm() {
+
+    const message =
+        document.getElementById(
+            "submitMessage"
+        );
+
+
+    message.innerHTML =
+        "신청 정보를 저장하고 있습니다...";
+
+
+    /*
+        Google Sheets에 신청 정보를
+        보내는 동안 잠시 기다립니다.
+    */
+
+    setTimeout(function() {
+
+        /*
+            Google Sheets에서
+            최신 게스트 숫자를 다시 가져옵니다.
+        */
+
+        loadGuestData();
+
+
+        message.innerHTML =
+            "✅ 게스트 신청이 완료되었습니다.";
+
+
+        /*
+            신청 폼 초기화
+        */
+
+        document
+            .getElementById("guestForm")
+            .reset();
+
+
+    }, 1000);
+
+}
+
+
+/* =========================
+   처음 페이지가 열릴 때
+   Google Sheets 데이터 가져오기
+========================= */
+
+loadGuestData();
 </script>
+<!-- =========================
+     GUEST APPLICATION
+========================= -->
 
+<div
+    id="guestModal"
+    class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeGuestForm()">
+
+            ×
+
+        </button>
+
+
+        <h2>
+            게스트 신청
+        </h2>
+
+
+        <p class="modal-description">
+            원하는 날짜와 성별을 선택해주세요.
+        </p>
+
+
+        <form
+            id="guestForm"
+            action="여기에_Apps_Script_URL을_붙여넣으세요"
+            method="POST"
+            target="submitFrame"
+            onsubmit="submitGuestForm()">
+
+
+            <!-- 이름 -->
+
+            <label>
+                이름
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="이름을 입력해주세요"
+                required>
+
+
+            <!-- 날짜 -->
+
+            <label>
+                날짜
+            </label>
+
+            <input
+                type="date"
+                name="date"
+                id="guestDate"
+                required>
+
+
+            <!-- 성별 -->
+
+            <label>
+                성별
+            </label>
+
+            <div class="gender-buttons">
+
+                <label class="gender-option">
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="남"
+                        required>
+
+                    <span>
+                        🔵 남
+                    </span>
+
+                </label>
+
+
+                <label class="gender-option">
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="여">
+
+                    <span>
+                        🔴 여
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-button">
+
+                신청하기
+
+            </button>
+
+        </form>
+
+
+        <div
+            id="submitMessage"
+            class="submit-message">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<iframe
+    name="submitFrame"
+    id="submitFrame"
+    style="display:none;">
+
+</iframe>
 </body>
 </html>
