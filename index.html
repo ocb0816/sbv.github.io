@@ -892,40 +892,118 @@
     </section>
 
 
-    <!-- =========================
-         NOTICE
-    ========================== -->
+   /*
+========================================
+NOTICE
+========================================
+*/
 
-    <section
-        id="noticeSection"
-        class="card">
+const noticeSection =
+    document.getElementById("noticeSection");
 
-        <h2 id="noticeTitle" class="card-title">
-            2026 게스트 모집 안내
-        </h2>
+const noticeTitle =
+    document.getElementById("noticeTitle");
 
-        <p id="noticeMid" class="event-price">
-            성인 15,000원 / 학생 10,000원
-        </p>
+const noticeMid =
+    document.getElementById("noticeMid");
 
-        <div id="noticeText" class="notice-text">
-            수요일 19:00-21:00<br>
-            하루 게스트 정원 3명<br>
-            폼 제출 후 입금 필수
-        </div>
+const noticeText =
+    document.getElementById("noticeText");
 
-        <a
-            id="noticeLink"
-            class="main-button"
-            href="#"
-            target="_blank"
-            style="display:none;">
+const noticeLink =
+    document.getElementById("noticeLink");
 
-            자세히 보기
 
-        </a>
+/*
+NOTICE 표시 여부
+*/
 
-    </section>
+const noticeDisplay =
+    String(siteData.NOTICE_DISPLAY || "")
+        .trim()
+        .toUpperCase();
+
+
+console.log("NOTICE_DISPLAY =", noticeDisplay);
+console.log("NOTICE_TITLE =", siteData.NOTICE_TITLE);
+console.log("NOTICE_MID =", siteData.NOTICE_MID);
+console.log("NOTICE_TEXT =", siteData.NOTICE_TEXT);
+
+
+if (noticeDisplay === "ON") {
+
+    /* NOTICE 카드 표시 */
+
+    if (noticeSection) {
+        noticeSection.style.display = "block";
+    }
+
+
+    /* 제목 */
+
+    if (noticeTitle) {
+
+        noticeTitle.innerText =
+            siteData.NOTICE_TITLE || "";
+
+    }
+
+
+    /* 금액 */
+
+    if (noticeMid) {
+
+        noticeMid.innerHTML =
+            siteData.NOTICE_MID || "";
+
+    }
+
+
+    /* 내용 */
+
+    if (noticeText) {
+
+        noticeText.innerHTML =
+            siteData.NOTICE_TEXT || "";
+
+    }
+
+
+    /* 자세히 보기 버튼 */
+
+    if (
+        noticeLink &&
+        String(
+            siteData.NOTICE_LINK_DISPLAY || ""
+        ).trim().toUpperCase() === "ON" &&
+        siteData.NOTICE_LINK
+    ) {
+
+        noticeLink.href =
+            siteData.NOTICE_LINK;
+
+        noticeLink.style.display =
+            "block";
+
+    } else if (noticeLink) {
+
+        noticeLink.style.display =
+            "none";
+
+    }
+
+} else {
+
+    /* OFF이면 NOTICE 카드 숨김 */
+
+    if (noticeSection) {
+
+        noticeSection.style.display =
+            "none";
+
+    }
+
+}
 
 
     <!-- =========================
