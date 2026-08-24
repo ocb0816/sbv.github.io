@@ -7,7 +7,9 @@
     <title>게스트 모집 | Volleyball Team</title>
 
     <style>
-        
+        #timeText {
+    white-space: pre-line;
+}
         * {
             box-sizing: border-box;
         }
@@ -992,41 +994,52 @@
 
         <div class="info-item">
 
-            <span class="info-label">
-                📍 LOCATION
-            </span>
+    <span class="info-label">
+        📍 LOCATION
+    </span>
 
-            분당구 배드민턴 / 배구 체육관
-        </div>
+    <span id="locationText">
+        분당구 배드민턴 / 배구 체육관
+    </span>
 
-        <div class="info-item">
-
-            <span class="info-label">
-                🕐 TIME
-            </span>
-
-            금요일 19:00 – 22:00<br>
-            일요일 16:00 – 20:00
-
-        </div>
+</div>
 
         <div class="info-item">
 
-            <span class="info-label">
-                🏐 PLAY
-            </span>
+    <span class="info-label">
+        🕐 TIME
+    </span>
 
-            남녀 혼합 배구
-        </div>
+    <span id="timeText">
+        금요일 19:00 – 22:00
+        일요일 16:00 – 20:00
+    </span>
+
+</div>
 
         <div class="info-item">
 
-            <span class="info-label">
-                📸 INSTAGRAM
-            </span>
+    <span class="info-label">
+        🏐 PLAY
+    </span>
 
-            @vholic
-        </div>
+    <span id="playText">
+        남녀 혼합 배구
+    </span>
+
+</div>
+
+        <div class="info-item">
+
+    <span class="info-label">
+        📸 INSTAGRAM
+    </span>
+
+    <span id="instagramText">
+        @vholic
+    </span>
+
+</div>
 
        <button
     class="main-button"
@@ -1636,13 +1649,18 @@ function loadSiteData() {
 function applySiteData() {
 
     /*
+    =====================================================
     팀 이름
+    =====================================================
     */
 
     const teamName =
         document.getElementById("teamName");
 
-    if (teamName && siteData.teamName) {
+    if (
+        teamName &&
+        siteData.teamName
+    ) {
 
         teamName.innerText =
             siteData.teamName;
@@ -1651,13 +1669,18 @@ function applySiteData() {
 
 
     /*
+    =====================================================
     메인 문구
+    =====================================================
     */
 
     const mainText =
         document.getElementById("mainText");
 
-    if (mainText && siteData.mainText) {
+    if (
+        mainText &&
+        siteData.mainText
+    ) {
 
         mainText.innerText =
             siteData.mainText;
@@ -1666,7 +1689,9 @@ function applySiteData() {
 
 
     /*
+    =====================================================
     이벤트 영역
+    =====================================================
     */
 
     const eventTitle =
@@ -1684,6 +1709,10 @@ function applySiteData() {
     const eventSection =
         document.getElementById("eventSection");
 
+
+    /*
+    공지 ON
+    */
 
     if (
         siteData.noticeVisible === "ON"
@@ -1755,7 +1784,14 @@ function applySiteData() {
 
         }
 
-    } else {
+    }
+
+
+    /*
+    공지 OFF
+    */
+
+    else {
 
         if (
             eventSection
@@ -1765,6 +1801,85 @@ function applySiteData() {
                 "none";
 
         }
+
+    }
+
+
+    /*
+    =====================================================
+    브이홀릭 정보
+    =====================================================
+    */
+
+    const locationText =
+        document.getElementById("locationText");
+
+    const timeText =
+        document.getElementById("timeText");
+
+    const playText =
+        document.getElementById("playText");
+
+    const instagramText =
+        document.getElementById("instagramText");
+
+
+    /*
+    LOCATION
+    */
+
+    if (
+        locationText &&
+        siteData.location
+    ) {
+
+        locationText.innerText =
+            siteData.location;
+
+    }
+
+
+    /*
+    TIME
+    */
+
+    if (
+        timeText &&
+        siteData.time
+    ) {
+
+        timeText.innerText =
+            siteData.time;
+
+    }
+
+
+    /*
+    PLAY
+    */
+
+    if (
+        playText &&
+        siteData.play
+    ) {
+
+        playText.innerText =
+            siteData.play;
+
+    }
+
+
+    /*
+    INSTAGRAM
+    */
+
+    if (
+        instagramText &&
+        siteData.instagram
+    ) {
+
+        instagramText.innerText =
+            siteData.instagram;
 
     }
 
