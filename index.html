@@ -14,1083 +14,1208 @@
 
     <style>
 
-        /* =========================
-           기본
-        ========================= */
+/* =====================================================
+   기본
+===================================================== */
 
-        #timeText {
-            white-space: pre-line;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+body {
+    margin: 0;
 
-        body {
-            margin: 0;
+    background: #f7fafc;
+    color: #202020;
 
-            background: #ffffff;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+}
 
-            color: #202020;
 
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Apple SD Gothic Neo",
-                "Noto Sans KR",
-                Arial,
-                sans-serif;
-        }
+/* =====================================================
+   전체 페이지
+===================================================== */
 
+.page {
+    width: 100%;
+    max-width: 680px;
 
-        /* =========================
-           전체 페이지
-        ========================= */
+    margin: 0 auto;
 
-        .page {
-            width: 100%;
+    padding:
+        28px 16px 55px;
+}
 
-            max-width: 760px;
 
-            margin: 0 auto;
+/* =====================================================
+   HEADER
+===================================================== */
 
-            padding:
-                35px 20px 70px;
-        }
+.header {
+    text-align: center;
 
+    margin-bottom: 26px;
+}
 
-        /* =========================
-           HEADER
-        ========================= */
 
-        .header {
-            text-align: center;
+.logo {
+    width: 95px;
+    height: 95px;
 
-            margin-bottom: 35px;
-        }
+    margin:
+        0 auto 6px;
 
+    display: flex;
 
-        .logo {
-            width: 110px;
-            height: 110px;
+    align-items: center;
+    justify-content: center;
+}
 
-            margin:
-                0 auto 8px;
 
-            display: flex;
+.logo img {
+    width: 100%;
+    height: 100%;
 
-            align-items: center;
-            justify-content: center;
-        }
+    object-fit: contain;
 
+    display: block;
+}
 
-        .logo img {
-            width: 100%;
-            height: 100%;
 
-            object-fit: contain;
+.team-name {
+    margin: 0;
 
-            display: block;
-        }
+    font-size: 32px;
+    font-weight: 900;
 
+    letter-spacing: -1.5px;
+}
 
-        .team-name {
-            margin: 0;
 
-            font-size: 38px;
+.team-subtitle {
+    margin:
+        5px 0 0;
 
-            font-weight: 900;
+    color: #777;
 
-            letter-spacing: -2px;
-        }
+    font-size: 15px;
+    font-weight: 500;
+}
 
 
-        .team-subtitle {
-            margin:
-                6px 0 0;
+/* =====================================================
+   공통 카드
+===================================================== */
 
-            color: #777;
+.card {
+    margin-bottom: 17px;
 
-            font-size: 17px;
+    padding:
+        21px 22px;
 
-            font-weight: 500;
-        }
+    border:
+        1.3px solid #105c96;
 
+    border-radius: 17px;
 
-        /* =========================
-           공통 카드
-        ========================= */
+    background: #fafdff;
+}
 
-        .card {
-            margin-bottom: 22px;
 
-            padding:
-                27px 28px;
+.card-title {
+    margin:
+        0 0 14px;
 
-            border:
-                1.5px solid #105c96;
+    font-size: 20px;
+    font-weight: 800;
 
-            border-radius: 20px;
+    letter-spacing: -0.5px;
+}
 
-            background: #f2f9ff;
-        }
 
+/* =====================================================
+   EVENT
+===================================================== */
 
-        .card-title {
-            margin:
-                0 0 18px;
+.event-price {
+    margin:
+        0 0 14px;
 
-            font-size: 23px;
+    color: #105c96;
 
-            font-weight: 800;
+    font-size: 20px;
+    font-weight: 800;
 
-            letter-spacing: -0.7px;
-        }
+    line-height: 1.45;
+}
 
 
-        /* =========================
-           EVENT
-        ========================= */
+.event-list {
+    margin: 0;
+    padding: 0;
 
-        .event-price {
-            margin:
-                0 0 18px;
+    list-style: none;
 
-            color: #105c96;
+    white-space: pre-line;
+}
 
-            font-size: 23px;
 
-            font-weight: 800;
-        }
+.event-list li {
+    margin:
+        9px 0;
 
+    font-size: 15px;
+    line-height: 1.5;
 
-        .event-list {
-            margin: 0;
+    font-weight: 500;
+}
 
-            padding: 0;
 
-            list-style: none;
+/* =====================================================
+   APPLY / NOTICE TEXT
+===================================================== */
 
-            white-space: pre-line;
-        }
+.apply-text,
+.notice-text {
 
+    margin: 0;
 
-        .event-list li {
-            margin:
-                13px 0;
+    font-size: 14px;
 
-            font-size: 17px;
+    line-height: 1.7;
 
-            line-height: 1.55;
+    font-weight: 500;
+}
 
-            font-weight: 500;
-        }
 
+/* =====================================================
+   NOTICE
+===================================================== */
 
-        /* =========================
-           APPLY / NOTICE TEXT
-        ========================= */
+#noticeMid s {
+    color: #888;
+    text-decoration-thickness: 1.5px;
+}
 
-        .apply-text,
-        .notice-text {
+#noticeMid {
+    line-height: 1.5;
+}
 
-            margin: 0;
 
-            font-size: 16px;
+/* =====================================================
+   GUEST CALENDAR
+===================================================== */
 
-            line-height: 1.8;
+.legend {
+    display: flex;
 
-            font-weight: 500;
+    gap: 12px;
 
-            white-space: pre-line;
-        }
+    margin-bottom: 15px;
 
+    font-size: 13px;
 
-        /* =========================
-           NOTICE
-        ========================= */
+    font-weight: 700;
+}
 
-        #noticeSection {
-            display: none;
-        }
 
+.legend-item {
+    display: flex;
 
-        #noticeMid {
-            color: #105c96;
-        }
+    align-items: center;
 
+    gap: 5px;
+}
 
-        #noticeMid s {
-            color: #888;
 
-            text-decoration:
-                line-through;
+.dot {
+    width: 11px;
+    height: 11px;
 
-            text-decoration-thickness:
-                1.5px;
-        }
+    border-radius: 50%;
 
+    display: inline-block;
+}
 
-        /* =========================
-           GUEST CALENDAR
-        ========================= */
 
-        .legend {
-            display: flex;
+.male {
+    background: #2864c7;
+}
 
-            gap: 14px;
 
-            margin-bottom: 20px;
+.female {
+    background: #d32d36;
+}
 
-            font-size: 15px;
 
-            font-weight: 700;
-        }
+.closed {
+    background: #999;
+}
 
 
-        .legend-item {
-            display: flex;
+/* =====================================================
+   달력 헤더
+===================================================== */
 
-            align-items: center;
+.calendar-header {
+    display: flex;
 
-            gap: 5px;
-        }
+    align-items: center;
+    justify-content: space-between;
 
+    margin-bottom: 10px;
+}
 
-        .dot {
-            width: 12px;
-            height: 12px;
 
-            border-radius: 50%;
+.month-title {
+    font-size: 21px;
+    font-weight: 700;
+}
 
-            display: inline-block;
-        }
 
+.month-button {
+    width: 38px;
+    height: 38px;
 
-        .male {
-            background: #2864c7;
-        }
+    padding: 0;
 
+    border: none;
 
-        .female {
-            background: #d32d36;
-        }
+    border-radius: 9px;
 
+    background: #105c96;
 
-        .closed {
-            background: #999;
-        }
+    color: white;
 
+    font-size: 17px;
 
-        /* =========================
-           달력 헤더
-        ========================= */
+    font-weight: bold;
 
-        .calendar-header {
-            display: flex;
+    cursor: pointer;
 
-            align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-            justify-content: space-between;
 
-            margin-bottom: 13px;
-        }
+.month-button:hover {
+    background: #0c4d7d;
+}
 
 
-        .month-title {
-            font-size: 23px;
+/* =====================================================
+   요일
+===================================================== */
 
-            font-weight: 700;
-        }
+.weekdays,
+.calendar {
 
+    display: grid;
 
-        .month-button {
-            width: 42px;
-            height: 42px;
+    grid-template-columns:
+        repeat(7, 1fr);
 
-            border: none;
+    gap: 5px;
+}
 
-            border-radius: 9px;
 
-            background: #105c96;
+.weekday {
+    padding:
+        6px 0;
 
-            color: white;
+    text-align: center;
 
-            font-size: 22px;
+    font-size: 13px;
 
-            font-weight: bold;
+    font-weight: 700;
 
-            cursor: pointer;
-        }
+    color: #555;
+}
 
 
-        .month-button:hover {
-            background: #0d4d7e;
-        }
+.weekday:first-child {
+    color: #c62b38;
+}
 
 
-        /* =========================
-           요일
-        ========================= */
+.weekday:last-child {
+    color: #2864c7;
+}
 
-        .weekdays,
-        .calendar {
 
-            display: grid;
+/* =====================================================
+   날짜
+===================================================== */
 
-            grid-template-columns:
-                repeat(7, 1fr);
+.day {
+    min-height: 70px;
 
-            gap: 7px;
-        }
+    padding:
+        6px 4px;
 
+    border:
+        1px solid #e4e9ed;
 
-        .weekday {
-            padding:
-                8px 0;
+    border-radius: 11px;
 
-            text-align: center;
+    background: #ffffff;
 
-            font-size: 14px;
+    cursor: pointer;
 
-            font-weight: 700;
+    transition:
+        transform 0.15s,
+        border 0.15s,
+        box-shadow 0.15s;
 
-            color: #555;
-        }
+    /* 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
 
+    align-items: center;
+    justify-content: flex-start;
 
-        .weekday:first-child {
-            color: #c62b38;
-        }
+    text-align: center;
+}
 
 
-        .weekday:last-child {
-            color: #2864c7;
-        }
+.day:hover {
 
+    transform:
+        translateY(-1px);
 
-        /* =========================
-           날짜
-        ========================= */
+    border-color:
+        #105c96;
 
-        .day {
-            min-height: 76px;
+    box-shadow:
+        0 3px 9px
+        rgba(16, 92, 150, 0.10);
+}
 
-            padding:
-                8px 5px;
 
-            border:
-                1px solid #eeeeee;
+.day.empty {
 
-            border-radius: 12px;
+    border: none;
 
-            background: #ffffff;
+    background:
+        transparent;
 
-            cursor: pointer;
+    cursor:
+        default;
 
-            transition:
-                transform 0.15s,
-                border 0.15s,
-                box-shadow 0.15s;
-        }
+    box-shadow: none;
+}
 
 
-        .day:hover {
+.day-number {
 
-            transform:
-                translateY(-2px);
+    display: block;
 
-            border-color:
-                #105c96;
+    width: 100%;
 
-            box-shadow:
-                0 4px 12px
-                rgba(0, 0, 0, 0.07);
-        }
+    font-size: 15px;
 
+    font-weight: 700;
 
-        .day.empty {
+    text-align: center;
+}
 
-            border: none;
 
-            background:
-                transparent;
+.day-info {
 
-            cursor:
-                default;
-        }
+    width: 100%;
 
+    margin-top: 6px;
 
-        .day-number {
+    font-size: 11px;
 
-            display: block;
+    line-height: 1.35;
 
-            font-size: 16px;
+    font-weight: 700;
 
-            font-weight: 700;
-        }
+    text-align: center;
+}
 
 
-        .day-info {
+.day-info .m {
+    color: #2864c7;
+}
 
-            margin-top: 8px;
 
-            font-size: 12px;
+.day-info .f {
+    color: #d32d36;
+}
 
-            line-height: 1.35;
 
-            font-weight: 700;
-        }
+.day-info .c {
+    color: #999;
+}
 
 
-        .day-info .m {
-            color: #2864c7;
-        }
+/* =====================================================
+   선택된 날짜
+===================================================== */
 
+.selected {
 
-        .day-info .f {
-            color: #d32d36;
-        }
+    border:
+        2px solid #105c96 !important;
+}
 
 
-        .day-info .c {
-            color: #999;
-        }
+/* =====================================================
+   날짜 상세 정보
+===================================================== */
 
+.date-detail {
 
-        .selected {
+    margin-top: 17px;
 
-            border:
-                2px solid #105c96 !important;
-        }
+    padding: 16px;
 
+    border-radius: 12px;
 
-        /* =========================
-           날짜 상세 정보
-        ========================= */
+    background: #ffffff;
 
-        .date-detail {
+    border:
+        1px solid #e4e9ed;
+}
 
-            margin-top: 22px;
 
-            padding: 20px;
+.date-detail h3 {
 
-            border-radius: 14px;
+    margin:
+        0 0 12px;
 
-            background: #ffffff;
+    font-size: 17px;
+}
 
-            border:
-                1px solid #eeeeee;
-        }
 
+.date-detail p {
 
-        .date-detail h3 {
+    margin: 0;
 
-            margin:
-                0 0 15px;
+    font-size: 14px;
 
-            font-size: 19px;
-        }
+    line-height: 1.6;
+}
 
 
-        .detail-row {
+.detail-row {
 
-            display: flex;
+    display: flex;
 
-            justify-content:
-                space-between;
+    justify-content:
+        space-between;
 
-            padding:
-                10px 0;
+    align-items: center;
 
-            border-bottom:
-                1px solid #eeeeee;
+    gap: 10px;
 
-            font-size: 15px;
-        }
+    padding:
+        8px 0;
 
+    border-bottom:
+        1px solid #eeeeee;
 
-        .detail-row:last-child {
+    font-size: 13px;
+}
 
-            border-bottom:
-                none;
-        }
 
+.detail-row:last-child {
 
-        /* =========================
-           INFORMATION
-        ========================= */
+    border-bottom:
+        none;
+}
 
-        .info-card {
 
-            border:
-                1px solid #eeeeee;
+/* =====================================================
+   INFORMATION
+===================================================== */
 
-            background:
-                white;
-        }
+.info-card {
 
+    border:
+        1px solid #e4e9ed;
 
-        .info-item {
+    background:
+        #ffffff;
+}
 
-            padding:
-                15px 0;
 
-            border-bottom:
-                1px solid #eeeeee;
+.info-item {
 
-            font-size: 16px;
+    padding:
+        12px 0;
 
-            line-height: 1.5;
-        }
+    border-bottom:
+        1px solid #eeeeee;
 
+    font-size: 14px;
 
-        .info-item:last-child {
+    line-height: 1.5;
+}
 
-            border-bottom:
-                none;
-        }
 
+.info-item:last-child {
 
-        .info-label {
+    border-bottom:
+        none;
+}
 
-            display: block;
 
-            margin-bottom: 4px;
+.info-label {
 
-            color: #777;
+    display: block;
 
-            font-size: 13px;
+    margin-bottom: 3px;
 
-            font-weight: 700;
-        }
+    color: #777;
 
+    font-size: 12px;
 
-        #joinText2 {
-            line-height: 1.7;
-        }
+    font-weight: 700;
+}
 
 
-        /* =========================
-           BUTTON
-        ========================= */
+#joinText2 {
+    line-height: 1.6;
+}
 
-        .main-button {
 
-            display: block;
+/* =====================================================
+   BUTTON
+===================================================== */
 
-            width: 100%;
+.main-button {
 
-            margin-top: 20px;
+    display: block;
 
-            padding: 16px;
+    width: 100%;
 
-            border: none;
+    margin-top: 16px;
 
-            border-radius: 12px;
+    padding: 13px;
 
-            background: #105c96;
+    border: none;
 
-            color: white;
+    border-radius: 10px;
 
-            text-align: center;
+    background: #105c96;
 
-            text-decoration: none;
+    color: white;
 
-            font-size: 17px;
+    text-align: center;
 
-            font-weight: 700;
+    text-decoration: none;
 
-            cursor: pointer;
-        }
+    font-size: 15px;
 
+    font-weight: 700;
 
-        .main-button:hover {
+    cursor: pointer;
+}
 
-            background:
-                #0d4d7e;
-        }
 
+.main-button:hover {
 
-        /* =========================
-           FOOTER
-        ========================= */
+    background:
+        #0c4d7d;
+}
 
-        footer {
 
-            margin-top: 45px;
+/* =====================================================
+   FOOTER
+===================================================== */
 
-            text-align: center;
+footer {
 
-            color: #999;
+    margin-top: 32px;
 
-            font-size: 13px;
-        }
+    text-align: center;
 
+    color: #999;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    font-size: 12px;
+}
 
-        @media (max-width: 600px) {
 
-            .page {
+/* =====================================================
+   MOBILE
+===================================================== */
 
-                padding:
-                    25px 14px 55px;
-            }
+@media (max-width: 600px) {
 
+    .page {
 
-            .team-name {
+        padding:
+            22px 12px 45px;
+    }
 
-                font-size: 31px;
-            }
 
+    .header {
 
-            .team-subtitle {
+        margin-bottom: 22px;
+    }
 
-                font-size: 15px;
-            }
 
+    .logo {
 
-            .card {
+        width: 82px;
+        height: 82px;
+    }
 
-                padding:
-                    21px 18px;
 
-                border-radius: 17px;
-            }
+    .team-name {
 
+        font-size: 27px;
+    }
 
-            .card-title {
 
-                font-size: 20px;
-            }
+    .team-subtitle {
 
+        font-size: 14px;
+    }
 
-            .event-price {
 
-                font-size: 20px;
-            }
+    .card {
 
+        margin-bottom: 14px;
 
-            .event-list li {
+        padding:
+            18px 16px;
 
-                font-size: 15px;
-            }
+        border-radius: 15px;
+    }
 
 
-            .day {
+    .card-title {
 
-                min-height: 64px;
+        margin-bottom: 12px;
 
-                padding:
-                    7px 3px;
-            }
+        font-size: 18px;
+    }
 
 
-            .day-number {
+    .event-price {
 
-                font-size: 14px;
-            }
+        font-size: 18px;
+    }
 
 
-            .day-info {
+    .event-list li {
 
-                font-size: 10px;
-            }
+        margin: 7px 0;
 
+        font-size: 14px;
+    }
 
-            .weekdays,
-            .calendar {
 
-                gap: 4px;
-            }
+    .apply-text,
+    .notice-text {
 
+        font-size: 13px;
 
-            .month-button {
+        line-height: 1.65;
+    }
 
-                width: 38px;
 
-                height: 38px;
-            }
+    .legend {
 
-        }
+        gap: 10px;
 
+        margin-bottom: 12px;
 
-        /* =========================
-           GUEST MODAL
-        ========================= */
+        font-size: 12px;
+    }
 
-        .modal {
 
-            display: none;
+    .month-title {
 
-            position: fixed;
+        font-size: 19px;
+    }
 
-            inset: 0;
 
-            z-index: 999;
+    .month-button {
 
-            padding: 20px;
+        width: 36px;
+        height: 36px;
 
-            background:
-                rgba(0, 0, 0, 0.45);
+        font-size: 16px;
+    }
 
-            align-items: center;
 
-            justify-content: center;
-        }
+    .weekdays,
+    .calendar {
 
+        gap: 4px;
+    }
 
-        .modal.show {
 
-            display: flex;
-        }
+    .weekday {
 
+        padding:
+            5px 0;
 
-        .modal-box {
+        font-size: 12px;
+    }
 
-            position: relative;
 
-            width: 100%;
+    .day {
 
-            max-width: 420px;
+        min-height: 62px;
 
-            padding:
-                27px 23px;
+        padding:
+            6px 2px;
 
-            border-radius: 20px;
+        border-radius: 10px;
+    }
 
-            background:
-                #f2f9ff;
 
-            box-shadow:
-                0 15px 45px
-                rgba(0, 0, 0, 0.18);
-        }
+    .day-number {
 
+        font-size: 14px;
+    }
 
-        .modal-box h2 {
 
-            margin:
-                0 0 7px;
+    .day-info {
 
-            font-size: 23px;
+        margin-top: 5px;
 
-            font-weight: 800;
-        }
+        font-size: 10px;
+    }
 
 
-        .modal-description {
+    .date-detail {
 
-            margin:
-                0 0 23px;
+        margin-top: 14px;
 
-            color: #777;
+        padding: 14px;
+    }
 
-            font-size: 14px;
-        }
 
+    .date-detail h3 {
 
-        .modal-close {
+        font-size: 16px;
+    }
 
-            position: absolute;
 
-            top: 13px;
-            right: 15px;
+    .detail-row {
 
-            width: 35px;
-            height: 35px;
+        font-size: 12px;
+    }
 
-            border: 0;
 
-            background:
-                transparent;
+    .info-item {
 
-            font-size: 28px;
+        padding:
+            10px 0;
 
-            color: #555;
+        font-size: 13px;
+    }
 
-            cursor: pointer;
-        }
 
+    .info-label {
 
-        .modal-box form {
+        font-size: 11px;
+    }
 
-            display: flex;
 
-            flex-direction: column;
-        }
+    .main-button {
 
+        padding: 12px;
 
-        .modal-box label {
+        font-size: 14px;
+    }
 
-            margin-bottom: 7px;
+}
 
-            font-size: 14px;
 
-            font-weight: 700;
-        }
+/* =====================================================
+   GUEST MODAL
+===================================================== */
 
+.modal {
 
-        .modal-box input[type="text"],
-        .modal-box input[type="date"] {
+    display: none;
 
-            width: 100%;
+    position: fixed;
 
-            margin-bottom: 18px;
+    inset: 0;
 
-            padding: 13px;
+    z-index: 999;
 
-            border:
-                1px solid #dddddd;
+    padding: 20px;
 
-            border-radius: 10px;
+    background:
+        rgba(0, 0, 0, 0.45);
 
-            background:
-                white;
+    align-items: center;
 
-            font-size: 15px;
+    justify-content: center;
+}
 
-            font-family:
-                inherit;
-        }
 
+.modal.show {
 
-        .gender-buttons {
+    display: flex;
+}
 
-            display: grid;
 
-            grid-template-columns:
-                1fr 1fr;
+.modal-box {
 
-            gap: 10px;
+    position: relative;
 
-            margin-bottom: 20px;
-        }
+    width: 100%;
 
+    max-width: 420px;
 
-        .gender-option {
+    padding:
+        23px 20px;
 
-            margin:
-                0 !important;
-        }
+    border-radius: 17px;
 
+    background:
+        #fafdff;
 
-        .gender-option input {
+    box-shadow:
+        0 15px 45px
+        rgba(0, 0, 0, 0.18);
+}
 
-            display: none;
-        }
 
+.modal-box h2 {
 
-        .gender-option span {
+    margin:
+        0 0 6px;
 
-            display: block;
+    font-size: 21px;
 
-            padding: 13px;
+    font-weight: 800;
+}
 
-            border:
-                1px solid #dddddd;
 
-            border-radius: 10px;
+.modal-description {
 
-            background:
-                white;
+    margin:
+        0 0 19px;
 
-            text-align: center;
+    color: #777;
 
-            cursor: pointer;
-        }
+    font-size: 13px;
+}
 
 
-        .gender-option input:checked + span {
+.modal-close {
 
-            border:
-                2px solid #105c96;
+    position: absolute;
 
-            background:
-                #f2f9ff;
-        }
+    top: 10px;
+    right: 12px;
 
+    width: 32px;
+    height: 32px;
 
-        .submit-button {
+    border: 0;
 
-            width: 100%;
+    background:
+        transparent;
 
-            padding: 14px;
+    font-size: 25px;
 
-            border: 0;
+    color: #555;
 
-            border-radius: 10px;
+    cursor: pointer;
+}
 
-            background:
-                #105c96;
 
-            color: white;
+.modal-box form {
 
-            font-size: 16px;
+    display: flex;
 
-            font-weight: 700;
+    flex-direction: column;
+}
 
-            cursor: pointer;
-        }
 
+.modal-box label {
 
-        .submit-button:hover {
+    margin-bottom: 6px;
 
-            background:
-                #0d4d7e;
-        }
+    font-size: 13px;
 
+    font-weight: 700;
+}
 
-        .submit-message {
 
-            margin-top: 15px;
+.modal-box input[type="text"],
+.modal-box input[type="date"] {
 
-            text-align: center;
+    width: 100%;
 
-            font-size: 14px;
+    margin-bottom: 15px;
 
-            font-weight: 700;
-        }
+    padding: 11px;
 
+    border:
+        1px solid #dddddd;
 
-        /* =========================
-           선택 날짜 모집 현황
-        ========================= */
+    border-radius: 9px;
 
-        .guest-status {
+    background:
+        white;
 
-            width: 100%;
+    font-size: 14px;
 
-            margin-top: 10px;
+    font-family:
+        inherit;
+}
 
-            margin-bottom: 18px;
 
-            padding:
-                13px 15px;
+.gender-buttons {
 
-            border-radius: 12px;
+    display: grid;
 
-            background:
-                #f2f9ff;
+    grid-template-columns:
+        1fr 1fr;
 
-            border:
-                1px solid #105c96;
+    gap: 8px;
 
-            color: #777777;
+    margin-bottom: 17px;
+}
 
-            font-size: 13px;
 
-            line-height: 1.7;
+.gender-option {
 
-            text-align: center;
-        }
+    margin:
+        0 !important;
+}
 
 
-        .guest-status strong {
+.gender-option input {
 
-            color: #105c96;
+    display: none;
+}
 
-            font-weight: 700;
-        }
 
+.gender-option span {
 
-        /* =========================
-           게스트 신청 날짜 선택
-        ========================= */
+    display: block;
 
-        #guestDate {
+    padding: 11px;
 
-            width: 100%;
+    border:
+        1px solid #dddddd;
 
-            height: 52px;
+    border-radius: 9px;
 
-            padding:
-                0 44px 0 16px;
+    background:
+        white;
 
-            border:
-                1px solid #e5dfe3;
+    text-align: center;
 
-            border-radius: 14px;
+    cursor: pointer;
 
-            background-color:
-                #ffffff;
+    font-size: 14px;
+}
 
-            color:
-                #333333;
 
-            font-family:
-                inherit;
+.gender-option input:checked + span {
 
-            font-size: 14px;
+    border:
+        2px solid #105c96;
 
-            font-weight: 600;
+    background:
+        #f2f8fc;
+}
 
-            outline: none;
 
-            cursor: pointer;
+/* =====================================================
+   신청 버튼
+===================================================== */
 
-            appearance: none;
+.submit-button {
 
-            -webkit-appearance: none;
+    width: 100%;
 
-            box-sizing: border-box;
+    padding: 13px;
 
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23105c96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    border: 0;
 
-            background-repeat:
-                no-repeat;
+    border-radius: 9px;
 
-            background-position:
-                right 16px center;
+    background:
+        #105c96;
 
-            background-size:
-                16px;
-        }
+    color: white;
 
+    font-size: 15px;
 
-        #guestDate:focus {
+    font-weight: 700;
 
-            border-color:
-                #105c96;
+    cursor: pointer;
+}
 
-            box-shadow:
-                0 0 0 3px
-                rgba(16, 92, 150, 0.08);
-        }
 
+.submit-button:hover {
 
-        #guestDate option {
+    background:
+        #0c4d7d;
+}
 
-            padding: 12px;
 
-            font-size: 14px;
-        }
+.submit-message {
 
+    margin-top: 13px;
 
-        @media (max-width: 600px) {
+    text-align: center;
 
-            #guestDate {
+    font-size: 13px;
 
-                height: 50px;
+    font-weight: 700;
+}
 
-                font-size: 13px;
 
-                padding-left: 14px;
+/* =====================================================
+   선택 날짜 모집 현황
+===================================================== */
 
-                padding-right: 42px;
-            }
+.guest-status {
 
-        }
+    width: 100%;
 
-    </style>
+    margin-top: 8px;
+
+    margin-bottom: 15px;
+
+    padding:
+        11px 13px;
+
+    border-radius: 10px;
+
+    background:
+        #f2f8fc;
+
+    border:
+        1px solid #105c96;
+
+    color: #777777;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+.guest-status strong {
+
+    color: #105c96;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   게스트 신청 날짜 선택
+===================================================== */
+
+#guestDate {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding:
+        0 42px 0 14px;
+
+    border:
+        1px solid #dfe5e9;
+
+    border-radius: 11px;
+
+    background-color:
+        #ffffff;
+
+    color:
+        #333333;
+
+    font-family:
+        inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    box-sizing: border-box;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23105c96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        right 14px center;
+
+    background-size:
+        15px;
+}
+
+
+#guestDate:focus {
+
+    border-color:
+        #105c96;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(16, 92, 150, 0.10);
+}
+
+
+#guestDate option {
+
+    padding: 10px;
+
+    font-size: 13px;
+}
+
+
+@media (max-width: 600px) {
+
+    #guestDate {
+
+        height: 47px;
+
+        font-size: 13px;
+
+        padding-left: 13px;
+
+        padding-right: 40px;
+    }
+
+}
+
+</style>
 
 </head>
 
