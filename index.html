@@ -3,19 +3,125 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Page</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>페이지 제목</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            min-height: 100vh;
             background: #f7f3ee;
             font-family: Arial, sans-serif;
             color: #333;
         }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: auto;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .profile {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .link {
+            display: block;
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 18px;
+
+            text-decoration: none;
+            color: #333;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.06);
+
+            transition: 0.2s;
+        }
+
+        .link:hover {
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- 프로필 -->
+        <div style="font-size:80px;">
+            🐭
+        </div>
+
+        <h1>이름</h1>
+
+        <p class="description">
+            일상 · 여행 · 리뷰
+        </p>
+
+
+        <!-- 링크 -->
+
+        <a class="link"
+           href="https://www.instagram.com/">
+            📷 Instagram
+        </a>
+
+        <a class="link"
+           href="#">
+            📝 Blog
+        </a>
+
+        <a class="link"
+           href="#">
+            📍 맛집 리스트
+        </a>
+
+        <a class="link"
+           href="#">
+            🛍️ 추천 제품
+        </a>
+
+
+        <footer>
+            © 2026 Chaebin
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
