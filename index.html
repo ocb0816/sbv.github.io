@@ -949,98 +949,62 @@
 
 <script>
 
-    /* =========================
-       CALENDAR DATA
-
-       나중에 실제 데이터를
-       입력할 수 있습니다.
-    ========================== */
-
-/*
-========================================
-Google Apps Script 주소
-========================================
-*/
+/* =====================================================
+   GOOGLE APPS SCRIPT
+===================================================== */
 
 const API_URL =
     "https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec";
 
 
-/*
-========================================
-게스트 데이터
-========================================
-*/
+/* =====================================================
+   GUEST DATA
+===================================================== */
 
 let guestData = {};
 
 
-/*
-========================================
-Google Sheets에서
-게스트 현황 가져오기
-========================================
-*/
-/* =========================
+/* =====================================================
    V-HOLIC 운영 일정
-   =========================
-
-   여기에서 운영 날짜를 관리합니다.
-
-   true = 운영
-   false = 운영하지 않음
-
-   시간도 여기서 정할 수 있습니다.
-========================= */
+===================================================== */
 
 const scheduleData = {
 
-    "2026-08-24": {
+    "2026-08-26": {
         day: "수",
         time: "19:00 - 22:00"
     },
 
-    "2026-08-30": {
-        day: "일",
-        time: "16:00 - 20:00"
-    },
-
-    "2026-09-04": {
-        day: "금",
+    "2026-09-02": {
+        day: "수",
         time: "19:00 - 22:00"
     },
 
-    "2026-09-06": {
-        day: "일",
-        time: "16:00 - 20:00"
-    },
-
-    "2026-09-11": {
-        day: "금",
+    "2026-09-09": {
+        day: "수",
         time: "19:00 - 22:00"
-    },
-
-    "2026-09-13": {
-        day: "일",
-        time: "16:00 - 20:00"
     }
 
 };
+
+
+/* =====================================================
+   GOOGLE SHEETS에서 게스트 숫자 가져오기
+===================================================== */
+
 function loadGuestData() {
 
     const script =
         document.createElement("script");
 
-
     const callbackName =
-        "guestCallback_" +
-        Date.now();
-
+        "guestCallback_" + Date.now();
 
     window[callbackName] =
         function(data) {
 
-            guestData = data || {};
+            guestData =
+                data || {};
 
             renderCalendar();
 
@@ -1050,6 +1014,20 @@ function loadGuestData() {
 
         };
 
+    script.onerror =
+        function() {
+
+            console.error(
+                "Google Sheets 데이터를 불러오지 못했습니다."
+            );
+
+            guestData = {};
+
+            renderCalendar();
+
+            script.remove();
+
+        };
 
     script.src =
         API_URL +
@@ -1057,238 +1035,261 @@ function loadGuestData() {
         "&callback=" +
         callbackName;
 
-
     document.body.appendChild(script);
 
 }
 
 
-    /* 현재 달 */
+/* =====================================================
+   달력
+===================================================== */
 
-    let currentYear = 2026;
-    let currentMonth = 7;
+let currentYear = 2026;
 
-    /*
-       JavaScript에서
-       0 = 1월
-       7 = 8월
-    */
+let currentMonth = 7;
 
 
-    /* =========================
-       달력 생성
-    ========================== */
+/* =====================================================
+   달력 생성
+===================================================== */
 
-    function renderCalendar() {
+function renderCalendar() {
 
-        const calendar =
-            document.getElementById("calendar");
+    const calendar =
+        document.getElementById("calendar");
 
-        const monthTitle =
-            document.getElementById("monthTitle");
+    const monthTitle =
+        document.getElementById("monthTitle");
 
-        calendar.innerHTML = "";
+    if (!calendar || !monthTitle) {
+        return;
+    }
 
-        monthTitle.innerText =
-            currentYear + "." +
-            String(currentMonth + 1).padStart(2, "0");
+    calendar.innerHTML = "";
 
-
-        const firstDay =
-            new Date(
-                currentYear,
-                currentMonth,
-                1
-            ).getDay();
-
-
-        const lastDate =
-            new Date(
-                currentYear,
-                currentMonth + 1,
-                0
-            ).getDate();
+    monthTitle.innerText =
+        currentYear +
+        "." +
+        String(
+            currentMonth + 1
+        ).padStart(2, "0");
 
 
-        /* 빈 칸 */
-
-        for (
-            let i = 0;
-            i < firstDay;
-            i++
-        ) {
-
-            const empty =
-                document.createElement("div");
-
-            empty.className = "day empty";
-
-            calendar.appendChild(empty);
-        }
+    const firstDay =
+        new Date(
+            currentYear,
+            currentMonth,
+            1
+        ).getDay();
 
 
-        /* 날짜 */
-
-        for (
-            let date = 1;
-            date <= lastDate;
-            date++
-        ) {
-
-            const day =
-                document.createElement("div");
-
-            day.className = "day";
+    const lastDate =
+        new Date(
+            currentYear,
+            currentMonth + 1,
+            0
+        ).getDate();
 
 
-            const number =
-                document.createElement("span");
+    /* 빈 칸 */
 
-            number.className =
-                "day-number";
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
 
-            number.innerText =
-                date;
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+        empty.className =
+            "day empty";
+
+        calendar.appendChild(
+            empty
+        );
+
+    }
 
 
-            day.appendChild(number);
+    /* 날짜 */
+
+    for (
+        let date = 1;
+        date <= lastDate;
+        date++
+    ) {
+
+        const day =
+            document.createElement(
+                "div"
+            );
+
+        day.className =
+            "day";
+
+
+        const number =
+            document.createElement(
+                "span"
+            );
+
+        number.className =
+            "day-number";
+
+        number.innerText =
+            date;
+
+        day.appendChild(number);
+
+
+        const dateKey =
+            currentYear +
+            "-" +
+            String(
+                currentMonth + 1
+            ).padStart(2, "0") +
+            "-" +
+            String(date)
+                .padStart(2, "0");
+
+
+        const data =
+            guestData[dateKey] || {
+                male: 0,
+                female: 0
+            };
+
+
+        const schedule =
+            scheduleData[dateKey];
+
+
+        /*
+           운영일이면
+           신청자가 0명이어도 표시
+        */
+
+        if (schedule) {
+
+            const info =
+                document.createElement(
+                    "div"
+                );
+
+            info.className =
+                "day-info";
+
+
+            info.innerHTML = `
+
+                <span class="m">
+                    ${data.male}/3
+                </span>
+
+                <br>
+
+                <span class="f">
+                    ${data.female}/3
+                </span>
+
+            `;
+
+
+            day.appendChild(info);
 
 
             /*
-                날짜를 YYYY-MM-DD
-                형태로 만듭니다.
+               남자와 여자가
+               모두 3명이면 마감
             */
 
-            const dateKey =
-                currentYear + "-" +
-                String(currentMonth + 1)
-                    .padStart(2, "0") +
-                "-" +
-                String(date)
-                    .padStart(2, "0");
+            if (
+                data.male >= 3 &&
+                data.female >= 3
+            ) {
+
+                info.innerHTML = `
+
+                    <span class="m">
+                        ${data.male}/3
+                    </span>
+
+                    <br>
+
+                    <span class="f">
+                        ${data.female}/3
+                    </span>
+
+                    <br>
+
+                    <span class="c">
+                        마감
+                    </span>
+
+                `;
+
+            }
+
+        }
 
 
-            const data =
-                guestData[dateKey];
+        /*
+           날짜 클릭
+        */
+
+        day.onclick =
+            function() {
+
+                showDateDetail(
+                    dateKey,
+                    date,
+                    data,
+                    schedule
+                );
+
+            };
 
 
-            if (data) {const data =
-    guestData[dateKey] || {
-        male: 0,
-        female: 0
-    };
-
-
-const schedule =
-    scheduleData[dateKey];
-
-
-/*
-    V-HOLIC 운영일이면
-    신청자가 0명이더라도 표시
-*/
-
-if (schedule) {
-
-    const info =
-        document.createElement("div");
-
-    info.className =
-        "day-info";
-
-
-    info.innerHTML = `
-        <span class="m">
-            ${data.male}/3
-        </span>
-        <br>
-        <span class="f">
-            ${data.female}/3
-        </span>
-    `;
-
-
-    day.appendChild(info);
-
-
-    /*
-        남녀 모두 모집 완료
-    */
-
-    if (
-        data.male >= 3 &&
-        data.female >= 3
-    ) {
-
-        info.innerHTML = `
-            <span class="m">
-                ${data.male}/3
-            </span>
-            <br>
-            <span class="f">
-                ${data.female}/3
-            </span>
-            <br>
-            <span class="c">
-                마감
-            </span>
-        `;
+        calendar.appendChild(day);
 
     }
 
 }
 
 
-            /*
-                날짜 클릭
-            */
+/* =====================================================
+   날짜 상세 정보
+===================================================== */
 
-            day.onclick =
-                function() {
+function showDateDetail(
+    dateKey,
+    date,
+    data,
+    schedule
+) {
 
-                    showDateDetail(
-                        dateKey,
-                        date,
-                        data
-                    );
-
-                };
+    const detail =
+        document.getElementById(
+            "dateDetail"
+        );
 
 
-            calendar.appendChild(day);
-
-        }
-
+    if (!detail) {
+        return;
     }
 
 
-    /* =========================
-       날짜 상세 정보
-    ========================== */
+    const male =
+        data ? data.male : 0;
 
-    function showDateDetail(
-        dateKey,
-        date,
-        data
-    ) {
-
-        const detail =
-            document.getElementById(
-                "dateDetail"
-            );
+    const female =
+        data ? data.female : 0;
 
 
-        let male = 0;
-        let female = 0;
-
-
-        if (data) {
-
-            male = data.male;
-            female = data.female;
-
-        }
-
+    if (!schedule) {
 
         detail.innerHTML = `
 
@@ -1298,96 +1299,114 @@ if (schedule) {
                 ${date}일
             </h3>
 
-            <div class="detail-row">
-
-                <span>
-                    🔵 남자 게스트
-                </span>
-
-                <strong>
-                    ${male} / 3명
-                </strong>
-
-            </div>
-
-            <div class="detail-row">
-
-                <span>
-                    🔴 여자 게스트
-                </span>
-
-                <strong>
-                    ${female} / 3명
-                </strong>
-
-            </div>
-
-            <div class="detail-row">
-
-                <span>
-                    🕐 시간
-                </span>
-
-                <strong>
-                    게스트 일정 확인
-                </strong>
-
-            </div>
+            <p>
+                이 날짜에는 게스트 일정이 없습니다.
+            </p>
 
         `;
 
-    }
-
-
-    /* =========================
-       이전 달
-    ========================== */
-
-    function previousMonth() {
-
-        currentMonth--;
-
-        if (currentMonth < 0) {
-
-            currentMonth = 11;
-            currentYear--;
-
-        }
-
-        renderCalendar();
+        return;
 
     }
 
 
-    /* =========================
-       다음 달
-    ========================== */
+    detail.innerHTML = `
 
-    function nextMonth() {
+        <h3>
+            ${currentYear}년
+            ${currentMonth + 1}월
+            ${date}일
+        </h3>
 
-        currentMonth++;
 
-        if (currentMonth > 11) {
+        <div class="detail-row">
 
-            currentMonth = 0;
-            currentYear++;
+            <span>
+                🔵 남자 게스트
+            </span>
 
-        }
+            <strong>
+                ${male} / 3명
+            </strong>
 
-        renderCalendar();
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                🔴 여자 게스트
+            </span>
+
+            <strong>
+                ${female} / 3명
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                🕐 시간
+            </span>
+
+            <strong>
+                ${schedule.time}
+            </strong>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   이전 달
+===================================================== */
+
+function previousMonth() {
+
+    currentMonth--;
+
+    if (currentMonth < 0) {
+
+        currentMonth = 11;
+
+        currentYear--;
 
     }
 
+    renderCalendar();
 
-    /* 처음 실행 */
+}
 
-    loadGuestData();
-/* =========================
-   GUEST FORM
-========================= */
-/* =========================
-   신청 가능한 날짜 만들기
-========================= */
+
+/* =====================================================
+   다음 달
+===================================================== */
+
+function nextMonth() {
+
+    currentMonth++;
+
+    if (currentMonth > 11) {
+
+        currentMonth = 0;
+
+        currentYear++;
+
+    }
+
+    renderCalendar();
+
+}
+
+
+/* =====================================================
+   신청 가능한 날짜 드롭다운
+===================================================== */
 
 function loadScheduleOptions() {
 
@@ -1400,9 +1419,73 @@ function loadScheduleOptions() {
     if (!select) {
         return;
     }
-/* =========================
-   날짜 선택 시 모집 현황 표시
-========================= */
+
+
+    select.innerHTML = `
+
+        <option value="">
+            신청할 날짜를 선택해주세요
+        </option>
+
+    `;
+
+
+    Object.keys(scheduleData)
+        .sort()
+        .forEach(
+            function(dateKey) {
+
+                const schedule =
+                    scheduleData[
+                        dateKey
+                    ];
+
+
+                const date =
+                    new Date(
+                        dateKey +
+                        "T00:00:00"
+                    );
+
+
+                const month =
+                    date.getMonth() + 1;
+
+                const day =
+                    date.getDate();
+
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                option.value =
+                    dateKey;
+
+
+                option.textContent =
+                    `${month}월 ${day}일 (${schedule.day}) · ${schedule.time}`;
+
+
+                select.appendChild(
+                    option
+                );
+
+            }
+        );
+
+
+    select.onchange =
+        updateGuestStatus;
+
+}
+
+
+/* =====================================================
+   날짜 선택 시 현재 모집 현황
+===================================================== */
 
 function updateGuestStatus() {
 
@@ -1411,17 +1494,21 @@ function updateGuestStatus() {
             "guestDate"
         );
 
+
     const status =
         document.getElementById(
             "guestStatus"
         );
 
+
     if (!select || !status) {
         return;
     }
 
+
     const dateKey =
         select.value;
+
 
     if (!dateKey) {
 
@@ -1429,16 +1516,23 @@ function updateGuestStatus() {
             "날짜를 선택해주세요.";
 
         return;
+
     }
+
 
     const data =
         guestData[dateKey] || {
+
             male: 0,
+
             female: 0
+
         };
+
 
     const schedule =
         scheduleData[dateKey];
+
 
     status.innerHTML = `
 
@@ -1462,88 +1556,64 @@ function updateGuestStatus() {
         </strong>
 
     `;
+
 }
 
-    /*
-        기존 선택지 삭제
-    */
 
-    select.innerHTML = `
-        <option value="">
-            신청할 날짜를 선택해주세요
-        </option>
-    `;
+/* =====================================================
+   신청창 열기
+===================================================== */
 
-
-    /*
-        운영 날짜를 하나씩 추가
-    */
-
-    Object.keys(scheduleData)
-        .sort()
-        .forEach(function(dateKey) {
-
-            const schedule =
-                scheduleData[dateKey];
-
-
-            const date =
-                new Date(
-                    dateKey + "T00:00:00"
-                );
-
-
-            const month =
-                date.getMonth() + 1;
-
-            const day =
-                date.getDate();
-
-
-            const option =
-                document.createElement(
-                    "option"
-                );
-
-
-            option.value =
-                dateKey;
-
-
-            option.textContent =
-                `${month}월 ${day}일 (${schedule.day}) · ${schedule.time}`;
-
-
-            select.appendChild(option);
-
-        });
-select.onchange =
-    updateGuestStatus;
-}
 function openGuestForm() {
 
     loadScheduleOptions();
 
+    updateGuestStatus();
 
-    document
-        .getElementById("guestModal")
-        .classList.add("show");
+
+    const modal =
+        document.getElementById(
+            "guestModal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.add(
+            "show"
+        );
+
+    }
 
 }
 
+
+/* =====================================================
+   신청창 닫기
+===================================================== */
 
 function closeGuestForm() {
 
-    document
-        .getElementById("guestModal")
-        .classList.remove("show");
+    const modal =
+        document.getElementById(
+            "guestModal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
 
 }
 
 
-/* =========================
+/* =====================================================
    신청하기
-========================= */
+===================================================== */
 
 function submitGuestForm() {
 
@@ -1553,49 +1623,62 @@ function submitGuestForm() {
         );
 
 
-    message.innerHTML =
-        "신청 정보를 저장하고 있습니다...";
+    if (message) {
+
+        message.innerHTML =
+            "신청 정보를 저장하고 있습니다...";
+
+    }
 
 
     /*
-        Google Sheets에 신청 정보를
-        보내는 동안 잠시 기다립니다.
+       form이 Google Apps Script로
+       실제 POST 요청을 보냅니다.
+
+       target="submitFrame"
+       이기 때문에 페이지가
+       다른 곳으로 이동하지 않습니다.
     */
 
-    setTimeout(function() {
 
-        /*
-            Google Sheets에서
-            최신 게스트 숫자를 다시 가져옵니다.
-        */
+    setTimeout(
+        function() {
 
-        loadGuestData();
+            loadGuestData();
 
+            if (message) {
 
-        message.innerHTML =
-            "✅ 게스트 신청이 완료되었습니다.";
+                message.innerHTML =
+                    "✅ 게스트 신청이 완료되었습니다.";
 
+            }
 
-        /*
-            신청 폼 초기화
-        */
+            const form =
+                document.getElementById(
+                    "guestForm"
+                );
 
-        document
-            .getElementById("guestForm")
-            .reset();
+            if (form) {
 
+                form.reset();
 
-    }, 1000);
+            }
+
+            updateGuestStatus();
+
+        },
+        1500
+    );
 
 }
 
 
-/* =========================
-   처음 페이지가 열릴 때
-   Google Sheets 데이터 가져오기
-========================= */
+/* =====================================================
+   페이지 처음 열릴 때
+===================================================== */
 
 loadGuestData();
+
 </script>
 <!-- =========================
      GUEST APPLICATION
@@ -1628,7 +1711,7 @@ loadGuestData();
 
         <form
             id="guestForm"
-            action="여기에_Apps_Script_URL을_붙여넣으세요"
+            action="https://script.google.com/macros/s/AKfycbwFJ_LlWRYkGfas5ouNdJDMGhr_pUQMB4Lt3t2OQohK9RxNCQZvurEBVQLFmWsOpPbG/exec"
             method="POST"
             target="submitFrame"
             onsubmit="submitGuestForm()">
