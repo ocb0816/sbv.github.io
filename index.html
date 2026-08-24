@@ -2114,13 +2114,78 @@ function renderCalendar() {
 
         if (schedule) {
 
-            const info =
-                document.createElement("div");
+    const info =
+        document.createElement("div");
+
+    info.className =
+        "day-info";
 
 
-            info.className =
-                "day-info";
+    const status =
+        String(schedule.status || "").trim();
 
+
+    /*
+    ========================================
+    모집 상태별 표시
+    ========================================
+    */
+
+    if (status === "마감") {
+
+        info.innerHTML = `
+
+            <span class="c">
+                마감
+            </span>
+
+        `;
+
+    }
+
+    else if (status === "대기") {
+
+        info.innerHTML = `
+
+            <span class="c">
+                대기
+            </span>
+
+        `;
+
+    }
+
+    else {
+
+        /*
+        모집 중인 경우
+        남/여 게스트 현황 표시
+        */
+
+        info.innerHTML = `
+
+            <span class="m">
+                ${data.male}/3
+            </span>
+
+            <br>
+
+            <span class="f">
+                ${data.female}/3
+            </span>
+
+        `;
+
+
+        /*
+        남녀 모두 정원이 차면
+        자동으로 마감 표시
+        */
+
+        if (
+            data.male >= 3 &&
+            data.female >= 3
+        ) {
 
             info.innerHTML = `
 
@@ -2134,40 +2199,22 @@ function renderCalendar() {
                     ${data.female}/3
                 </span>
 
+                <br>
+
+                <span class="c">
+                    마감
+                </span>
+
             `;
 
-
-            if (
-                data.male >= 3 &&
-                data.female >= 3
-            ) {
-
-                info.innerHTML = `
-
-                    <span class="m">
-                        ${data.male}/3
-                    </span>
-
-                    <br>
-
-                    <span class="f">
-                        ${data.female}/3
-                    </span>
-
-                    <br>
-
-                    <span class="c">
-                        마감
-                    </span>
-
-                `;
-
-            }
-
-
-            day.appendChild(info);
-
         }
+
+    }
+
+
+    day.appendChild(info);
+
+}
 
 
         day.onclick =
