@@ -1844,7 +1844,157 @@ function submitGuestForm() {
 
 loadGuestData();
 loadScheduleData();
+/*
+========================================
+Google Sheets 일정 → 신청 날짜 선택창
+========================================
+*/
 
+function populateDateOptions() {
+
+    const select =
+        document.getElementById("guestDate");
+
+
+    if (!select) {
+        return;
+    }
+
+
+    /*
+    기존 선택지를 초기화
+    */
+
+    select.innerHTML = `
+        <option value="">
+            신청할 날짜를 선택해주세요
+        </option>
+    `;
+
+
+    /*
+    일정이 없으면 종료
+    */
+
+    if (
+        !scheduleData ||
+        Object.keys(scheduleData).length === 0
+    ) {
+        return;
+    }
+
+
+    /*
+    날짜 정렬
+    */
+
+    const dates =
+        Object.keys(scheduleData).sort();
+
+
+    /*
+    날짜마다 선택지 생성
+    */
+
+    dates.forEach(function(dateKey) {
+
+        const schedule =
+            scheduleData[dateKey];
+
+
+        /*
+        YYYY-MM-DD → 날짜 객체
+        */
+
+        const parts =
+            dateKey.split("-");
+
+
+        const year =
+            Number(parts[0]);
+
+        const month =
+            Number(parts[1]);
+
+        const date =
+            Number(parts[2]);
+
+
+        /*
+        요일 계산
+        */
+
+        const dayNames =
+            [
+                "일",
+                "월",
+                "화",
+                "수",
+                "목",
+                "금",
+                "토"
+            ];
+
+
+        const dayOfWeek =
+            dayNames[
+                new Date(
+                    year,
+                    month - 1,
+                    date
+                ).getDay()
+            ];
+
+
+        /*
+        화면에 표시할 날짜
+        */
+
+        const label =
+            String(month).padStart(2, "0") +
+            "월 " +
+            String(date).padStart(2, "0") +
+            "일 (" +
+            dayOfWeek +
+            ")";
+
+
+        /*
+        시간
+        */
+
+        const time =
+            schedule.time || "";
+
+
+        /*
+        option 생성
+        */
+
+        const option =
+            document.createElement("option");
+
+
+        option.value =
+            dateKey;
+
+
+        option.textContent =
+            label +
+            (
+                time
+                ? " · " + time
+                : ""
+            );
+
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+}
 </script>
 <!-- =========================
      GUEST APPLICATION
