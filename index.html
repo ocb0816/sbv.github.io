@@ -1,127 +1,1030 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>페이지 제목</title>
+    <title>V-HOLIC | Bundang Volleyball Team</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            background: #f7f3ee;
-            font-family: Arial, sans-serif;
-            color: #333;
+            background: #ffffff;
+            color: #202020;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                "Noto Sans KR",
+                Arial,
+                sans-serif;
         }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
-            margin: auto;
-            padding: 50px 0;
+        /* 전체 페이지 */
+
+        .page {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 35px 20px 70px;
+        }
+
+        /* -------------------------
+           HEADER
+        ------------------------- */
+
+        .header {
             text-align: center;
-        }
-
-        .profile {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            background: white;
-        }
-
-        h1 {
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
-
-        .description {
-            color: #777;
             margin-bottom: 35px;
         }
 
-        .link {
-            display: block;
-            background: white;
-            padding: 18px;
-            margin: 15px 0;
-            border-radius: 18px;
+        .logo {
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 8px;
 
-            text-decoration: none;
-            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 48px;
+
+            background: white;
+            border-radius: 50%;
+        }
+
+        .team-name {
+            margin: 0;
+
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .team-subtitle {
+            margin: 6px 0 0;
+
+            color: #777;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        /* -------------------------
+           공통 카드
+        ------------------------- */
+
+        .card {
+            margin-bottom: 22px;
+            padding: 27px 28px;
+
+            border: 1.5px solid #7d174f;
+            border-radius: 20px;
+
+            background: #fffafd;
+        }
+
+        .card-title {
+            margin: 0 0 18px;
+
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -0.7px;
+        }
+
+        /* -------------------------
+           EVENT
+        ------------------------- */
+
+        .event-price {
+            margin: 0 0 18px;
+
+            color: #a31360;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .event-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .event-list li {
+            margin: 13px 0;
+
+            font-size: 17px;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        /* -------------------------
+           GUEST CALENDAR
+        ------------------------- */
+
+        .legend {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .male {
+            background: #2864c7;
+        }
+
+        .female {
+            background: #d32d36;
+        }
+
+        .closed {
+            background: #999;
+        }
+
+        /* 달력 헤더 */
+
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 13px;
+        }
+
+        .month-title {
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        .month-button {
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #650034;
+            color: white;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .month-button:hover {
+            background: #850044;
+        }
+
+        /* 요일 */
+
+        .weekdays,
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 7px;
+        }
+
+        .weekday {
+            padding: 8px 0;
+
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+
+            color: #555;
+        }
+
+        .weekday:first-child {
+            color: #c62b38;
+        }
+
+        .weekday:last-child {
+            color: #2864c7;
+        }
+
+        /* 날짜 */
+
+        .day {
+            min-height: 76px;
+
+            padding: 8px 5px;
+
+            border: 1px solid #eeeeee;
+            border-radius: 12px;
+
+            background: #ffffff;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s,
+                border 0.15s,
+                box-shadow 0.15s;
+        }
+
+        .day:hover {
+            transform: translateY(-2px);
+
+            border-color: #7d174f;
 
             box-shadow:
-                0 5px 15px rgba(0,0,0,0.06);
-
-            transition: 0.2s;
+                0 4px 12px rgba(0, 0, 0, 0.07);
         }
 
-        .link:hover {
-            transform: translateY(-3px);
+        .day.empty {
+            border: none;
+            background: transparent;
+            cursor: default;
         }
+
+        .day-number {
+            display: block;
+
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .day-info {
+            margin-top: 8px;
+
+            font-size: 12px;
+            line-height: 1.35;
+            font-weight: 700;
+        }
+
+        .day-info .m {
+            color: #2864c7;
+        }
+
+        .day-info .f {
+            color: #d32d36;
+        }
+
+        .day-info .c {
+            color: #999;
+        }
+
+        .selected {
+            border: 2px solid #650034 !important;
+        }
+
+        /* -------------------------
+           날짜 상세 정보
+        ------------------------- */
+
+        .date-detail {
+            margin-top: 22px;
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            background: #ffffff;
+
+            border: 1px solid #eeeeee;
+        }
+
+        .date-detail h3 {
+            margin: 0 0 15px;
+
+            font-size: 19px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid #eeeeee;
+
+            font-size: 15px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        /* -------------------------
+           INFORMATION
+        ------------------------- */
+
+        .info-card {
+            border: 1px solid #eeeeee;
+            background: white;
+        }
+
+        .info-item {
+            padding: 15px 0;
+
+            border-bottom: 1px solid #eeeeee;
+
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #777;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* -------------------------
+           BUTTON
+        ------------------------- */
+
+        .main-button {
+            display: block;
+
+            width: 100%;
+
+            margin-top: 20px;
+            padding: 16px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #650034;
+            color: white;
+
+            text-align: center;
+            text-decoration: none;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .main-button:hover {
+            background: #850044;
+        }
+
+        /* -------------------------
+           FOOTER
+        ------------------------- */
 
         footer {
-            margin-top: 40px;
-            color: #aaa;
+            margin-top: 45px;
+
+            text-align: center;
+
+            color: #999;
+
             font-size: 13px;
         }
 
+        /* -------------------------
+           MOBILE
+        ------------------------- */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding:
+                    25px 14px 55px;
+            }
+
+            .team-name {
+                font-size: 31px;
+            }
+
+            .team-subtitle {
+                font-size: 15px;
+            }
+
+            .card {
+                padding: 21px 18px;
+                border-radius: 17px;
+            }
+
+            .card-title {
+                font-size: 20px;
+            }
+
+            .event-price {
+                font-size: 20px;
+            }
+
+            .event-list li {
+                font-size: 15px;
+            }
+
+            .day {
+                min-height: 64px;
+                padding: 7px 3px;
+            }
+
+            .day-number {
+                font-size: 14px;
+            }
+
+            .day-info {
+                font-size: 10px;
+            }
+
+            .weekdays,
+            .calendar {
+                gap: 4px;
+            }
+
+            .month-button {
+                width: 38px;
+                height: 38px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="page">
 
-        <!-- 프로필 -->
-        <div style="font-size:80px;">
-            🐭
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="logo">
+            🏐
         </div>
 
-        <h1>이름</h1>
+        <h1 class="team-name">
+            V-HOLIC
+        </h1>
 
-        <p class="description">
-            일상 · 여행 · 리뷰
+        <p class="team-subtitle">
+            Bundang Volleyball Team
         </p>
 
+    </header>
 
-        <!-- 링크 -->
 
-        <a class="link"
-           href="https://www.instagram.com/">
-            📷 Instagram
+    <!-- =========================
+         EVENT
+    ========================== -->
+
+    <section class="card">
+
+        <h2 class="card-title">
+            2026 EVENT 🎉
+        </h2>
+
+        <p class="event-price">
+            게스트비 10,000원 → 5,000원
+        </p>
+
+        <ul class="event-list">
+
+            <li>
+                ✓ 금요일 / 일요일
+            </li>
+
+            <li>
+                ✓ 19:00 – 22:00 (금) / 16:00 – 20:00 (일)
+            </li>
+
+            <li>
+                ✓ 남 / 여 각 3명
+                (인원 미충족시 성별 무관 5명)
+            </li>
+
+            <li>
+                ✓ 2026년 한정, 게스트 참여 횟수 제한 없음
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =========================
+         CALENDAR
+    ========================== -->
+
+    <section class="card">
+
+        <h2 class="card-title">
+            게스트 현황 및 일정
+        </h2>
+
+        <div class="legend">
+
+            <div class="legend-item">
+                <span class="dot male"></span>
+                남
+            </div>
+
+            <div class="legend-item">
+                <span class="dot female"></span>
+                여
+            </div>
+
+            <div class="legend-item">
+                <span class="dot closed"></span>
+                마감
+            </div>
+
+        </div>
+
+
+        <div class="calendar-header">
+
+            <button
+                class="month-button"
+                onclick="previousMonth()">
+                ◀
+            </button>
+
+            <div
+                id="monthTitle"
+                class="month-title">
+            </div>
+
+            <button
+                class="month-button"
+                onclick="nextMonth()">
+                ▶
+            </button>
+
+        </div>
+
+
+        <div class="weekdays">
+
+            <div class="weekday">일</div>
+            <div class="weekday">월</div>
+            <div class="weekday">화</div>
+            <div class="weekday">수</div>
+            <div class="weekday">목</div>
+            <div class="weekday">금</div>
+            <div class="weekday">토</div>
+
+        </div>
+
+
+        <div
+            id="calendar"
+            class="calendar">
+        </div>
+
+
+        <!-- 날짜 상세 정보 -->
+
+        <div
+            id="dateDetail"
+            class="date-detail">
+
+            <h3>
+                날짜를 선택해주세요
+            </h3>
+
+            <p>
+                달력에서 날짜를 클릭하면
+                게스트 현황을 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         V-HOLIC 정보
+    ========================== -->
+
+    <section class="card info-card">
+
+        <h2 class="card-title">
+            브이홀릭 정보
+        </h2>
+
+        <div class="info-item">
+
+            <span class="info-label">
+                📍 LOCATION
+            </span>
+
+            분당구 배드민턴 / 배구 체육관
+        </div>
+
+        <div class="info-item">
+
+            <span class="info-label">
+                🕐 TIME
+            </span>
+
+            금요일 19:00 – 22:00<br>
+            일요일 16:00 – 20:00
+
+        </div>
+
+        <div class="info-item">
+
+            <span class="info-label">
+                🏐 PLAY
+            </span>
+
+            남녀 혼합 배구
+        </div>
+
+        <div class="info-item">
+
+            <span class="info-label">
+                📸 INSTAGRAM
+            </span>
+
+            @vholic
+        </div>
+
+        <a
+            class="main-button"
+            href="#"
+            onclick="alert('예약 페이지는 추후 연결할 수 있습니다.'); return false;">
+            게스트 신청하기
         </a>
 
-        <a class="link"
-           href="#">
-            📝 Blog
-        </a>
-
-        <a class="link"
-           href="#">
-            📍 맛집 리스트
-        </a>
-
-        <a class="link"
-           href="#">
-            🛍️ 추천 제품
-        </a>
+    </section>
 
 
-        <footer>
-            © 2026 Chaebin
-        </footer>
+    <footer>
+        © 2026 V-HOLIC · Bundang Volleyball Team
+    </footer>
 
-    </div>
+</div>
+
+
+<script>
+
+    /* =========================
+       CALENDAR DATA
+
+       나중에 실제 데이터를
+       입력할 수 있습니다.
+    ========================== */
+
+    const guestData = {
+
+        /*
+        형식:
+
+        "YYYY-MM-DD": {
+            male: 남자 인원,
+            female: 여자 인원
+        }
+        */
+
+        "2026-08-23": {
+            male: 0,
+            female: 2
+        },
+
+        "2026-08-25": {
+            male: 2,
+            female: 1
+        },
+
+        "2026-08-28": {
+            male: 3,
+            female: 3
+        },
+
+        "2026-08-30": {
+            male: 1,
+            female: 1
+        }
+
+    };
+
+
+    /* 현재 달 */
+
+    let currentYear = 2026;
+    let currentMonth = 7;
+
+    /*
+       JavaScript에서
+       0 = 1월
+       7 = 8월
+    */
+
+
+    /* =========================
+       달력 생성
+    ========================== */
+
+    function renderCalendar() {
+
+        const calendar =
+            document.getElementById("calendar");
+
+        const monthTitle =
+            document.getElementById("monthTitle");
+
+        calendar.innerHTML = "";
+
+        monthTitle.innerText =
+            currentYear + "." +
+            String(currentMonth + 1).padStart(2, "0");
+
+
+        const firstDay =
+            new Date(
+                currentYear,
+                currentMonth,
+                1
+            ).getDay();
+
+
+        const lastDate =
+            new Date(
+                currentYear,
+                currentMonth + 1,
+                0
+            ).getDate();
+
+
+        /* 빈 칸 */
+
+        for (
+            let i = 0;
+            i < firstDay;
+            i++
+        ) {
+
+            const empty =
+                document.createElement("div");
+
+            empty.className = "day empty";
+
+            calendar.appendChild(empty);
+        }
+
+
+        /* 날짜 */
+
+        for (
+            let date = 1;
+            date <= lastDate;
+            date++
+        ) {
+
+            const day =
+                document.createElement("div");
+
+            day.className = "day";
+
+
+            const number =
+                document.createElement("span");
+
+            number.className =
+                "day-number";
+
+            number.innerText =
+                date;
+
+
+            day.appendChild(number);
+
+
+            /*
+                날짜를 YYYY-MM-DD
+                형태로 만듭니다.
+            */
+
+            const dateKey =
+                currentYear + "-" +
+                String(currentMonth + 1)
+                    .padStart(2, "0") +
+                "-" +
+                String(date)
+                    .padStart(2, "0");
+
+
+            const data =
+                guestData[dateKey];
+
+
+            if (data) {
+
+                const info =
+                    document.createElement("div");
+
+                info.className =
+                    "day-info";
+
+
+                info.innerHTML =
+                    `<span class="m">
+                        ${data.male}/3
+                    </span>
+                    <br>
+                    <span class="f">
+                        ${data.female}/3
+                    </span>`;
+
+
+                day.appendChild(info);
+
+
+                /*
+                    모두 3명 이상이면
+                    마감 표시
+                */
+
+                if (
+                    data.male >= 3 &&
+                    data.female >= 3
+                ) {
+
+                    info.innerHTML =
+                        `<span class="c">
+                            마감
+                        </span>`;
+                }
+
+            }
+
+
+            /*
+                날짜 클릭
+            */
+
+            day.onclick =
+                function() {
+
+                    showDateDetail(
+                        dateKey,
+                        date,
+                        data
+                    );
+
+                };
+
+
+            calendar.appendChild(day);
+
+        }
+
+    }
+
+
+    /* =========================
+       날짜 상세 정보
+    ========================== */
+
+    function showDateDetail(
+        dateKey,
+        date,
+        data
+    ) {
+
+        const detail =
+            document.getElementById(
+                "dateDetail"
+            );
+
+
+        let male = 0;
+        let female = 0;
+
+
+        if (data) {
+
+            male = data.male;
+            female = data.female;
+
+        }
+
+
+        detail.innerHTML = `
+
+            <h3>
+                ${currentYear}년
+                ${currentMonth + 1}월
+                ${date}일
+            </h3>
+
+            <div class="detail-row">
+
+                <span>
+                    🔵 남자 게스트
+                </span>
+
+                <strong>
+                    ${male} / 3명
+                </strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>
+                    🔴 여자 게스트
+                </span>
+
+                <strong>
+                    ${female} / 3명
+                </strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>
+                    🕐 시간
+                </span>
+
+                <strong>
+                    게스트 일정 확인
+                </strong>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================
+       이전 달
+    ========================== */
+
+    function previousMonth() {
+
+        currentMonth--;
+
+        if (currentMonth < 0) {
+
+            currentMonth = 11;
+            currentYear--;
+
+        }
+
+        renderCalendar();
+
+    }
+
+
+    /* =========================
+       다음 달
+    ========================== */
+
+    function nextMonth() {
+
+        currentMonth++;
+
+        if (currentMonth > 11) {
+
+            currentMonth = 0;
+            currentYear++;
+
+        }
+
+        renderCalendar();
+
+    }
+
+
+    /* 처음 실행 */
+
+    renderCalendar();
+
+</script>
 
 </body>
-
 </html>
