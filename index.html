@@ -864,20 +864,25 @@
     <h2
         id="eventTitle"
         class="card-title">
-        8월 신규 게스트 모집
+        공지
     </h2>
 
+
     <p
-        id="eventDate"
+        id="eventMiddle"
         class="event-price">
-        2026년 8월
+        소제목
     </p>
+
 
     <div
         id="eventContent"
         class="event-list">
-        매주 수요일 게스트를 모집합니다!
+
+        내용
+
     </div>
+
 
     <a
         id="eventLink"
@@ -885,7 +890,9 @@
         href="#"
         target="_blank"
         style="display:none;">
+
         자세히 보기
+
     </a>
 
 </section>
@@ -986,71 +993,97 @@
          V-HOLIC 정보
     ========================== -->
 
-    <section class="card info-card">
+    <section
+    id="teamInfoSection"
+    class="card info-card">
 
-        <h2 class="card-title">
-            브이홀릭 정보
-        </h2>
+    <h2
+        id="teamInfo"
+        class="card-title">
+        브이홀릭 정보
+    </h2>
 
-        <div class="info-item">
 
-    <span class="info-label">
-        📍 LOCATION
-    </span>
+    <!-- LOCATION -->
 
-    <span id="locationText">
-        분당구 배드민턴 / 배구 체육관
-    </span>
+    <div class="info-item">
 
-</div>
+        <span
+            id="locationLabel"
+            class="info-label">
+            📍 LOCATION
+        </span>
 
-        <div class="info-item">
+        <span id="locationText">
+            장소
+        </span>
 
-    <span class="info-label">
-        🕐 TIME
-    </span>
+    </div>
 
-    <span id="timeText">
-        금요일 19:00 – 22:00
-        일요일 16:00 – 20:00
-    </span>
 
-</div>
+    <!-- TIME -->
 
-        <div class="info-item">
+    <div class="info-item">
 
-    <span class="info-label">
-        🏐 PLAY
-    </span>
+        <span
+            id="timeLabel"
+            class="info-label">
+            🕐 TIME
+        </span>
 
-    <span id="playText">
-        남녀 혼합 배구
-    </span>
+        <span id="timeText">
+            시간
+        </span>
 
-</div>
+    </div>
 
-        <div class="info-item">
 
-    <span class="info-label">
-        📸 INSTAGRAM
-    </span>
+    <!-- PLAY -->
 
-    <span id="instagramText">
-        @vholic
-    </span>
+    <div class="info-item">
 
-</div>
+        <span
+            id="playLabel"
+            class="info-label">
+            🏐 PLAY
+        </span>
 
-       <button
-    class="main-button"
-    type="button"
-    onclick="openGuestForm()">
+        <span id="playText">
+            배구
+        </span>
 
-    게스트 신청하기
+    </div>
 
-</button>
 
-    </section>
+    <!-- INSTAGRAM -->
+
+    <div class="info-item">
+
+        <span
+            id="instagramLabel"
+            class="info-label">
+            📸 INSTAGRAM
+        </span>
+
+        <span id="instagramText">
+            @vholic
+        </span>
+
+    </div>
+
+
+    <!-- 신청 버튼 -->
+
+    <button
+        class="main-button"
+        type="button"
+        onclick="openGuestForm()">
+
+        게스트 신청하기
+
+    </button>
+
+</section>
 
 
     <footer>
@@ -1649,9 +1682,9 @@ function loadSiteData() {
 function applySiteData() {
 
     /*
-    =====================================================
-    팀 이름
-    =====================================================
+    ========================================
+    TEAM NAME
+    ========================================
     */
 
     const teamName =
@@ -1669,9 +1702,9 @@ function applySiteData() {
 
 
     /*
-    =====================================================
-    메인 문구
-    =====================================================
+    ========================================
+    MAIN TEXT
+    ========================================
     */
 
     const mainText =
@@ -1689,25 +1722,25 @@ function applySiteData() {
 
 
     /*
-    =====================================================
-    이벤트 영역
-    =====================================================
+    ========================================
+    NOTICE
+    ========================================
     */
+
+    const eventSection =
+        document.getElementById("eventSection");
 
     const eventTitle =
         document.getElementById("eventTitle");
 
+    const eventMiddle =
+        document.getElementById("eventMiddle");
+
     const eventContent =
         document.getElementById("eventContent");
 
-    const eventDate =
-        document.getElementById("eventDate");
-
     const eventLink =
         document.getElementById("eventLink");
-
-    const eventSection =
-        document.getElementById("eventSection");
 
 
     /*
@@ -1715,12 +1748,10 @@ function applySiteData() {
     */
 
     if (
-        siteData.noticeVisible === "ON"
+        siteData.noticeDisplay === "ON"
     ) {
 
-        if (
-            eventSection
-        ) {
+        if (eventSection) {
 
             eventSection.style.display =
                 "";
@@ -1730,47 +1761,49 @@ function applySiteData() {
 
         if (
             eventTitle &&
-            siteData.eventTitle
+            siteData.noticeTitle
         ) {
 
             eventTitle.innerText =
-                siteData.eventTitle;
+                siteData.noticeTitle;
+
+        }
+
+
+        if (
+            eventMiddle &&
+            siteData.noticeMiddle
+        ) {
+
+            eventMiddle.innerText =
+                siteData.noticeMiddle;
 
         }
 
 
         if (
             eventContent &&
-            siteData.eventContent
+            siteData.noticeText
         ) {
 
             eventContent.innerText =
-                siteData.eventContent;
+                siteData.noticeText;
 
         }
 
 
-        if (
-            eventDate &&
-            siteData.eventDate
-        ) {
+        /*
+        공지 링크
+        */
 
-            eventDate.innerText =
-                siteData.eventDate;
-
-        }
-
-
-        if (
-            eventLink
-        ) {
+        if (eventLink) {
 
             if (
-                siteData.eventLink
+                siteData.noticeLink
             ) {
 
                 eventLink.href =
-                    siteData.eventLink;
+                    siteData.noticeLink;
 
                 eventLink.style.display =
                     "";
@@ -1793,9 +1826,7 @@ function applySiteData() {
 
     else {
 
-        if (
-            eventSection
-        ) {
+        if (eventSection) {
 
             eventSection.style.display =
                 "none";
@@ -1806,27 +1837,48 @@ function applySiteData() {
 
 
     /*
-    =====================================================
-    브이홀릭 정보
-    =====================================================
+    ========================================
+    TEAM INFO
+    ========================================
     */
+
+    const teamInfo =
+        document.getElementById("teamInfo");
+
+    if (
+        teamInfo &&
+        siteData.teamInfo
+    ) {
+
+        teamInfo.innerText =
+            siteData.teamInfo;
+
+    }
+
+
+    /*
+    ========================================
+    LOCATION
+    ========================================
+    */
+
+    const locationLabel =
+        document.getElementById("locationLabel");
 
     const locationText =
         document.getElementById("locationText");
 
-    const timeText =
-        document.getElementById("timeText");
 
-    const playText =
-        document.getElementById("playText");
+    if (
+        locationLabel &&
+        siteData.locationLabel
+    ) {
 
-    const instagramText =
-        document.getElementById("instagramText");
+        locationLabel.innerText =
+            siteData.locationLabel;
 
+    }
 
-    /*
-    LOCATION
-    */
 
     if (
         locationText &&
@@ -1840,8 +1892,28 @@ function applySiteData() {
 
 
     /*
+    ========================================
     TIME
+    ========================================
     */
+
+    const timeLabel =
+        document.getElementById("timeLabel");
+
+    const timeText =
+        document.getElementById("timeText");
+
+
+    if (
+        timeLabel &&
+        siteData.timeLabel
+    ) {
+
+        timeLabel.innerText =
+            siteData.timeLabel;
+
+    }
+
 
     if (
         timeText &&
@@ -1855,8 +1927,28 @@ function applySiteData() {
 
 
     /*
+    ========================================
     PLAY
+    ========================================
     */
+
+    const playLabel =
+        document.getElementById("playLabel");
+
+    const playText =
+        document.getElementById("playText");
+
+
+    if (
+        playLabel &&
+        siteData.playLabel
+    ) {
+
+        playLabel.innerText =
+            siteData.playLabel;
+
+    }
+
 
     if (
         playText &&
@@ -1870,8 +1962,28 @@ function applySiteData() {
 
 
     /*
+    ========================================
     INSTAGRAM
+    ========================================
     */
+
+    const instagramLabel =
+        document.getElementById("instagramLabel");
+
+    const instagramText =
+        document.getElementById("instagramText");
+
+
+    if (
+        instagramLabel &&
+        siteData.instagramLabel
+    ) {
+
+        instagramLabel.innerText =
+            siteData.instagramLabel;
+
+    }
+
 
     if (
         instagramText &&
