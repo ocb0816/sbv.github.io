@@ -1309,7 +1309,17 @@ function renderCalendar() {
             "-" +
             String(date)
                 .padStart(2, "0");
+const dayNames =
+    ["일", "월", "화", "수", "목", "금", "토"];
 
+const dayOfWeek =
+    dayNames[
+        new Date(
+            currentYear,
+            currentMonth,
+            date
+        ).getDay()
+    ];
 
         const data =
             guestData[dateKey] || {
@@ -1621,7 +1631,7 @@ function loadScheduleOptions() {
 
 
                 option.textContent =
-    `${month}월 ${day}일 (${schedule.day})`;
+    `${month}월 ${day}일 (${dayOfWeek})`;
 
 
                 select.appendChild(
@@ -1692,7 +1702,7 @@ function updateGuestStatus() {
     status.innerHTML = `
 
         <strong>
-            ${schedule.day}요일
+            ${dayOfWeek}요일
             ${schedule.time}
         </strong>
 
