@@ -115,10 +115,11 @@
         }
 
         .event-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: pre-line;
+}
 
         .event-list li {
             margin: 13px 0;
@@ -835,14 +836,16 @@
     <img src="logo.png" alt="로고">
 </div>
 
-        <h1 id="mainText">
-            팀이름
-        </h1>
-
-        <p
+        <h1
     id="teamName"
+    class="team-name">
+    팀 이름
+</h1>
+
+<p
+    id="mainText"
     class="team-subtitle">
-    제목
+    서브타이틀
 </p>
 
     </header>
@@ -852,38 +855,38 @@
          EVENT
     ========================== -->
 
-    <section class="card">
+    <section
+    id="eventSection"
+    class="card">
 
-        <h2 class="card-title">
-            2026 EVENT 🎉
-        </h2>
+    <h2
+        id="eventTitle"
+        class="card-title">
+        8월 신규 게스트 모집
+    </h2>
 
-        <p class="event-price">
-            게스트비 10,000원 → 5,000원
-        </p>
+    <p
+        id="eventDate"
+        class="event-price">
+        2026년 8월
+    </p>
 
-        <ul class="event-list">
+    <div
+        id="eventContent"
+        class="event-list">
+        매주 수요일 게스트를 모집합니다!
+    </div>
 
-            <li>
-                ✓ 금요일 / 일요일
-            </li>
+    <a
+        id="eventLink"
+        class="main-button"
+        href="#"
+        target="_blank"
+        style="display:none;">
+        자세히 보기
+    </a>
 
-            <li>
-                ✓ 19:00 – 22:00 (금) / 16:00 – 20:00 (일)
-            </li>
-
-            <li>
-                ✓ 남 / 여 각 3명
-                (인원 미충족시 성별 무관 5명)
-            </li>
-
-            <li>
-                ✓ 2026년 한정, 게스트 참여 횟수 제한 없음
-            </li>
-
-        </ul>
-
-    </section>
+</section>
 
 
     <!-- =========================
@@ -1774,6 +1777,7 @@ function applySiteData() {
 renderCalendar();
 loadGuestData();
 loadScheduleData();
+loadSiteData();
 
 </script>
 <!-- =========================
