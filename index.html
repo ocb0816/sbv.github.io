@@ -2275,29 +2275,244 @@ function showDateDetail(
 
     if (!schedule) {
 
-        detail.innerHTML = `
+    detail.innerHTML = `
 
-            <h3>
+        <h3>
 
-                ${currentYear}년
-                ${currentMonth + 1}월
-                ${date}일
-                (${dayOfWeek})
+            ${currentYear}년
+            ${currentMonth + 1}월
+            ${date}일
+            (${dayOfWeek})
 
-            </h3>
+        </h3>
 
-            <p>
+        <p>
 
-                이 날짜에는 게스트 일정이 없습니다.
+            이 날짜에는 게스트 일정이 없습니다.
 
-            </p>
+        </p>
 
-        `;
+    `;
+
+    return;
+
+}
 
 
-        return;
+/*
+========================================
+모집 상태
+========================================
+*/
 
+const status =
+    String(schedule.status || "").trim();
+
+
+/*
+========================================
+마감
+========================================
+*/
+
+if (status === "마감") {
+
+    detail.innerHTML = `
+
+        <h3>
+
+            ${currentYear}년
+            ${currentMonth + 1}월
+            ${date}일
+            (${dayOfWeek})
+
+        </h3>
+
+
+        <div class="detail-row">
+
+            <span>
+                🕐 시간
+            </span>
+
+            <strong>
+                ${schedule.time || ""}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                📌 상태
+            </span>
+
+            <strong>
+                마감
+            </strong>
+
+        </div>
+
+
+        <p style="
+            margin:18px 0 0;
+            text-align:center;
+            font-weight:700;
+        ">
+
+            해당 날짜는 모집이 마감되었습니다.
+
+        </p>
+
+    `;
+
+    return;
+
+}
+
+
+/*
+========================================
+대기
+========================================
+*/
+
+if (status === "대기") {
+
+    detail.innerHTML = `
+
+        <h3>
+
+            ${currentYear}년
+            ${currentMonth + 1}월
+            ${date}일
+            (${dayOfWeek})
+
+        </h3>
+
+
+        <div class="detail-row">
+
+            <span>
+                🕐 시간
+            </span>
+
+            <strong>
+                ${schedule.time || ""}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                📌 상태
+            </span>
+
+            <strong>
+                대기
+            </strong>
+
+        </div>
+
+
+        <p style="
+            margin:18px 0 0;
+            text-align:center;
+            font-weight:700;
+        ">
+
+            해당 날짜는 모집 대기중입니다.
+
+        </p>
+
+    `;
+
+    return;
+
+}
+
+
+/*
+========================================
+모집
+========================================
+*/
+
+detail.innerHTML = `
+
+    <h3>
+
+        ${currentYear}년
+        ${currentMonth + 1}월
+        ${date}일
+        (${dayOfWeek})
+
+    </h3>
+
+
+    <div class="detail-row">
+
+        <span>
+            🔵 남자 게스트
+        </span>
+
+        <strong>
+            ${male} / 3명
+        </strong>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <span>
+            🔴 여자 게스트
+        </span>
+
+        <strong>
+            ${female} / 3명
+        </strong>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <span>
+            🕐 시간
+        </span>
+
+        <strong>
+            ${schedule.time || ""}
+        </strong>
+
+    </div>
+
+
+    ${
+        schedule.description
+            ? `
+
+            <div class="detail-row">
+
+                <span>
+                    📌 안내
+                </span>
+
+                <strong>
+                    ${schedule.description}
+                </strong>
+
+            </div>
+
+            `
+            : ""
     }
+
+`;
 
 
     detail.innerHTML = `
