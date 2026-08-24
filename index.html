@@ -2677,43 +2677,28 @@ function loadSiteData() {
 
 function applySiteData() {
 
+    console.log("===== SITE DATA =====");
+    console.log(siteData);
+
 
     /* ========================================
        MAIN
     ======================================== */
 
-
     const mainTitle =
-        document.getElementById(
-            "mainTitle"
-        );
-
+        document.getElementById("mainTitle");
 
     const mainMid =
-        document.getElementById(
-            "mainMid"
-        );
+        document.getElementById("mainMid");
 
-
-    if (
-        mainTitle &&
-        siteData.MAIN_TITLE
-    ) {
-
+    if (mainTitle) {
         mainTitle.innerText =
-            siteData.MAIN_TITLE;
-
+            siteData.MAIN_TITLE || "";
     }
 
-
-    if (
-        mainMid &&
-        siteData.MAIN_MID
-    ) {
-
+    if (mainMid) {
         mainMid.innerText =
-            siteData.MAIN_MID;
-
+            siteData.MAIN_MID || "";
     }
 
 
@@ -2721,55 +2706,28 @@ function applySiteData() {
        APPLY
     ======================================== */
 
-
     const applyTitle =
-        document.getElementById(
-            "applyTitle"
-        );
-
+        document.getElementById("applyTitle");
 
     const applyMid =
-        document.getElementById(
-            "applyMid"
-        );
-
+        document.getElementById("applyMid");
 
     const applyText =
-        document.getElementById(
-            "applyText"
-        );
+        document.getElementById("applyText");
 
-
-    if (
-        applyTitle &&
-        siteData.APPLY_TITLE
-    ) {
-
+    if (applyTitle) {
         applyTitle.innerText =
-            siteData.APPLY_TITLE;
-
+            siteData.APPLY_TITLE || "";
     }
 
-
-    if (
-        applyMid &&
-        siteData.APPLY_MID
-    ) {
-
+    if (applyMid) {
         applyMid.innerText =
-            siteData.APPLY_MID;
-
+            siteData.APPLY_MID || "";
     }
 
-
-    if (
-        applyText &&
-        siteData.APPLY_TEXT
-    ) {
-
+    if (applyText) {
         applyText.innerHTML =
-            siteData.APPLY_TEXT;
-
+            siteData.APPLY_TEXT || "";
     }
 
 
@@ -2777,47 +2735,31 @@ function applySiteData() {
        NOTICE
     ======================================== */
 
-
     const noticeSection =
-        document.getElementById(
-            "noticeSection"
-        );
-
+        document.getElementById("noticeSection");
 
     const noticeTitle =
-        document.getElementById(
-            "noticeTitle"
-        );
-
+        document.getElementById("noticeTitle");
 
     const noticeMid =
-        document.getElementById(
-            "noticeMid"
-        );
-
+        document.getElementById("noticeMid");
 
     const noticeText =
-        document.getElementById(
-            "noticeText"
-        );
-
+        document.getElementById("noticeText");
 
     const noticeLink =
-        document.getElementById(
-            "noticeLink"
-        );
+        document.getElementById("noticeLink");
+
+
+    console.log(
+        "NOTICE_DISPLAY:",
+        siteData.NOTICE_DISPLAY
+    );
 
 
     /*
-       NOTICE_DISPLAY 확인
-
-       trim()
-       → 앞뒤 공백 제거
-
-       toUpperCase()
-       → on / On / ON 모두 ON으로 처리
+       NOTICE ON / OFF
     */
-
 
     const noticeDisplay =
         String(
@@ -2827,39 +2769,14 @@ function applySiteData() {
         .toUpperCase();
 
 
-    console.log(
-        "NOTICE_DISPLAY =",
-        noticeDisplay
-    );
+    if (noticeDisplay === "ON") {
+
+        console.log("NOTICE → ON");
 
 
-    console.log(
-        "NOTICE_TITLE =",
-        siteData.NOTICE_TITLE
-    );
-
-
-    console.log(
-        "NOTICE_MID =",
-        siteData.NOTICE_MID
-    );
-
-
-    console.log(
-        "NOTICE_TEXT =",
-        siteData.NOTICE_TEXT
-    );
-
-
-    /*
-       ON이면 표시
-    */
-
-
-    if (
-        noticeDisplay === "ON"
-    ) {
-
+        /*
+           카드 표시
+        */
 
         if (noticeSection) {
 
@@ -2873,10 +2790,9 @@ function applySiteData() {
            제목
         */
 
-
         if (noticeTitle) {
 
-            noticeTitle.innerHTML =
+            noticeTitle.innerText =
                 siteData.NOTICE_TITLE || "";
 
         }
@@ -2885,14 +2801,9 @@ function applySiteData() {
         /*
            금액
 
-           innerHTML을 사용하기 때문에
-
-           <s>기존 가격</s>
-           새로운 가격
-
-           형태로 구글 시트에서 작성 가능
+           innerHTML을 사용해야
+           <s>취소선</s>이 적용됩니다.
         */
-
 
         if (noticeMid) {
 
@@ -2903,11 +2814,8 @@ function applySiteData() {
 
 
         /*
-           공지 내용
-
-           <br> 사용 가능
+           내용
         */
-
 
         if (noticeText) {
 
@@ -2918,9 +2826,8 @@ function applySiteData() {
 
 
         /*
-           자세히 보기 버튼
+           링크 버튼
         */
-
 
         const linkDisplay =
             String(
@@ -2936,30 +2843,45 @@ function applySiteData() {
             siteData.NOTICE_LINK
         ) {
 
+            let link =
+                String(
+                    siteData.NOTICE_LINK
+                ).trim();
+
+
+            /*
+               https://가 없으면 자동 추가
+            */
+
+            if (
+                !link.startsWith("http://") &&
+                !link.startsWith("https://")
+            ) {
+
+                link =
+                    "https://" + link;
+
+            }
+
 
             noticeLink.href =
-                siteData.NOTICE_LINK;
-
+                link;
 
             noticeLink.style.display =
                 "block";
 
-
-        } else if (noticeLink) {
-
+        }
+        else if (noticeLink) {
 
             noticeLink.style.display =
                 "none";
 
         }
 
+    }
+    else {
 
-    } else {
-
-
-        /*
-           OFF이면 NOTICE 전체 숨김
-        */
+        console.log("NOTICE → OFF");
 
 
         if (noticeSection) {
@@ -2976,137 +2898,88 @@ function applySiteData() {
        TEAM INFO
     ======================================== */
 
-
     const teamInfo =
-        document.getElementById(
-            "teamInfo"
-        );
+        document.getElementById("teamInfo");
 
-
-    if (
-        teamInfo &&
-        siteData.TEAM_INFO
-    ) {
+    if (teamInfo) {
 
         teamInfo.innerText =
-            siteData.TEAM_INFO;
+            siteData.TEAM_INFO || "";
 
     }
 
 
     /* ========================================
-       TEAM SUB 1
+       TEAM 1
     ======================================== */
-
 
     const teamSub1 =
-        document.getElementById(
-            "teamSub1"
-        );
-
+        document.getElementById("teamSub1");
 
     const teamText1 =
-        document.getElementById(
-            "teamText1"
-        );
+        document.getElementById("teamText1");
 
-
-    if (
-        teamSub1 &&
-        siteData.TEAM_SUB_1
-    ) {
+    if (teamSub1) {
 
         teamSub1.innerText =
-            siteData.TEAM_SUB_1;
+            siteData.TEAM_SUB_1 || "";
 
     }
 
-
-    if (
-        teamText1 &&
-        siteData.TEAM_TEXT_1
-    ) {
+    if (teamText1) {
 
         teamText1.innerHTML =
-            siteData.TEAM_TEXT_1;
+            siteData.TEAM_TEXT_1 || "";
 
     }
 
 
     /* ========================================
-       TEAM SUB 2
+       TEAM 2
     ======================================== */
-
 
     const teamSub2 =
-        document.getElementById(
-            "teamSub2"
-        );
-
+        document.getElementById("teamSub2");
 
     const teamText2 =
-        document.getElementById(
-            "teamText2"
-        );
+        document.getElementById("teamText2");
 
-
-    if (
-        teamSub2 &&
-        siteData.TEAM_SUB_2
-    ) {
+    if (teamSub2) {
 
         teamSub2.innerText =
-            siteData.TEAM_SUB_2;
+            siteData.TEAM_SUB_2 || "";
 
     }
 
-
-    if (
-        teamText2 &&
-        siteData.TEAM_TEXT_2
-    ) {
+    if (teamText2) {
 
         teamText2.innerHTML =
-            siteData.TEAM_TEXT_2;
+            siteData.TEAM_TEXT_2 || "";
 
     }
 
 
     /* ========================================
-       TEAM SUB 3
+       TEAM 3
     ======================================== */
 
-
     const teamSub3 =
-        document.getElementById(
-            "teamSub3"
-        );
-
+        document.getElementById("teamSub3");
 
     const teamText3 =
-        document.getElementById(
-            "teamText3"
-        );
+        document.getElementById("teamText3");
 
-
-    if (
-        teamSub3 &&
-        siteData.TEAM_SUB_3
-    ) {
+    if (teamSub3) {
 
         teamSub3.innerText =
-            siteData.TEAM_SUB_3;
+            siteData.TEAM_SUB_3 || "";
 
     }
 
-
-    if (
-        teamText3 &&
-        siteData.TEAM_TEXT_3
-    ) {
+    if (teamText3) {
 
         teamText3.innerText =
-            siteData.TEAM_TEXT_3;
+            siteData.TEAM_TEXT_3 || "";
 
     }
 
@@ -3115,120 +2988,78 @@ function applySiteData() {
        JOIN INFO
     ======================================== */
 
-
     const joinInfo =
-        document.getElementById(
-            "joinInfo"
-        );
+        document.getElementById("joinInfo");
 
-
-    if (
-        joinInfo &&
-        siteData.JOIN_INFO
-    ) {
+    if (joinInfo) {
 
         joinInfo.innerText =
-            siteData.JOIN_INFO;
+            siteData.JOIN_INFO || "";
 
     }
 
 
     /* ========================================
-       JOIN SUB 1
+       JOIN 1
     ======================================== */
-
 
     const joinSub1 =
-        document.getElementById(
-            "joinSub1"
-        );
-
+        document.getElementById("joinSub1");
 
     const joinText1 =
-        document.getElementById(
-            "joinText1"
-        );
+        document.getElementById("joinText1");
 
-
-    if (
-        joinSub1 &&
-        siteData.JOIN_SUB_1
-    ) {
+    if (joinSub1) {
 
         joinSub1.innerText =
-            siteData.JOIN_SUB_1;
+            siteData.JOIN_SUB_1 || "";
 
     }
 
-
-    if (
-        joinText1 &&
-        siteData.JOIN_TEXT_1
-    ) {
+    if (joinText1) {
 
         joinText1.innerHTML =
-            siteData.JOIN_TEXT_1;
+            siteData.JOIN_TEXT_1 || "";
 
     }
 
 
     /* ========================================
-       JOIN SUB 2
+       JOIN 2
     ======================================== */
-
 
     const joinSub2 =
-        document.getElementById(
-            "joinSub2"
-        );
-
+        document.getElementById("joinSub2");
 
     const joinText2 =
-        document.getElementById(
-            "joinText2"
-        );
+        document.getElementById("joinText2");
 
-
-    if (
-        joinSub2 &&
-        siteData.JOIN_SUB_2
-    ) {
+    if (joinSub2) {
 
         joinSub2.innerText =
-            siteData.JOIN_SUB_2;
+            siteData.JOIN_SUB_2 || "";
 
     }
 
-
-    if (
-        joinText2 &&
-        siteData.JOIN_TEXT_2
-    ) {
+    if (joinText2) {
 
         joinText2.innerHTML =
-            siteData.JOIN_TEXT_2;
+            siteData.JOIN_TEXT_2 || "";
 
     }
 
 
     /* ========================================
-       JOIN TEXT 3
+       JOIN 3
     ======================================== */
 
-
     const joinText3 =
-        document.getElementById(
-            "joinText3"
-        );
+        document.getElementById("joinText3");
 
-
-    if (
-        joinText3 &&
-        siteData.JOIN_TEXT_3
-    ) {
+    if (joinText3) {
 
         joinText3.innerHTML =
-            siteData.JOIN_TEXT_3;
+            siteData.JOIN_TEXT_3 || "";
 
     }
 
@@ -3237,22 +3068,18 @@ function applySiteData() {
        FOOTER
     ======================================== */
 
-
     const bottomTitle =
-        document.getElementById(
-            "bottomTitle"
-        );
+        document.getElementById("bottomTitle");
 
-
-    if (
-        bottomTitle &&
-        siteData.BOTTOM_TITLE
-    ) {
+    if (bottomTitle) {
 
         bottomTitle.innerText =
-            siteData.BOTTOM_TITLE;
+            siteData.BOTTOM_TITLE || "";
 
     }
+
+
+    console.log("===== SITE DATA 적용 완료 =====");
 
 }
 
